@@ -1,0 +1,723 @@
+[
+  {
+    "linea": 1,
+    "color_principal": "#19236D",
+    "color_secundario_1": "#88AEE8",
+    "color_secundario_2": "#EEE392",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 2,
+    "color_principal": "#BE1F1C",
+    "color_secundario_1": "#CCC7B1",
+    "color_secundario_2": "#1D3B78",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 8,
+    "color_principal": "#F5F6F9",
+    "color_secundario_1": "#448DC4",
+    "color_secundario_2": "#448DC4",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 9,
+    "color_principal": "#F5F6F9",
+    "color_secundario_1": "#4A7ED4",
+    "color_secundario_2": "#448DC4",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 10,
+    "color_principal": "#00DCD7",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 15,
+    "color_principal": "#178258",
+    "color_secundario_1": "#6DD378",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 17,
+    "color_principal": "#00DCD7",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 19,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#D90004",
+    "color_secundario_2": "#161616",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 20,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#BE1F1C",
+    "color_secundario_2": "#BE1F1C",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 21,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#448DC4",
+    "color_secundario_2": "#448DC4",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 22,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#00DCD7",
+    "color_secundario_2": "#00DCD7",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 24,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#178258",
+    "color_secundario_2": "#178258",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 28,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#178258",
+    "color_secundario_2": "#178258",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 29,
+    "color_principal": "#0D4A92",
+    "color_secundario_1": "#EDEF9C",
+    "color_secundario_2": "#C60321",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 31,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#4A7ED4",
+    "color_secundario_2": "#448DC4",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 32,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#DF0101",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 33,
+    "color_principal": "#178258",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 37,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#178258",
+    "color_secundario_2": "#161616",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 41,
+    "color_principal": "#F1DD02",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 45,
+    "color_principal": "#178258",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 46,
+    "color_principal": "#0071B8",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#FFFFFF",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 49,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#261E85",
+    "color_secundario_2": "#261E85",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 51,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#448DC4",
+    "color_secundario_2": "#448DC4",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 53,
+    "color_principal": "#0065C9",
+    "color_secundario_1": "#FFFF06",
+    "color_secundario_2": "#227C72",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 55,
+    "color_principal": "#C40018",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 56,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#178258",
+    "color_secundario_2": "#178258",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 57,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#C40018",
+    "color_secundario_2": "#C40018",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 59,
+    "color_principal": "#16542D",
+    "color_secundario_1": "#EDEF9C",
+    "color_secundario_2": "#C60321",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 60,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#FF2822",
+    "color_secundario_2": "#FF2822",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 63,
+    "color_principal": "#3C75A2",
+    "color_secundario_1": "#CE9E41",
+    "color_secundario_2": "#293031",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 67,
+    "color_principal": "#C40018",
+    "color_secundario_1": "#F1DFA7",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 70,
+    "color_principal": "#178258",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 71,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#215297",
+    "color_secundario_2": "#C40018",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 74,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#448DC4",
+    "color_secundario_2": "#448DC4",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 78,
+    "color_principal": "#FDFEC2",
+    "color_secundario_1": "#EAC52F",
+    "color_secundario_2": "#3A6146",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 79,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#448DC4",
+    "color_secundario_2": "#448DC4",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 80,
+    "color_principal": "#C40018",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 85,
+    "color_principal": "#005607",
+    "color_secundario_1": "#FFD848",
+    "color_secundario_2": "#FFD848",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 86,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#2E64FE",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 87,
+    "color_principal": "#FDFEC2",
+    "color_secundario_1": "#EAC52F",
+    "color_secundario_2": "#3A6146",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 88,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#008000",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 91,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#178258",
+    "color_secundario_2": "#178258",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 92,
+    "color_principal": "#04B486",
+    "color_secundario_1": "#04B486",
+    "color_secundario_2": "#F3F781",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 93,
+    "color_principal": "#178258",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 95,
+    "color_principal": "#16542D",
+    "color_secundario_1": "#EDEF9C",
+    "color_secundario_2": "#C60321",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 96,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#FF0000",
+    "color_secundario_2": "#FF0000",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 97,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#2E64FE",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 98,
+    "color_principal": "#FFD848",
+    "color_secundario_1": "#005607",
+    "color_secundario_2": "#005607",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 100,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#DF0101",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 101,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#178258",
+    "color_secundario_2": "#178258",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 103,
+    "color_principal": "#FF0000",
+    "color_secundario_1": "#000000",
+    "color_secundario_2": "#F3F781",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 105,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#FF0000",
+    "color_secundario_2": "#233A5C",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 110,
+    "color_principal": "#DF0101",
+    "color_secundario_1": "#000000",
+    "color_secundario_2": "#2E64FE",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 111,
+    "color_principal": "#FDFEC2",
+    "color_secundario_1": "#EAC52F",
+    "color_secundario_2": "#3A6146",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 113,
+    "color_principal": "#2E64FE",
+    "color_secundario_1": "#EAECF0",
+    "color_secundario_2": "#F3F781",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 114,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#008000",
+    "color_secundario_2": "#008000",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 117,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#DF0101",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 119,
+    "color_principal": "#178258",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 123,
+    "color_principal": "#2E64FE",
+    "color_secundario_1": "#008000",
+    "color_secundario_2": "#F3F781",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 124,
+    "color_principal": "#0000FF",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 126,
+    "color_principal": "#FF0000",
+    "color_secundario_1": "#000000",
+    "color_secundario_2": "#FFFFFF",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 127,
+    "color_principal": "#FDFEC2",
+    "color_secundario_1": "#EAC52F",
+    "color_secundario_2": "#3A6146",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 128,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#DF0101",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 129,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#008000",
+    "color_secundario_2": "#008000",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 130,
+    "color_principal": "#FDFEC2",
+    "color_secundario_1": "#EAC52F",
+    "color_secundario_2": "#3A6146",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 133,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#D90004",
+    "color_secundario_2": "#161616",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 134,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#DF0101",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 135,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#178258",
+    "color_secundario_2": "#178258",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 136,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#437CC9",
+    "color_secundario_2": "#437CC9",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 140,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#D90004",
+    "color_secundario_2": "#161616",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 143,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#008000",
+    "color_secundario_2": "#008000",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 145,
+    "color_principal": "#B4045F",
+    "color_secundario_1": "#B4045F",
+    "color_secundario_2": "#000000",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 146,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#448DC4",
+    "color_secundario_2": "#448DC4",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 148,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#008000",
+    "color_secundario_2": "#008000",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 150,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#BB0017",
+    "color_secundario_2": "#178258",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 152,
+    "color_principal": "#010066",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#FFFFFF",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 153,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#D90004",
+    "color_secundario_2": "#161616",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 154,
+    "color_principal": "#178258",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 158,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#DF0101",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 159,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#003D1E",
+    "color_secundario_2": "#003D1E",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 160,
+    "color_principal": "#DF0101",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#A4A4A4",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 161,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#DF0101",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 163,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#437CC9",
+    "color_secundario_2": "#437CC9",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 164,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#448DC4",
+    "color_secundario_2": "#448DC4",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 166,
+    "color_principal": "#E60213",
+    "color_secundario_1": "#193055",
+    "color_secundario_2": "#F7F694",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 168,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#DF0101",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 169,
+    "color_principal": "#224680",
+    "color_secundario_1": "#EAECF0",
+    "color_secundario_2": "#FFFFFF",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 172,
+    "color_principal": "#1968B7",
+    "color_secundario_1": "#000000",
+    "color_secundario_2": "#F7C502",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 174,
+    "color_principal": "#1968B7",
+    "color_secundario_1": "#000000",
+    "color_secundario_2": "#F7C502",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 176,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#437CC9",
+    "color_secundario_2": "#437CC9",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 177,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#448DC4",
+    "color_secundario_2": "#448DC4",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 178,
+    "color_principal": "#B40404",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#FFFFFF",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 179,
+    "color_principal": "#178258",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 180,
+    "color_principal": "#CA202B",
+    "color_secundario_1": "#FBD003",
+    "color_secundario_2": "#3E699E",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 181,
+    "color_principal": "#CA202B",
+    "color_secundario_1": "#FFFFFF",
+    "color_secundario_2": "#161616",
+    "color_texto": "#FFFFFF"
+  },
+  {
+    "linea": 182,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#437CC9",
+    "color_secundario_2": "#437CC9",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 184,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#D90004",
+    "color_secundario_2": "#161616",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 185,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#FF0000",
+    "color_secundario_2": "#FF0000",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 188,
+    "color_principal": "#F5F6F9",
+    "color_secundario_1": "#C40018",
+    "color_secundario_2": "#C40018",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 193,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#DF0101",
+    "color_secundario_2": "#2E64FE",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 194,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#437CC9",
+    "color_secundario_2": "#437CC9",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 195,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#437CC9",
+    "color_secundario_2": "#437CC9",
+    "color_texto": "#333333"
+  },
+  {
+    "linea": 197,
+    "color_principal": "#FFFFFF",
+    "color_secundario_1": "#008000",
+    "color_secundario_2": "#008000",
+    "color_texto": "#333333"
+  }
+]
