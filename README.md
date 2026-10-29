@@ -273,7 +273,9 @@ La primera experiencia de Bondiala está pensada alrededor de estas acciones:
 
 ## Estado
 
-Bondiala se encuentra en etapa de diseño y construcción.
+Bondiala cuenta con una implementación MVP para ejecutar localmente: registro de viajes, colección y progreso, puntos, niveles, logros, rankings, perfiles, amigos y mapas. Su catálogo nace del CSV de recorridos del repositorio. Incluye trazados reales de un subconjunto y paradas ilustrativas para explorar la experiencia mientras se completan los datos geográficos.
+
+Para levantarla, consultá [Desarrollo local](docs/desarrollo.md). La documentación de [API](docs/api.md), [Importaciones](docs/importaciones.md) y [Despliegue](docs/deploy.md) detalla la operación y las fuentes de datos. Las [decisiones](docs/decisions.md) y [dependencias externas pendientes](docs/pending.md) explican las limitaciones del catálogo inicial.
 
 Dominio previsto:
 

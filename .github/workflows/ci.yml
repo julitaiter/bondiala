@@ -1,0 +1,54 @@
+name: Validación
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose up -d --wait db
+      - run: docker compose build backend
+      - run: docker compose run --rm backend python manage.py test --noinput
+      - run: docker compose run --rm backend python manage.py makemigrations --check --dry-run
+      - run: docker compose run --rm -e DJANGO_DEBUG=False -e DJANGO_SECRET_KEY=ci-deployment-check-only-value-with-more-than-fifty-characters-2026 backend python manage.py check --deploy --fail-level WARNING
+      - run: docker compose run --rm --user root backend sh -c 'pip install pip-audit && pip-audit -r requirements.txt'
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm audit --audit-level=high
+      - run: npm run build
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: docker compose up --build -d --wait
+      - run: npm ci
+        working-directory: frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: npm run test:e2e
+        working-directory: frontend
+      - if: failure()
+        run: docker compose logs --tail=100
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results
+          path: frontend/test-results

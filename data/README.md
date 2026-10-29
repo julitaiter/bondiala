@@ -1,0 +1,9 @@
+# Catálogo de transporte y muestra local
+
+`recorrido-colectivos.csv` es la fuente principal del catálogo, provista por el usuario y conservada sin modificaciones: **134 líneas, 557 ramales y 1.104 recorridos por sentido**, con `fid`, `linea`, `recorrido`, `sentido`, `l_r_s`, `modalidad`, `jurisdicci`, `camara`, `desde` y `hasta`. No contiene geometrías ni paradas. Se importa por defecto mediante `import_badata_recorridos`; `BADATA_RECORRIDOS_FILE` permite configurar otra ubicación. El JSON de colores cubre 102 de esas líneas.
+
+`recorridos.sample.geojson` conserva 24 features de las líneas 4, 39, 64 y 68 del [GeoJSON oficial de BA Data](https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/colectivos-recorridos/recorrido-colectivos.geojson), descargado el 29 de octubre de 2026. Conserva metadata, identificadores `l_r_s`, geometría y orden de coordenadas. Es un subconjunto para desarrollo; no es un catálogo completo del AMBA.
+
+`paradas.sample.geojson` contiene 202 **paradas ilustrativas**, seleccionadas en 12 vértices distribuidos por cada recorrido. Los nombres e IDs son de muestra. Las coordenadas proceden de los trazados; **no se afirma que sean paradas físicas oficiales**. Las relaciones y el orden son explícitos para probar el importador y el registro de viajes. Las coincidencias de coordenadas se reutilizan entre recorridos dentro de esta muestra.
+
+`bootstrap` importa primero el CSV en `badata` y luego complementa esos mismos recorridos con las geometrías de muestra por `l_r_s`. Las relaciones de paradas apuntan a los recorridos `badata`, mientras que las paradas ilustrativas mantienen su namespace `muestra-paradas`. No usar esas secuencias como paradas reales en producción. La fuente histórica `badata-muestra` se conserva en el registro de importaciones y se reconcilia sin eliminar viajes ni progreso. No hay credenciales ni usuarios demo en estos archivos.

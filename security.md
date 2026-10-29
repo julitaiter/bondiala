@@ -162,11 +162,11 @@ El cliente nunca será autoridad sobre:
 Todo tráfico de producción deberá utilizar HTTPS.
 
 ```text
-http://bondiala.ar
+http://bondiala.com.ar
        ↓
 redirect
        ↓
-https://bondiala.ar
+https://bondiala.com.ar
 ```
 
 Configuración esperada de Django:
@@ -387,7 +387,7 @@ Funciones:
 Flujo:
 
 ```text
-bondiala.ar
+bondiala.com.ar
    ↓
 Nginx
 ├── /api/* → Django

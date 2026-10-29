@@ -25,12 +25,12 @@ Combina:
 El dominio previsto para el proyecto es:
 
 ```text
-bondiala.ar
+bondiala.com.ar
 ```
 
 Este dominio todavía no fue registrado.
 
-La elección de `.ar` busca reforzar la identidad local del proyecto y su foco inicial en la red de colectivos del AMBA.
+La elección de `.com.ar` busca reforzar la identidad local del proyecto y su foco inicial en la red de colectivos del AMBA.
 
 
 # 1. Idea general

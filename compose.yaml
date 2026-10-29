@@ -1,0 +1,90 @@
+name: bondiala
+services:
+  db:
+    image: postgis/postgis:17-3.5
+    environment:
+      POSTGRES_DB: ${DB_NAME:-bondiala}
+      POSTGRES_USER: bondiala_admin
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:-local-admin-development-only}
+      DB_USER: ${DB_USER:-bondiala}
+      DB_PASSWORD: ${DB_PASSWORD:-local-development-only}
+      DB_ALLOW_CREATEDB: ${DB_ALLOW_CREATEDB:-true}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init.sh:/docker-entrypoint-initdb.d/20-bondiala.sh:ro
+    networks: [database]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U bondiala_admin -d "$$POSTGRES_DB"']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+  backend:
+    build: ./backend
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DJANGO_DEBUG: ${DJANGO_DEBUG:-True}
+      DB_HOST: db
+      DB_NAME: ${DB_NAME:-bondiala}
+      DB_USER: ${DB_USER:-bondiala}
+      DB_PASSWORD: ${DB_PASSWORD:-local-development-only}
+      DB_TEST_TEMPLATE: template_bondiala
+    command: [sh, -c, 'python manage.py migrate --noinput && python manage.py createcachetable && python manage.py seed_game && if [ "$${BOOTSTRAP_DEMO:-true}" = "true" ]; then python manage.py bootstrap; fi && python manage.py collectstatic --noinput && exec gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 3 --timeout 60']
+    volumes:
+      - ./data:/data:ro
+      - ./colores_lineas_bondiala.json:/colores_lineas_bondiala.json:ro
+      - static_data:/app/staticfiles
+    networks: [database, app, outbound]
+    depends_on:
+      db: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, curl, --fail, --silent, http://localhost:8000/health/]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 45s
+    restart: unless-stopped
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    environment:
+      API_INTERNAL_URL: http://backend:8000
+      NEXT_PUBLIC_APP_URL: ${FRONTEND_URL:-http://localhost:8080}
+      MAP_STYLE_LIGHT_URL: ${MAP_STYLE_LIGHT_URL:-}
+      MAP_STYLE_DARK_URL: ${MAP_STYLE_DARK_URL:-}
+    networks: [app]
+    depends_on:
+      backend: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+  nginx:
+    image: nginx:1.28-alpine
+    ports: ["127.0.0.1:${PORT:-8080}:80"]
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/proxy_params:/etc/nginx/proxy_params_bondiala:ro
+      - static_data:/var/www/static:ro
+    networks: [app, edge]
+    healthcheck:
+      test: [CMD, nginx, -t]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      frontend: {condition: service_healthy}
+    restart: unless-stopped
+networks:
+  database: {internal: true}
+  app: {internal: true}
+  outbound: {}
+  edge: {}
+volumes:
+  postgres_data:
+  static_data:

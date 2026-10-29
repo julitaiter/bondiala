@@ -47,7 +47,7 @@ Principios:
                     │   BA Data    │
                     └──────┬───────┘
                            │
-                    import GeoJSON
+                    importar CSV / geometrías GeoJSON
                            │
                            ▼
 ┌──────────────┐     ┌──────────────┐
@@ -72,7 +72,7 @@ Principios:
                             │
                          PWA/web
                             │
-                      bondiala.ar
+                      bondiala.com.ar
 ```
 
 ---
@@ -144,7 +144,7 @@ class Parada(models.Model):
     ubicacion = models.PointField(srid=4326)
 
 class Recorrido(models.Model):
-    geometria = models.MultiLineStringField(srid=4326)
+    geometria = models.MultiLineStringField(srid=4326, null=True, blank=True)
 ```
 
 ### PostgreSQL + PostGIS
@@ -237,9 +237,7 @@ Los recorridos importados desde BA Data podrán utilizarse directamente como geo
 
 BA Data será la fuente principal del catálogo.
 
-Para recorridos se utilizará principalmente el GeoJSON oficial.
-
-El GeoJSON ya incluye tanto metadata como geometría:
+El catálogo principal se importa desde `data/recorrido-colectivos.csv`, según la decisión actual del producto. Contiene líneas, ramales, sentidos, identificadores y metadata:
 
 ```text
 fid
@@ -252,10 +250,9 @@ jurisdicci
 camara
 desde
 hasta
-geometry
 ```
 
-Por lo tanto, el CSV equivalente no será necesario para el pipeline principal.
+El CSV no contiene geometrías ni paradas. Los GeoJSON son un complemento opcional para incorporar trazados mediante `l_r_s`, sin reemplazar la metadata del catálogo CSV. Un recorrido puede existir con `geometria=null` hasta que se importe su trazado. Las paradas siguen necesitando una fuente con relaciones y orden explícitos.
 
 El identificador `l_r_s` puede utilizarse como identificador externo natural del recorrido.
 
@@ -341,21 +338,23 @@ cuando corresponda.
 
 ### Importación de identidad visual de líneas
 
-La carga inicial de datos se realizará en dos pasos independientes.
+La carga inicial separa catálogo, trazados e identidad visual.
 
 ```text
-1. GeoJSON BA Data
+1. recorrido-colectivos.csv
    ↓
-   Linea / Ramal / Recorrido / geometrías
+   Linea / Ramal / Recorrido / metadata
 
-2. colores_lineas_bondiala.json
+2. GeoJSON opcional → geometrías
+
+3. colores_lineas_bondiala.json
    ↓
    LineaColor
    ↓
    Linea.colores
 ```
 
-El GeoJSON de BA Data seguirá siendo la fuente principal para la estructura de transporte.
+El CSV de BA Data es la fuente principal para la estructura de transporte.
 
 El archivo `colores_lineas_bondiala.json` será una fuente complementaria utilizada exclusivamente para enriquecer la identidad visual de cada línea.
 
@@ -609,7 +608,7 @@ Arquitectura prevista:
 ```text
 Internet
    ↓
-bondiala.ar
+bondiala.com.ar
    ↓
 Nginx
    ├── /api/*  → Django
@@ -620,7 +619,7 @@ Nginx podrá encargarse de:
 
 - entrada HTTP/HTTPS;
 - reverse proxy;
-- dominio `bondiala.ar`;
+- dominio `bondiala.com.ar`;
 - redirecciones;
 - headers;
 - compresión;
@@ -665,7 +664,7 @@ No se requiere Kubernetes ni orquestación distribuida durante esta etapa.
 La primera versión será una web responsive instalable como PWA.
 
 ```text
-bondiala.ar
+bondiala.com.ar
    ↓
 Next.js PWA
 ```

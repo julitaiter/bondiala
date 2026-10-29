@@ -1,0 +1,35 @@
+services:
+  db:
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Definí POSTGRES_ADMIN_PASSWORD}
+      DB_PASSWORD: ${DB_PASSWORD:?Definí DB_PASSWORD}
+      DB_ALLOW_CREATEDB: "false"
+    restart: always
+  backend:
+    environment:
+      DJANGO_DEBUG: "False"
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Definí DJANGO_SECRET_KEY}
+      DJANGO_ALLOWED_HOSTS: bondiala.com.ar,backend,localhost
+      CSRF_TRUSTED_ORIGINS: https://bondiala.com.ar
+      FRONTEND_URL: https://bondiala.com.ar
+      BOOTSTRAP_DEMO: "false"
+      SECURE_COOKIES: "True"
+      SECURE_SSL_REDIRECT: "True"
+      HSTS_SECONDS: "31536000"
+      DB_PASSWORD: ${DB_PASSWORD:?Definí DB_PASSWORD}
+      EMAIL_BACKEND: django.core.mail.backends.smtp.EmailBackend
+    healthcheck:
+      test: [CMD, curl, --fail, --silent, -H, "X-Forwarded-Proto: https", http://localhost:8000/health/]
+    restart: always
+  frontend:
+    environment:
+      NEXT_PUBLIC_APP_URL: https://bondiala.com.ar
+      MAP_STYLE_LIGHT_URL: ${MAP_STYLE_LIGHT_URL:-}
+      MAP_STYLE_DARK_URL: ${MAP_STYLE_DARK_URL:-}
+    restart: always
+  nginx:
+    ports: !override ["80:80", "443:443"]
+    volumes:
+      - ./nginx/production.conf:/etc/nginx/conf.d/default.conf:ro
+      - ${TLS_CERTS_DIR:?Definí TLS_CERTS_DIR}:/etc/nginx/certs:ro
+    restart: always
