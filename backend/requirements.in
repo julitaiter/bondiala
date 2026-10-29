@@ -2,5 +2,5 @@ Django>=5.2.18,<5.3
 djangorestframework>=3.16,<4
 drf-spectacular>=0.28,<1
 psycopg[binary]>=3.2,<4
-gunicorn>=23,<26
+gunicorn>=26.2.0,<27
 requests>=2.32,<3
