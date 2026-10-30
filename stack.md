@@ -252,7 +252,7 @@ desde
 hasta
 ```
 
-El CSV no contiene geometrías ni paradas. Los GeoJSON son un complemento opcional para incorporar trazados mediante `l_r_s`, sin reemplazar la metadata del catálogo CSV. Un recorrido puede existir con `geometria=null` hasta que se importe su trazado. Las paradas siguen necesitando una fuente con relaciones y orden explícitos.
+El CSV no contiene geometrías ni paradas. Los GeoJSON son un complemento para incorporar trazados mediante `l_r_s`, sin reemplazar la metadata del catálogo CSV. Un recorrido puede existir con `geometria=null` hasta que se importe su trazado. Las paradas oficiales se importan del GeoJSON de BA Data, que declara líneas y sentidos pero no ramales ni orden. PostGIS filtra candidatos, calcula distancias en metros y proyecta las paradas sobre todos los componentes del trazado para ordenar las asociaciones confiables. Las ambigüedades quedan disponibles para revisión; no habilitan viajes.
 
 El identificador `l_r_s` puede utilizarse como identificador externo natural del recorrido.
 

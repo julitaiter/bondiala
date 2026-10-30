@@ -14,7 +14,8 @@ from accounts.models import User
 from imports.models import ImportRun, ImportError
 from imports.tests import feature
 from transport.models import Linea, Ramal, Recorrido, RecorridoParada, Parada
-from trips.services import register_trip
+from trips.models import RegistroViaje, UsuarioLineaParada
+from gamification.models import EventoPuntos
 from gamification.services import total_points
 from django.contrib.gis.geos import Point
 
@@ -151,9 +152,20 @@ class CsvCatalogueTests(TestCase):
         user = User.objects.create_user(
             username="coleccionista", email="coleccionista@example.test"
         )
-        trip, _ = register_trip(
-            user, route.pk, sequence[0].pk, sequence[1].pk, uuid.uuid4()
+        # Historial anterior a la restricción de nuevas altas oficiales.
+        trip = RegistroViaje.objects.create(
+            usuario=user, recorrido=route, inicio=sequence[0], fin=sequence[1],
+            idempotency_key=uuid.uuid4(),
         )
+        for item in sequence:
+            UsuarioLineaParada.objects.create(
+                usuario=user, linea=route.ramal.linea, parada=item.parada, primer_viaje=trip
+            )
+            EventoPuntos.objects.create(
+                usuario=user, tipo="PARADA_TRANSITADA", puntos=1,
+                clave=f"parada:{route.ramal.linea_id}:{item.parada_id}",
+                linea=route.ramal.linea, parada=item.parada, viaje=trip,
+            )
         points = total_points(user)
         self.write()
         self.run_csv()

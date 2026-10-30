@@ -154,9 +154,11 @@ SPECTACULAR_SETTINGS = {
 }
 EMAIL_BACKEND = os.environ.get(
     "EMAIL_BACKEND",
-    "django.core.mail.backends.console.EmailBackend"
-    if DEBUG
-    else "django.core.mail.backends.smtp.EmailBackend",
+    (
+        "django.core.mail.backends.console.EmailBackend"
+        if DEBUG
+        else "django.core.mail.backends.smtp.EmailBackend"
+    ),
 )
 EMAIL_HOST = os.environ.get("EMAIL_HOST", "localhost")
 EMAIL_PORT = int(os.environ.get("EMAIL_PORT", "587"))
@@ -178,6 +180,19 @@ BADATA_RECORRIDOS_URL = os.environ.get(
     "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/colectivos-recorridos/recorrido-colectivos.geojson",
 )
 BADATA_PARADAS_URL = os.environ.get("BADATA_PARADAS_URL", "")
+BA_DATA_PARADAS_GEOJSON_URL = os.environ.get(
+    "BA_DATA_PARADAS_GEOJSON_URL",
+    "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/colectivos-paradas/paradas-de-colectivo.geojson",
+)
+PARADA_MATCH_MAX_DISTANCE_METERS = float(
+    os.environ.get("PARADA_MATCH_MAX_DISTANCE_METERS", "60")
+)
+PARADA_MATCH_MIN_MARGIN_METERS = float(
+    os.environ.get("PARADA_MATCH_MIN_MARGIN_METERS", "15")
+)
+PARADA_RECONCILE_MAX_DISTANCE_METERS = float(
+    os.environ.get("PARADA_RECONCILE_MAX_DISTANCE_METERS", "10")
+)
 USIG_URL = os.environ.get("USIG_URL", "")
 IMPORT_TIMEOUT = int(os.environ.get("IMPORT_TIMEOUT", "45"))
 IMPORT_MAX_BYTES = int(os.environ.get("IMPORT_MAX_BYTES", str(150 * 1024 * 1024)))

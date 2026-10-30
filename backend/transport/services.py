@@ -5,7 +5,7 @@ from trips.models import UsuarioLineaParada
 
 
 def catalog():
-    sequence = RecorridoParada.objects.select_related("parada").order_by("orden")
+    sequence = official_sequence().select_related("parada").order_by("orden")
     routes = Recorrido.objects.filter(activo=True).prefetch_related(
         Prefetch("secuencia", queryset=sequence)
     )
@@ -17,6 +17,38 @@ def catalog():
         .select_related("colores")
         .prefetch_related(Prefetch("ramales", queryset=branches))
     )
+
+
+def official_sequence():
+    """Secuencia actual para consulta y viajes; el historial legacy se conserva."""
+    return RecorridoParada.objects.filter(
+        activa=True, parada__activa=True, parada__es_oficial=True
+    )
+
+
+def route_availability(route):
+    # Usa el prefetch del catálogo/API para no consultar una vez por recorrido.
+    stops = [
+        item
+        for item in route.secuencia.all()
+        if item.activa and item.parada.activa and item.parada.es_oficial
+    ]
+    count = len(stops)
+    usable = route.geometria is not None and count >= 2
+    state = (
+        "sin_geometria"
+        if route.geometria is None
+        else "sin_paradas"
+        if not count
+        else "parcial"
+        if not usable
+        else "disponible"
+    )
+    return {
+        "paradas_oficiales_count": count,
+        "puede_registrar_viaje": usable,
+        "estado_datos": state,
+    }
 
 
 def visited_by_line(user):

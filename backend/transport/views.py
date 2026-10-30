@@ -1,11 +1,11 @@
 from django.db.models.functions import Cast
-from django.db.models import IntegerField
+from django.db.models import IntegerField, Prefetch
 from rest_framework import viewsets, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema
 from .models import Recorrido, Parada
-from .services import catalog, visited_by_line
+from .services import catalog, visited_by_line, official_sequence
 from .serializers import LineSerializer, RouteSerializer, StopSerializer
 
 
@@ -56,7 +56,9 @@ class RouteViewSet(viewsets.ReadOnlyModelViewSet):
                 activo=True, ramal__activo=True, ramal__linea__activa=True
             )
             .select_related("ramal__linea__colores")
-            .prefetch_related("secuencia__parada")
+            .prefetch_related(
+                Prefetch("secuencia", queryset=official_sequence().select_related("parada"))
+            )
             .order_by("pk")
         )
         for param, lookup in [("linea", "ramal__linea_id"), ("ramal", "ramal_id")]:
@@ -79,11 +81,11 @@ class StopViewSet(viewsets.ReadOnlyModelViewSet):
     search_fields = ["nombre", "direccion", "barrio"]
 
     def get_queryset(self):
-        query = Parada.objects.all().order_by("pk")
+        query = Parada.objects.filter(activa=True, es_oficial=True).order_by("pk")
         route = self.request.query_params.get("recorrido")
         if route:
             query = (
-                query.filter(recorridos__recorrido_id=route)
+                query.filter(recorridos__recorrido_id=route, recorridos__activa=True)
                 if route.isdigit()
                 else query.none()
             )

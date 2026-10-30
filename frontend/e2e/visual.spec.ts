@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
+import { officialTestRoute } from "./catalog";
 
 test.use({deviceScaleFactor:1});
 
@@ -22,16 +23,8 @@ test("pantallas completas en claro y oscuro, sin overflow", async ({
     },
   });
   expect(signup.status()).toBe(201);
-  const lines = await page.request
-    .get("/api/v1/lineas/?search=4")
-    .then((r) => r.json());
-  const line = lines.results.find(
-    (entry: { numero: string }) => entry.numero === "4",
-  );
-  const routes = await page.request
-    .get(`/api/v1/lineas/${line.id}/recorridos/`)
-    .then((r) => r.json());
-  const route = routes[0];
+  const route = await officialTestRoute(page.request);
+  const line = { id: route.linea };
   const csrf = await page.request
     .get("/api/v1/auth/csrf/")
     .then((r) => r.json());
@@ -50,7 +43,7 @@ test("pantallas completas en claro y oscuro, sin overflow", async ({
     ["lineas", "/lineas"],
     ["linea", `/lineas/${line.id}`],
     ["recorrido", `/recorridos/${route.id}`],
-    ["viaje", `/viajes/nuevo?linea=${line.id}`],
+    ["viaje", `/viajes/nuevo?linea=${line.id}&recorrido=${route.id}`],
     ["mapa", "/mapa"],
     ["perfil", "/perfil"],
     ["rankings", "/ranking"],

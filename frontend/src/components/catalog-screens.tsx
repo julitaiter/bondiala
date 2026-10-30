@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, Search, Check, MapPin } from "lucide-react";
 import { useResource } from "@/lib/use-resource";
 import { useApp } from "./providers";
 import type { Line, Page, Route } from "@/lib/types";
+import { canRegisterTrip, officialStops, routeDataMessage } from "@/lib/route-data";
 import {
   Heading,
   LineCard,
@@ -124,9 +125,11 @@ export function LineDetailScreen() {
             </p>
           </div>
         </div>
-        <Link className="button" href={`/viajes/nuevo?linea=${id}`}>
-          Registrar viaje <ArrowRight size={16} />
-        </Link>
+        {routes.data?.some(canRegisterTrip) && (
+          <Link className="button" href={`/viajes/nuevo?linea=${id}`}>
+            Registrar viaje <ArrowRight size={16} />
+          </Link>
+        )}
       </div>
       <CatalogNotice />
       {user && (
@@ -226,7 +229,9 @@ export function RouteDetailScreen() {
       />
     );
   const data = route.data;
-  const done = data.paradas.filter((p) => p.transitada).length;
+  const stops = officialStops(data);
+  const done = stops.filter((p) => p.transitada).length;
+  const usable = canRegisterTrip(data);
   return (
     <>
       <Link className="back-link" href={`/lineas/${data.linea}`}>
@@ -237,7 +242,7 @@ export function RouteDetailScreen() {
         title={`Ramal ${data.ramal_nombre}`}
         text={`${data.desde} → ${data.hasta}`}
         action={
-          <Link
+          usable && <Link
             className="button"
             href={`/viajes/nuevo?linea=${data.linea}&recorrido=${data.id}`}
           >
@@ -246,26 +251,27 @@ export function RouteDetailScreen() {
         }
       />
       <CatalogNotice />
+      {!usable && <p className="notice">{routeDataMessage(data)}</p>}
       <div className="split-grid">
         <section>
           <MapView routes={[data]} />
-          <div className="panel mt-5">
-            <ProgressBar
-              value={
-                data.paradas.length ? (100 * done) / data.paradas.length : 0
-              }
-              label={`${done} de ${data.paradas.length} paradas transitadas`}
-            />
-          </div>
+          {stops.length > 0 && (
+            <div className="panel mt-5">
+              <ProgressBar
+                value={(100 * done) / stops.length}
+                label={`${done} de ${stops.length} paradas oficiales transitadas`}
+              />
+            </div>
+          )}
         </section>
         <section className="panel">
           <h2>Parada a parada</h2>
           <p className="caption mt-2">
-            En orden de recorrido · {data.sentido.toLowerCase()}
+            Paradas oficiales · En orden de recorrido · {data.sentido.toLowerCase()}
           </p>
-          {data.paradas.length ? (
+          {stops.length ? (
             <ol className="stop-list stop-scroll">
-              {data.paradas.map((stop) => (
+              {stops.map((stop) => (
                 <li key={stop.id}>
                   <span
                     className={`stop-dot ${stop.transitada ? "visited" : ""}`}
@@ -287,8 +293,8 @@ export function RouteDetailScreen() {
             </ol>
           ) : (
             <Empty
-              title="Faltan las paradas"
-              text="Podés consultar el trazado. El registro se habilita cuando esté cargada la secuencia de paradas."
+              title="Paradas aún no disponibles"
+              text="Estamos incorporando los datos oficiales. El registro se habilita cuando haya una secuencia disponible."
             />
           )}
         </section>

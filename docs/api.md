@@ -35,7 +35,9 @@ El usuario no puede cambiar roles, puntos, email ni ownership desde preferencias
 
 `LineBadge` recibe los cuatro hexadecimales de `colores`. Sin paleta usa el fallback. El catálogo no publica metadata interna ni errores de importación.
 
-El catálogo procede del CSV. `geometria` puede ser `null` y `paradas` puede estar vacío porque ese archivo no incluye datos geográficos. La UI distingue ese estado de un error de carga. Solo se pueden registrar viajes cuando existe una secuencia de paradas válida. `modalidad`, `jurisdiccion` y `camara` son campos explícitos tomados del CSV.
+El catálogo procede del CSV. `geometria` puede ser `null` y `paradas` puede estar vacío porque ese archivo no incluye datos geográficos. La UI distingue ese estado de un error de carga. `modalidad`, `jurisdiccion` y `camara` son campos explícitos tomados del CSV.
+
+Los recorridos agregan `paradas_oficiales_count`, `puede_registrar_viaje` y `estado_datos` (`sin_geometria`, `sin_paradas`, `parcial` o `disponible`). Disponible significa que hay geometría y al menos dos ocurrencias oficiales activas; no afirma cobertura de todas las paradas del recorrido. Las secuencias públicas y `paradas/` muestran paradas oficiales activas. Cada parada agrega `is_official`. Las ocurrencias ilustrativas o retiradas permanecen en la base para conservar el historial, sin ofrecerse para nuevas altas.
 
 ## Viajes privados
 
@@ -53,6 +55,8 @@ El catálogo procede del CSV. `geometria` puede ser `null` y `paradas` puede est
 ```
 
 **`inicio` y `fin` son IDs de ocurrencias `RecorridoParada`**, obtenidos del campo `paradas[].id` del recorrido; no son IDs de la parada física. Esto distingue dos pasos por la misma parada en recorridos circulares. La bajada debe tener un orden mayor a la subida y ambas deben pertenecer al recorrido activo. El segmento es inclusivo.
+
+Django rechaza viajes nuevos sobre secuencias ilustrativas, inactivas, sin geometría o con menos de dos paradas oficiales. Los reintentos de viajes históricos conservan la respuesta idempotente aunque el catálogo haya cambiado.
 
 La respuesta incluye el viaje y `resultado`: nuevas paradas, puntos otorgados, nuevos logros y completitud de línea/ramales/sentidos. Se calcula íntegramente en Django. Campos como `puntos`, `usuario` o `logros` en el payload se rechazan.
 

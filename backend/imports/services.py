@@ -353,6 +353,10 @@ def run_import(
                 if not isinstance(feature, dict) or feature.get("type") != "Feature":
                     raise ValueError("Elemento inválido; se esperaba Feature.")
                 with transaction.atomic():
+                    # Same catalogue lock as official matching and trip recording.
+                    # Take it before any entity/user row lock to avoid deadlocks.
+                    with connection.cursor() as cursor:
+                        cursor.execute("SELECT pg_advisory_xact_lock(%s)", [6132041])
                     outcome = handler(feature, source)
                 setattr(run, outcome, getattr(run, outcome) + 1)
             except Exception as exc:

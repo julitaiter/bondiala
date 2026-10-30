@@ -7,6 +7,7 @@ from django.test import TestCase, TransactionTestCase, override_settings
 from django.core.management import call_command
 from django.utils import timezone
 from rest_framework.test import APIClient
+from rest_framework.exceptions import ValidationError
 from accounts.models import User
 from transport.models import (
     Linea,
@@ -32,6 +33,7 @@ def network():
     stops = [
         Parada.objects.create(
             source=source,
+            es_oficial=True,
             external_id=str(i),
             nombre=f"Parada {i}",
             ubicacion=Point(-58.4 + i / 1000, -34.6, srid=4326),
@@ -426,6 +428,65 @@ class SecurityTests(TestCase):
             201,
         )
         self.assertEqual(User.objects.filter(email=data["email"]).count(), 1)
+
+
+class OfficialSequenceTests(TestCase):
+    setUp = ProgressTests.setUp
+    trip = ProgressTests.trip
+
+    def test_illustrative_stops_cannot_create_trip_or_points(self):
+        Parada.objects.all().update(es_oficial=False)
+        with self.assertRaisesRegex(ValidationError, "Paradas oficiales"):
+            self.trip()
+        self.assertEqual(RegistroViaje.objects.count(), 0)
+        self.assertEqual(UsuarioLineaParada.objects.count(), 0)
+        self.assertEqual(EventoPuntos.objects.count(), 0)
+
+    def test_missing_geometry_blocks_trip_with_official_stops(self):
+        Recorrido.objects.filter(pk=self.routes[0].pk).update(geometria=None)
+        with self.assertRaisesRegex(ValidationError, "Paradas oficiales"):
+            self.trip()
+        self.assertEqual(RegistroViaje.objects.count(), 0)
+
+    def test_inactive_occurrence_cannot_be_selected(self):
+        self.routes[0].secuencia.filter(orden=0).update(activa=False)
+        with self.assertRaisesRegex(ValidationError, "pertenecer"):
+            self.trip()
+        self.assertEqual(EventoPuntos.objects.count(), 0)
+
+    def test_legacy_between_endpoints_is_not_awarded(self):
+        Parada.objects.filter(pk=self.stops[1].pk).update(es_oficial=False)
+        trip = self.trip()
+        self.assertEqual(trip.resultado["nuevas_paradas"], 2)
+        self.assertFalse(UsuarioLineaParada.objects.filter(parada=self.stops[1]).exists())
+
+    def test_historical_idempotent_replay_survives_catalogue_change(self):
+        key = uuid.uuid4()
+        trip = self.trip(key=key)
+        before = (total_points(self.user), EventoPuntos.objects.count())
+        Parada.objects.all().update(es_oficial=False)
+        RecorridoParada.objects.all().update(activa=False)
+        replay, created = register_trip(
+            self.user, trip.recorrido_id, trip.inicio_id, trip.fin_id, key
+        )
+        self.assertFalse(created)
+        self.assertEqual(replay.pk, trip.pk)
+        self.assertEqual(before, (total_points(self.user), EventoPuntos.objects.count()))
+
+    def test_api_only_exposes_current_official_stops_and_availability(self):
+        client = APIClient()
+        route = self.routes[0]
+        Parada.objects.filter(pk=self.stops[1].pk).update(es_oficial=False)
+        payload = client.get(f"/api/v1/recorridos/{route.pk}/").data
+        self.assertEqual(len(payload["paradas"]), 2)
+        self.assertTrue(payload["puede_registrar_viaje"])
+        self.assertEqual(payload["estado_datos"], "disponible")
+        self.assertTrue(all(item["parada"]["is_official"] for item in payload["paradas"]))
+        Parada.objects.filter(pk=self.stops[0].pk).update(activa=False)
+        payload = client.get(f"/api/v1/recorridos/{route.pk}/").data
+        self.assertEqual(payload["paradas_oficiales_count"], 1)
+        self.assertEqual(payload["estado_datos"], "parcial")
+        self.assertFalse(payload["puede_registrar_viaje"])
 
 
 class ConcurrentTripTests(TransactionTestCase):

@@ -1,0 +1,4290 @@
+{
+  "type": "FeatureCollection",
+  "name": "paradas",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "3095",
+        "DIRECCION": "3095 GARAY, JUAN DE AV.",
+        "coord_X": -58.4082355,
+        "coord_Y": -34.6294125,
+        "COMUNA": 3,
+        "BARRIO": "SAN CRISTOBAL",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4082355,
+          -34.6294125
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ENTRE RIOS AV.",
+        "ALT PLANO": "1628",
+        "DIRECCION": "1628 ENTRE RIOS AV.",
+        "coord_X": -58.3910194,
+        "coord_Y": -34.6276485,
+        "COMUNA": 1,
+        "BARRIO": "CONSTITUCION",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "12",
+        "l2_sen": "V",
+        "L3": 133,
+        "l3_sen": "V",
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3910194,
+          -34.6276485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "1925",
+        "DIRECCION": "1925 GARAY JUAN DE AVE",
+        "coord_X": -58.3924924,
+        "coord_Y": -34.6272281,
+        "COMUNA": 3,
+        "BARRIO": "SAN CRISTOBAL",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3924924,
+          -34.6272281
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "2549",
+        "DIRECCION": "2400 GARAY, JUAN DE AV.",
+        "coord_X": -58.4006175,
+        "coord_Y": -34.6285938,
+        "COMUNA": 3,
+        "BARRIO": "SAN CRISTOBAL",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "143",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4006175,
+          -34.6285938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "CARHUE",
+        "ALT PLANO": "297",
+        "DIRECCION": "297 CARHUE",
+        "coord_X": -58.5248235,
+        "coord_Y": -34.6426633,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "117",
+        "l1_sen": "I",
+        "L2": "4",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5248235,
+          -34.6426633
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JOSE LEON SUAREZ",
+        "ALT PLANO": "491",
+        "DIRECCION": "491 SUAREZ, JOSE LEON",
+        "coord_X": -58.5273636,
+        "coord_Y": -34.6446057,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5273636,
+          -34.6446057
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JOSE LEON SUAREZ",
+        "ALT PLANO": "795",
+        "DIRECCION": "795 SUAREZ, JOSE LEON",
+        "coord_X": -58.5271628,
+        "coord_Y": -34.6474952,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5271628,
+          -34.6474952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JOSE LEON SUAREZ",
+        "ALT PLANO": "1097",
+        "DIRECCION": "1097 SUAREZ, JOSE LEON",
+        "coord_X": -58.5269139,
+        "coord_Y": -34.651271,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5269139,
+          -34.651271
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JOSE LEON SUAREZ",
+        "ALT PLANO": "1493",
+        "DIRECCION": "1493 SUAREZ, JOSE LEON",
+        "coord_X": -58.5234939,
+        "coord_Y": -34.65504,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5234939,
+          -34.65504
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PATRON",
+        "ALT PLANO": "7410",
+        "DIRECCION": "7410 PATRON",
+        "coord_X": -58.5222497,
+        "coord_Y": -34.6542501,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5222497,
+          -34.6542501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PATRON",
+        "ALT PLANO": "7004",
+        "DIRECCION": "7072 PATRON",
+        "coord_X": -58.519124,
+        "coord_Y": -34.651441,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.519124,
+          -34.651441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PATRON",
+        "ALT PLANO": "6702",
+        "DIRECCION": "6702 PATRON",
+        "coord_X": -58.5171663,
+        "coord_Y": -34.6496669,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5171663,
+          -34.6496669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PATRON",
+        "ALT PLANO": "6602",
+        "DIRECCION": "6602 PATRON",
+        "coord_X": -58.5165215,
+        "coord_Y": -34.6490972,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5165215,
+          -34.6490972
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PILAR",
+        "ALT PLANO": "983",
+        "DIRECCION": "983 PILAR",
+        "coord_X": -58.5154668,
+        "coord_Y": -34.6496669,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5154668,
+          -34.6496669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "493",
+        "DIRECCION": "493 GARAY, JUAN DE AV.",
+        "coord_X": -58.372562,
+        "coord_Y": -34.6242325,
+        "COMUNA": 1,
+        "BARRIO": "SAN TELMO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "61",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.372562,
+          -34.6242325
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "863",
+        "DIRECCION": "863 GARAY, JUAN DE AV.",
+        "coord_X": -58.3775384,
+        "coord_Y": -34.625372,
+        "COMUNA": 1,
+        "BARRIO": "CONSTITUCION",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "53",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3775384,
+          -34.625372
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "1157",
+        "DIRECCION": "1157 GARAY, JUAN DE AV.",
+        "coord_X": -58.3818918,
+        "coord_Y": -34.6267938,
+        "COMUNA": 1,
+        "BARRIO": "CONSTITUCION",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3818918,
+          -34.6267938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "1279",
+        "DIRECCION": "1279 GARAY, JUAN DE AV.",
+        "coord_X": -58.384124,
+        "coord_Y": -34.626788,
+        "COMUNA": 1,
+        "BARRIO": "CONSTITUCION",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "97",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.384124,
+          -34.626788
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "1491",
+        "DIRECCION": "1491 GARAY, JUAN DE AV.",
+        "coord_X": -58.3866838,
+        "coord_Y": -34.6270104,
+        "COMUNA": 1,
+        "BARRIO": "CONSTITUCION",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "97",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3866838,
+          -34.6270104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "1430",
+        "DIRECCION": "1430 GARAY, JUAN DE AV.",
+        "coord_X": -58.3863236,
+        "coord_Y": -34.6271664,
+        "COMUNA": 1,
+        "BARRIO": "CONSTITUCION",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "133",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3863236,
+          -34.6271664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "1214",
+        "DIRECCION": "1214 GARAY, JUAN DE AV.",
+        "coord_X": -58.3831099,
+        "coord_Y": -34.6270432,
+        "COMUNA": 1,
+        "BARRIO": "CONSTITUCION",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "133",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3831099,
+          -34.6270432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "BRASIL",
+        "ALT PLANO": "986",
+        "DIRECCION": "986 BRASIL",
+        "coord_X": -58.3780962,
+        "coord_Y": -34.6273194,
+        "COMUNA": 1,
+        "BARRIO": "CONSTITUCION",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3780962,
+          -34.6273194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "BRASIL",
+        "ALT PLANO": "620",
+        "DIRECCION": "620 BRASIL",
+        "coord_X": -58.3743864,
+        "coord_Y": -34.6256277,
+        "COMUNA": 1,
+        "BARRIO": "SAN TELMO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "129",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3743864,
+          -34.6256277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "BRASIL AV.",
+        "ALT PLANO": "76",
+        "DIRECCION": "76 BRASIL AV.",
+        "coord_X": -58.3642465,
+        "coord_Y": -34.625205,
+        "COMUNA": 4,
+        "BARRIO": "LA BOCA",
+        "L1": "8",
+        "l1_sen": "V",
+        "L2": "4",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3642465,
+          -34.625205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "CIUDADELA",
+        "ALT PLANO": "1139",
+        "DIRECCION": "1139 CIUDADELA",
+        "coord_X": -58.3804906,
+        "coord_Y": -34.627571,
+        "COMUNA": 1,
+        "BARRIO": "CONSTITUCION",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3804906,
+          -34.627571
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EMILIO CASTRO AV.",
+        "ALT PLANO": "5402",
+        "DIRECCION": "5402 CASTRO, EMILIO AV.",
+        "coord_X": -58.5004171,
+        "coord_Y": -34.6450195,
+        "COMUNA": 9,
+        "BARRIO": "MATADEROS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "113",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5004171,
+          -34.6450195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EMILIO CASTRO AV.",
+        "ALT PLANO": "5387",
+        "DIRECCION": "5387 CASTRO, EMILIO AV.",
+        "coord_X": -58.5001641,
+        "coord_Y": -34.6447573,
+        "COMUNA": 10,
+        "BARRIO": "VILLA LURO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "113",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5001641,
+          -34.6447573
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EMILIO CASTRO AV.",
+        "ALT PLANO": "5693",
+        "DIRECCION": "5693 Castro, Emilio Av.",
+        "coord_X": -58.5032302,
+        "coord_Y": -34.6461729,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "113",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5032302,
+          -34.6461729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EMILIO CASTRO AV.",
+        "ALT PLANO": "6089",
+        "DIRECCION": "6089 CASTRO, EMILIO AV.",
+        "coord_X": -58.5075832,
+        "coord_Y": -34.6482734,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "113",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5075832,
+          -34.6482734
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EMILIO CASTRO AV.",
+        "ALT PLANO": "6351",
+        "DIRECCION": "6351 Castro, Emilio Av.",
+        "coord_X": -58.5110157,
+        "coord_Y": -34.6498354,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "113",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5110157,
+          -34.6498354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EMILIO CASTRO AV.",
+        "ALT PLANO": "6424",
+        "DIRECCION": "6424 CASTRO, EMILIO AV.",
+        "coord_X": -58.5117574,
+        "coord_Y": -34.6503548,
+        "COMUNA": 9,
+        "BARRIO": "MATADEROS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "113",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5117574,
+          -34.6503548
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EMILIO CASTRO AV.",
+        "ALT PLANO": "6212",
+        "DIRECCION": "6212 CASTRO, EMILIO AV.",
+        "coord_X": -58.5090117,
+        "coord_Y": -34.6490812,
+        "COMUNA": 9,
+        "BARRIO": "MATADEROS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "113",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5090117,
+          -34.6490812
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EMILIO CASTRO AV.",
+        "ALT PLANO": "6008",
+        "DIRECCION": "6008 CASTRO, EMILIO AV.",
+        "coord_X": -58.5066097,
+        "coord_Y": -34.6479698,
+        "COMUNA": 9,
+        "BARRIO": "MATADEROS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "113",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5066097,
+          -34.6479698
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EMILIO CASTRO AV.",
+        "ALT PLANO": "5734",
+        "DIRECCION": "5734 CASTRO, EMILIO AV.",
+        "coord_X": -58.5035716,
+        "coord_Y": -34.6465435,
+        "COMUNA": 9,
+        "BARRIO": "MATADEROS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "113",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5035716,
+          -34.6465435
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EMILIO CASTRO AV.",
+        "ALT PLANO": "5216",
+        "DIRECCION": "5216 CASTRO, EMILIO AV.",
+        "coord_X": -58.4982736,
+        "coord_Y": -34.6440438,
+        "COMUNA": 9,
+        "BARRIO": "MATADEROS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4982736,
+          -34.6440438
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ALICIA MOREAU DE JUSTO AV.",
+        "ALT PLANO": "720",
+        "DIRECCION": "720 MOREAU DE JUSTO, ALICIA AV.",
+        "coord_X": -58.36671,
+        "coord_Y": -34.606804,
+        "COMUNA": 1,
+        "BARRIO": "PUERTO MADERO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.36671,
+          -34.606804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "1885",
+        "DIRECCION": "1885 PERON, EVA AV.",
+        "coord_X": -58.4492737,
+        "coord_Y": -34.6360321,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "56",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4492737,
+          -34.6360321
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "2093",
+        "DIRECCION": "2093 PERON, EVA AV.",
+        "coord_X": -58.4512795,
+        "coord_Y": -34.6373159,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "56",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4512795,
+          -34.6373159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "2641",
+        "DIRECCION": "2641 PERON, EVA AV.",
+        "coord_X": -58.4572899,
+        "coord_Y": -34.6412488,
+        "COMUNA": 7,
+        "BARRIO": "FLORES",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "7",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4572899,
+          -34.6412488
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "3077",
+        "DIRECCION": "3077 PERON, EVA AV.",
+        "coord_X": -58.460435,
+        "coord_Y": -34.6426804,
+        "COMUNA": 7,
+        "BARRIO": "FLORES",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "7",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.460435,
+          -34.6426804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "DIRECTORIO AV.",
+        "ALT PLANO": "4422",
+        "DIRECCION": "4422 DIRECTORIO AV.",
+        "coord_X": -58.4854167,
+        "coord_Y": -34.6461185,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "55",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4854167,
+          -34.6461185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ASAMBLEA AV.",
+        "ALT PLANO": "388",
+        "DIRECCION": "388 ASAMBLEA AV.",
+        "coord_X": -58.4310685,
+        "coord_Y": -34.6329832,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "7",
+        "l2_sen": "V",
+        "L3": 134,
+        "l3_sen": "I",
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4310685,
+          -34.6329832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ASAMBLEA AV.",
+        "ALT PLANO": "816",
+        "DIRECCION": "816 ASAMBLEA AV.",
+        "coord_X": -58.4358646,
+        "coord_Y": -34.6347348,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4358646,
+          -34.6347348
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ASAMBLEA AV.",
+        "ALT PLANO": "393",
+        "DIRECCION": "393 ASAMBLEA AV.",
+        "coord_X": -58.4313701,
+        "coord_Y": -34.6329821,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "7",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4313701,
+          -34.6329821
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PAVON AV.",
+        "ALT PLANO": "3632",
+        "DIRECCION": "3632 PAVON AV.",
+        "coord_X": -58.4161574,
+        "coord_Y": -34.6302877,
+        "COMUNA": 5,
+        "BARRIO": "BOEDO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "134",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4161574,
+          -34.6302877
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "3706",
+        "DIRECCION": "3706 PERON, EVA AV.",
+        "coord_X": -58.4671836,
+        "coord_Y": -34.6462694,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "7",
+        "l2_sen": "V",
+        "L3": 145,
+        "l3_sen": "V",
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4671836,
+          -34.6462694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "3683",
+        "DIRECCION": "3683 PERON, EVA AV.",
+        "coord_X": -58.4670056,
+        "coord_Y": -34.6457569,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "86",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4670056,
+          -34.6457569
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "3518",
+        "DIRECCION": "3518 PERON, EVA AV.",
+        "coord_X": -58.4650837,
+        "coord_Y": -34.6450182,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "7",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4650837,
+          -34.6450182
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "AV. MARIANO ACOSTA",
+        "ALT PLANO": "1104",
+        "DIRECCION": "1104 AV. MARIANO ACOSTA",
+        "coord_X": -58.4711418,
+        "coord_Y": -34.6427793,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "114",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4711418,
+          -34.6427793
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "AV. MARIANO ACOSTA",
+        "ALT PLANO": "906",
+        "DIRECCION": "906 AV. MARIANO ACOSTA",
+        "coord_X": -58.4733406,
+        "coord_Y": -34.6410406,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "114",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4733406,
+          -34.6410406
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "AV. MARIANO ACOSTA",
+        "ALT PLANO": "604",
+        "DIRECCION": "604 AV. MARIANO ACOSTA",
+        "coord_X": -58.4758277,
+        "coord_Y": -34.6390735,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "114",
+        "l1_sen": "V",
+        "L2": "4",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4758277,
+          -34.6390735
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "MARTINEZ CASTRO",
+        "ALT PLANO": "991",
+        "DIRECCION": "991 MARTINEZ CASTRO",
+        "coord_X": -58.4728129,
+        "coord_Y": -34.6434,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "7",
+        "l1_sen": "V",
+        "L2": "4",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4728129,
+          -34.6434
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "MARTINEZ CASTRO",
+        "ALT PLANO": "1187",
+        "DIRECCION": "1187 MARTINEZ CASTRO",
+        "coord_X": -58.470178,
+        "coord_Y": -34.6455189,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "7",
+        "l1_sen": "V",
+        "L2": "4",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.470178,
+          -34.6455189
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "DIRECTORIO AV.",
+        "ALT PLANO": "4150",
+        "DIRECCION": "4150 DIRECTORIO AV.",
+        "coord_X": -58.482054,
+        "coord_Y": -34.643205,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "126",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.482054,
+          -34.643205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "DIRECTORIO AV.",
+        "ALT PLANO": "4030",
+        "DIRECCION": "4030 DIRECTORIO AV.",
+        "coord_X": -58.4805006,
+        "coord_Y": -34.6418931,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "55",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4805006,
+          -34.6418931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PAVON AV.",
+        "ALT PLANO": "4316",
+        "DIRECCION": "4316 PAVON AV.",
+        "coord_X": -58.424645,
+        "coord_Y": -34.631518,
+        "COMUNA": 5,
+        "BARRIO": "BOEDO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.424645,
+          -34.631518
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PAVON AV.",
+        "ALT PLANO": "3910",
+        "DIRECCION": "3910 PAVON AV.",
+        "coord_X": -58.4194656,
+        "coord_Y": -34.6306608,
+        "COMUNA": 5,
+        "BARRIO": "BOEDO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "134",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4194656,
+          -34.6306608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PAVON AV.",
+        "ALT PLANO": "3318",
+        "DIRECCION": "3318 PAVON",
+        "coord_X": -58.4121801,
+        "coord_Y": -34.6293386,
+        "COMUNA": 5,
+        "BARRIO": "BOEDO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4121801,
+          -34.6293386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "3287",
+        "DIRECCION": "3287 GARAY, JUAN DE AV.",
+        "coord_X": -58.4114838,
+        "coord_Y": -34.6301917,
+        "COMUNA": 3,
+        "BARRIO": "SAN CRISTOBAL",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4114838,
+          -34.6301917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "2273",
+        "DIRECCION": "2273 GARAY, JUAN DE AV.",
+        "coord_X": -58.396326,
+        "coord_Y": -34.6279777,
+        "COMUNA": 3,
+        "BARRIO": "SAN CRISTOBAL",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.396326,
+          -34.6279777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PAVON AV.",
+        "ALT PLANO": "2138",
+        "DIRECCION": "2138 PAVON",
+        "coord_X": -58.3948281,
+        "coord_Y": -34.6267555,
+        "COMUNA": 3,
+        "BARRIO": "SAN CRISTOBAL",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "62",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3948281,
+          -34.6267555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PAVON AV.",
+        "ALT PLANO": "2320",
+        "DIRECCION": "2320 PAVON",
+        "coord_X": -58.3975152,
+        "coord_Y": -34.627038,
+        "COMUNA": 3,
+        "BARRIO": "SAN CRISTOBAL",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3975152,
+          -34.627038
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PAVON AV.",
+        "ALT PLANO": "2526",
+        "DIRECCION": "2526 PAVON",
+        "coord_X": -58.4004162,
+        "coord_Y": -34.6274027,
+        "COMUNA": 3,
+        "BARRIO": "SAN CRISTOBAL",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4004162,
+          -34.6274027
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PAVON AV.",
+        "ALT PLANO": "2864",
+        "DIRECCION": "2864 PAVON",
+        "coord_X": -58.404745,
+        "coord_Y": -34.627937,
+        "COMUNA": 3,
+        "BARRIO": "SAN CRISTOBAL",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.404745,
+          -34.627937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PAVON AV.",
+        "ALT PLANO": "3014",
+        "DIRECCION": "3014 PAVON",
+        "coord_X": -58.4070668,
+        "coord_Y": -34.628214,
+        "COMUNA": 3,
+        "BARRIO": "SAN CRISTOBAL",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4070668,
+          -34.628214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PAVON AV.",
+        "ALT PLANO": "3216",
+        "DIRECCION": "3216 PAVON",
+        "coord_X": -58.4102741,
+        "coord_Y": -34.628871,
+        "COMUNA": 3,
+        "BARRIO": "SAN CRISTOBAL",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4102741,
+          -34.628871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ACASSUSO",
+        "ALT PLANO": "6463",
+        "DIRECCION": "6463 ACASSUSO",
+        "coord_X": -58.5143887,
+        "coord_Y": -34.6490089,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5143887,
+          -34.6490089
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ACASSUSO",
+        "ALT PLANO": "6585",
+        "DIRECCION": "6585 ACASSUSO",
+        "coord_X": -58.5151307,
+        "coord_Y": -34.6496779,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5151307,
+          -34.6496779
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "MONTIEL",
+        "ALT PLANO": "706",
+        "DIRECCION": "706 MONTIEL",
+        "coord_X": -58.5258772,
+        "coord_Y": -34.6468115,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5258772,
+          -34.6468115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "GRAL. PAZ AV.",
+        "ALT PLANO": "11804",
+        "DIRECCION": "11804 PAZ, GRAL. AV.",
+        "coord_X": -58.5277863,
+        "coord_Y": -34.6534551,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "8",
+        "l2_sen": "V",
+        "L3": 28,
+        "l3_sen": "I",
+        "L4": 161,
+        "l4_sen": "V",
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5277863,
+          -34.6534551
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "GRAL. PAZ AV.",
+        "ALT PLANO": "10728",
+        "DIRECCION": "10728 PAZ, GRAL. AV.",
+        "coord_X": -58.5289402,
+        "coord_Y": -34.640857,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "185",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5289402,
+          -34.640857
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN BAUTISTA ALBERDI AV.",
+        "ALT PLANO": "5079",
+        "DIRECCION": "5079 ALBERDI, JUAN BAUTISTA AV.",
+        "coord_X": -58.4966514,
+        "coord_Y": -34.6460915,
+        "COMUNA": 9,
+        "BARRIO": "MATADEROS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4966514,
+          -34.6460915
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "2289",
+        "DIRECCION": "2289 PERON, EVA AV.",
+        "coord_X": -58.4530644,
+        "coord_Y": -34.6382956,
+        "COMUNA": 7,
+        "BARRIO": "FLORES",
+        "L1": "56",
+        "l1_sen": "I",
+        "L2": "4",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4530644,
+          -34.6382956
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "2666",
+        "DIRECCION": "2666 PERON, EVA AV.",
+        "coord_X": -58.4572538,
+        "coord_Y": -34.6413829,
+        "COMUNA": 7,
+        "BARRIO": "FLORES",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "97",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4572538,
+          -34.6413829
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "2214",
+        "DIRECCION": "2214 PERON, EVA AV.",
+        "coord_X": -58.4526314,
+        "coord_Y": -34.6381956,
+        "COMUNA": 7,
+        "BARRIO": "FLORES",
+        "L1": "97",
+        "l1_sen": "V",
+        "L2": "4",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4526314,
+          -34.6381956
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "1730",
+        "DIRECCION": "1730 PERON, EVA AV.",
+        "coord_X": -58.4478845,
+        "coord_Y": -34.635251,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "97",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4478845,
+          -34.635251
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ASAMBLEA AV.",
+        "ALT PLANO": "1160",
+        "DIRECCION": "1160 ASAMBLEA AV.",
+        "coord_X": -58.4413263,
+        "coord_Y": -34.6358656,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4413263,
+          -34.6358656
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ASAMBLEA AV.",
+        "ALT PLANO": "959",
+        "DIRECCION": "959  ASAMBLEA AV.",
+        "coord_X": -58.4386617,
+        "coord_Y": -34.6351273,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "7",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4386617,
+          -34.6351273
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ASAMBLEA AV.",
+        "ALT PLANO": "1183",
+        "DIRECCION": "1183 ASAMBLEA AV.",
+        "coord_X": -58.4416899,
+        "coord_Y": -34.6357654,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4416899,
+          -34.6357654
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ASAMBLEA AV.",
+        "ALT PLANO": "1493",
+        "DIRECCION": "1493 ASAMBLEA AV.",
+        "coord_X": -58.44560361,
+        "coord_Y": -34.63651012,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.44560361,
+          -34.63651012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "GRAL. PAZ AV.",
+        "ALT PLANO": "11105",
+        "DIRECCION": "PAZ, GRAL. AV. 11105",
+        "coord_X": -58.5286853,
+        "coord_Y": -34.6450825,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "185",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5286853,
+          -34.6450825
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "MARTINEZ CASTRO",
+        "ALT PLANO": "699",
+        "DIRECCION": "MARTINEZ CASTRO 699",
+        "coord_X": -58.4760388,
+        "coord_Y": -34.6408805,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "114",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4760388,
+          -34.6408805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "CARHUE",
+        "ALT PLANO": "1106",
+        "DIRECCION": "CARHUE 1106",
+        "coord_X": -58.52286,
+        "coord_Y": -34.650921,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.52286,
+          -34.650921
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "BRASIL",
+        "ALT PLANO": "418",
+        "DIRECCION": "BRASIL 418",
+        "coord_X": -58.3713384,
+        "coord_Y": -34.6254201,
+        "COMUNA": 1,
+        "BARRIO": "SAN TELMO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "129",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3713384,
+          -34.6254201
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "2030",
+        "DIRECCION": "PERON, EVA AV. 2030",
+        "coord_X": -58.4506595,
+        "coord_Y": -34.6370839,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "56",
+        "l1_sen": "V",
+        "L2": "4",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4506595,
+          -34.6370839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "GRAL. PAZ AV.",
+        "ALT PLANO": "10926",
+        "DIRECCION": "PAZ, GRAL. AV. 10926",
+        "coord_X": -58.5288058,
+        "coord_Y": -34.6432229,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "185",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5288058,
+          -34.6432229
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ING. HUERGO AV.",
+        "ALT PLANO": "1081",
+        "DIRECCION": "HUERGO, ING. AV. 1081",
+        "coord_X": -58.3663405,
+        "coord_Y": -34.6201305,
+        "COMUNA": 1,
+        "BARRIO": "SAN TELMO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3663405,
+          -34.6201305
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ING. HUERGO AV.",
+        "ALT PLANO": "795",
+        "DIRECCION": "HUERGO, ING. AV. 795",
+        "coord_X": -58.3667325,
+        "coord_Y": -34.6167265,
+        "COMUNA": 1,
+        "BARRIO": "SAN TELMO",
+        "L1": "2",
+        "l1_sen": "I",
+        "L2": "4",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3667325,
+          -34.6167265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ING. HUERGO AV.",
+        "ALT PLANO": "431",
+        "DIRECCION": "HUERGO, ING. AV. 435",
+        "coord_X": -58.367382,
+        "coord_Y": -34.612638,
+        "COMUNA": 1,
+        "BARRIO": "MONSERRAT",
+        "L1": "2",
+        "l1_sen": "I",
+        "L2": "4",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.367382,
+          -34.612638
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ING. HUERGO AV.",
+        "ALT PLANO": "295",
+        "DIRECCION": "HUERGO, ING. AV. 295",
+        "coord_X": -58.3673988,
+        "coord_Y": -34.6108333,
+        "COMUNA": 1,
+        "BARRIO": "MONSERRAT",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3673988,
+          -34.6108333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "3417",
+        "DIRECCION": "PERON, EVA AV. 3417",
+        "coord_X": -58.464197,
+        "coord_Y": -34.6444638,
+        "COMUNA": 7,
+        "BARRIO": "FLORES",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "7",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.464197,
+          -34.6444638
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "RIVADAVIA AV.",
+        "ALT PLANO": "11585",
+        "DIRECCION": "RIVADAVIA AV. 11585",
+        "coord_X": -58.527386,
+        "coord_Y": -34.6391072,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "2",
+        "l1_sen": "I",
+        "L2": "4",
+        "l2_sen": "V",
+        "L3": 182,
+        "l3_sen": "I",
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.527386,
+          -34.6391072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "RIVADAVIA AV.",
+        "ALT PLANO": "11420",
+        "DIRECCION": "RIVADAVIA AV. 11420",
+        "coord_X": -58.5254142,
+        "coord_Y": -34.6391368,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "117",
+        "l1_sen": "I",
+        "L2": "4",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5254142,
+          -34.6391368
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "RIVADAVIA AV.",
+        "ALT PLANO": "11601",
+        "DIRECCION": "RIVADAVIA, AV. 11601",
+        "coord_X": -58.5277326,
+        "coord_Y": -34.6392543,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "182",
+        "l1_sen": "I",
+        "L2": "4",
+        "l2_sen": "V",
+        "L3": 2,
+        "l3_sen": "I",
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5277326,
+          -34.6392543
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "MONTIEL",
+        "ALT PLANO": "206",
+        "DIRECCION": "Montiel 206",
+        "coord_X": -58.5262077,
+        "coord_Y": -34.6417561,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5262077,
+          -34.6417561
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ACASSUSO",
+        "ALT PLANO": "7187",
+        "DIRECCION": "acassuso 7187",
+        "coord_X": -58.519274,
+        "coord_Y": -34.6534177,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.519274,
+          -34.6534177
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ASAMBLEA AV.",
+        "ALT PLANO": "647",
+        "DIRECCION": "asamblea 647",
+        "coord_X": -58.434804,
+        "coord_Y": -34.6343486,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "7",
+        "l2_sen": "I",
+        "L3": 134,
+        "l3_sen": "V",
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.434804,
+          -34.6343486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "3585",
+        "DIRECCION": "Av Juan de Garay 3585",
+        "coord_X": -58.4155995,
+        "coord_Y": -34.6311993,
+        "COMUNA": 5,
+        "BARRIO": "BOEDO",
+        "L1": "134",
+        "l1_sen": "V",
+        "L2": "4",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4155995,
+          -34.6311993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PAVON AV.",
+        "ALT PLANO": "3892",
+        "DIRECCION": "Av pavon 3892",
+        "coord_X": -58.4190123,
+        "coord_Y": -34.6304428,
+        "COMUNA": 5,
+        "BARRIO": "BOEDO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4190123,
+          -34.6304428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "BOUCHARD",
+        "ALT PLANO": "504",
+        "DIRECCION": "504 BOUCHARD",
+        "coord_X": -58.3692512,
+        "coord_Y": -34.6016219,
+        "COMUNA": 1,
+        "BARRIO": "SAN NICOLAS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3692512,
+          -34.6016219
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ESPAÑA AV.",
+        "ALT PLANO": "3105",
+        "DIRECCION": "ESPAÑA AV. 3105",
+        "coord_X": -58.3550369,
+        "coord_Y": -34.6206657,
+        "COMUNA": 4,
+        "BARRIO": "LA BOCA",
+        "L1": "2",
+        "l1_sen": "V",
+        "L2": "4",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3550369,
+          -34.6206657
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ESPAÑA AV.",
+        "ALT PLANO": "3251",
+        "DIRECCION": "ESPAÑA AV. 3251",
+        "coord_X": -58.3433748,
+        "coord_Y": -34.624003,
+        "COMUNA": 4,
+        "BARRIO": "LA BOCA",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "2",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3433748,
+          -34.624003
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ESPAÑA AV.",
+        "ALT PLANO": "2306",
+        "DIRECCION": "ESPAÑA AV. 2306",
+        "coord_X": -58.3538309,
+        "coord_Y": -34.6222954,
+        "COMUNA": 4,
+        "BARRIO": "LA BOCA",
+        "L1": "2",
+        "l1_sen": "I",
+        "L2": "4",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3538309,
+          -34.6222954
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ESPAÑA AV.",
+        "ALT PLANO": "2221",
+        "DIRECCION": "ESPAÑA AV. 2221",
+        "coord_X": -58.354317,
+        "coord_Y": -34.622699,
+        "COMUNA": 4,
+        "BARRIO": "LA BOCA",
+        "L1": "2",
+        "l1_sen": "V",
+        "L2": "4",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.354317,
+          -34.622699
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "2163",
+        "DIRECCION": "Garay 2163",
+        "coord_X": -58.39503546,
+        "coord_Y": -34.62766605,
+        "COMUNA": 3,
+        "BARRIO": "SAN CRISTOBAL",
+        "L1": "95",
+        "l1_sen": "V",
+        "L2": "4",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.39503546,
+          -34.62766605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "TONELERO",
+        "ALT PLANO": "7395",
+        "DIRECCION": "7395 TONELERO",
+        "coord_X": -58.5255222,
+        "coord_Y": -34.6512369,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5255222,
+          -34.6512369
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ASAMBLEA AV.",
+        "ALT PLANO": "388",
+        "DIRECCION": "asamblea 388",
+        "coord_X": -58.4310685,
+        "coord_Y": -34.6329833,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "7",
+        "l1_sen": "V",
+        "L2": "4",
+        "l2_sen": "I",
+        "L3": 134,
+        "l3_sen": "I",
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4310685,
+          -34.6329833
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PAVON AV.",
+        "ALT PLANO": "4181",
+        "DIRECCION": "Av pavon 4181",
+        "coord_X": -58.4228874,
+        "coord_Y": -34.630979,
+        "COMUNA": 5,
+        "BARRIO": "BOEDO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4228874,
+          -34.630979
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ALICIA MOREAU DE JUSTO AV.",
+        "ALT PLANO": "1400",
+        "DIRECCION": "MOREAU DE JUSTO, ALICIA AV. 1400",
+        "coord_X": -58.365691,
+        "coord_Y": -34.614423,
+        "COMUNA": 1,
+        "BARRIO": "PUERTO MADERO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "20",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.365691,
+          -34.614423
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ESPAÑA AV.",
+        "ALT PLANO": "3319",
+        "DIRECCION": "ESPAÑA AV. 3319",
+        "coord_X": -58.34234,
+        "coord_Y": -34.62372,
+        "COMUNA": 4,
+        "BARRIO": "LA BOCA",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "2",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.34234,
+          -34.62372
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ESPAÑA AV.",
+        "ALT PLANO": "3250",
+        "DIRECCION": "ESPAÑA AV. 3250",
+        "coord_X": -58.343413,
+        "coord_Y": -34.623948,
+        "COMUNA": 4,
+        "BARRIO": "LA BOCA",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "2",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.343413,
+          -34.623948
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ESPAÑA AV.",
+        "ALT PLANO": "3080",
+        "DIRECCION": "ESPAÑA AV. 3080",
+        "coord_X": -58.3461469,
+        "coord_Y": -34.624234,
+        "COMUNA": 4,
+        "BARRIO": "LA BOCA",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "2",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3461469,
+          -34.624234
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ESPAÑA AV.",
+        "ALT PLANO": "2710",
+        "DIRECCION": "ESPAÑA AV. 2710",
+        "coord_X": -58.3506926,
+        "coord_Y": -34.6241688,
+        "COMUNA": 4,
+        "BARRIO": "LA BOCA",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "2",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3506926,
+          -34.6241688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ESPAÑA AV.",
+        "ALT PLANO": "1790",
+        "DIRECCION": "ESPAÑA AV. 1790",
+        "coord_X": -58.3558925,
+        "coord_Y": -34.6183987,
+        "COMUNA": 4,
+        "BARRIO": "LA BOCA",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "2",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3558925,
+          -34.6183987
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN BAUTISTA ALBERDI AV.",
+        "ALT PLANO": "4910",
+        "DIRECCION": "ALBERDI, JUAN BAUTISTA AV. 4910",
+        "coord_X": -58.49536627,
+        "coord_Y": -34.64511165,
+        "COMUNA": 9,
+        "BARRIO": "MATADEROS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.49536627,
+          -34.64511165
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ESPAÑA AV.",
+        "ALT PLANO": "1831",
+        "DIRECCION": "ESPAÑA AV. 1831",
+        "coord_X": -58.3561284,
+        "coord_Y": -34.6185688,
+        "COMUNA": 4,
+        "BARRIO": "LA BOCA",
+        "L1": "2",
+        "l1_sen": "V",
+        "L2": "4",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3561284,
+          -34.6185688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "EVA PERON AV.",
+        "ALT PLANO": "2928",
+        "DIRECCION": "2928 PERON, EVA AV.",
+        "coord_X": -58.4607394,
+        "coord_Y": -34.6433807,
+        "COMUNA": 7,
+        "BARRIO": "FLORES",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "7",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4607394,
+          -34.6433807
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN DE GARAY AV.",
+        "ALT PLANO": "171",
+        "DIRECCION": "171 GARAY, JUAN DE AV.",
+        "coord_X": -58.3675736,
+        "coord_Y": -34.6239786,
+        "COMUNA": 1,
+        "BARRIO": "SAN TELMO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "129",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3675736,
+          -34.6239786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "AV. ELVIRA RAWSON DE DELLEPIANE",
+        "ALT PLANO": "450",
+        "DIRECCION": "AV. ELVIRA RAWSON DE DELLEPIANE 450",
+        "coord_X": -58.36033,
+        "coord_Y": -34.622341,
+        "COMUNA": 1,
+        "BARRIO": "PUERTO MADERO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "61",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.36033,
+          -34.622341
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "AV. ELVIRA RAWSON DE DELLEPIANE",
+        "ALT PLANO": "500",
+        "DIRECCION": "AV. ELVIRA RAWSON DE DELLEPIANE 500",
+        "coord_X": -58.35894674,
+        "coord_Y": -34.62029906,
+        "COMUNA": 1,
+        "BARRIO": "PUERTO MADERO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.35894674,
+          -34.62029906
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "AV. ELVIRA RAWSON DE DELLEPIANE",
+        "ALT PLANO": "700",
+        "DIRECCION": "AV. ELVIRA RAWSON DE DELLEPIANE 600",
+        "coord_X": -58.356693,
+        "coord_Y": -34.618358,
+        "COMUNA": 1,
+        "BARRIO": "PUERTO MADERO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.356693,
+          -34.618358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "AV. ELVIRA RAWSON DE DELLEPIANE",
+        "ALT PLANO": "200",
+        "DIRECCION": "AV. ELVIRA RAWSON DE DELLEPIANE 201",
+        "coord_X": -58.3615939,
+        "coord_Y": -34.623179,
+        "COMUNA": 1,
+        "BARRIO": "PUERTO MADERO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3615939,
+          -34.623179
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ASAMBLEA AV.",
+        "ALT PLANO": "1406",
+        "DIRECCION": "1406 ASAMBLEA AV.",
+        "coord_X": -58.444227,
+        "coord_Y": -34.636515,
+        "COMUNA": 7,
+        "BARRIO": "PARQUE CHACABUCO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.444227,
+          -34.636515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PASEO COLON AV.",
+        "ALT PLANO": "1450",
+        "DIRECCION": "1450 PASEO COLON AV.",
+        "coord_X": -58.36774152,
+        "coord_Y": -34.62469791,
+        "COMUNA": 1,
+        "BARRIO": "SAN TELMO",
+        "L1": "24",
+        "l1_sen": "V",
+        "L2": "22",
+        "l2_sen": "I",
+        "L3": 4,
+        "l3_sen": "I",
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.36774152,
+          -34.62469791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN BAUTISTA ALBERDI AV.",
+        "ALT PLANO": "4091",
+        "DIRECCION": "4091 JUAN BAUTISTA ALBERDI AV.",
+        "coord_X": -58.482714,
+        "coord_Y": -34.638866,
+        "COMUNA": 10,
+        "BARRIO": "VELEZ SARFIELD",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "55",
+        "l2_sen": "I",
+        "L3": 88,
+        "l3_sen": "I",
+        "L4": 126,
+        "l4_sen": "I",
+        "L5": 180,
+        "l5_sen": "I",
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.482714,
+          -34.638866
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN BAUTISTA ALBERDI AV.",
+        "ALT PLANO": "4391",
+        "DIRECCION": "4391 JUAN BAUTISTA ALBERDI AV.",
+        "coord_X": -58.487483,
+        "coord_Y": -34.641113,
+        "COMUNA": 10,
+        "BARRIO": "VELEZ SARFIELD",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "49",
+        "l2_sen": "I",
+        "L3": 55,
+        "l3_sen": "I",
+        "L4": 88,
+        "l4_sen": "I",
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.487483,
+          -34.641113
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JUAN BAUTISTA ALBERDI AV.",
+        "ALT PLANO": "4791",
+        "DIRECCION": "4791 JUAN BAUTISTA ALBERDI AV.",
+        "coord_X": -58.493346,
+        "coord_Y": -34.64392,
+        "COMUNA": 10,
+        "BARRIO": "VILLA LURO",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": "49",
+        "l2_sen": "I",
+        "L3": 55,
+        "l3_sen": "I",
+        "L4": 88,
+        "l4_sen": "I",
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.493346,
+          -34.64392
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "BRUIX AV.",
+        "ALT PLANO": "4720",
+        "DIRECCION": "4720 BRUIX AV.",
+        "coord_X": -58.492096,
+        "coord_Y": -34.645663,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "88",
+        "l2_sen": "V",
+        "L3": 180,
+        "l3_sen": "V",
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.492096,
+          -34.645663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "BRUIX AV.",
+        "ALT PLANO": "4560",
+        "DIRECCION": "4560 BRUIX AV.",
+        "coord_X": -58.488904,
+        "coord_Y": -34.646493,
+        "COMUNA": 9,
+        "BARRIO": "PARQUE AVELLANEDA",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "88",
+        "l2_sen": "V",
+        "L3": 180,
+        "l3_sen": "V",
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.488904,
+          -34.646493
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "AV. MARIANO ACOSTA",
+        "ALT PLANO": "410",
+        "DIRECCION": "410 ACOSTA, MARIANO AV.",
+        "coord_X": -58.477265,
+        "coord_Y": -34.63774,
+        "COMUNA": 10,
+        "BARRIO": "FLORESTA",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.477265,
+          -34.63774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ALICIA MOREAU DE JUSTO AV.",
+        "ALT PLANO": "1150",
+        "DIRECCION": "1150 MOREAU DE JUSTO, ALICIA AV.",
+        "coord_X": -58.365981,
+        "coord_Y": -34.611056,
+        "COMUNA": 1,
+        "BARRIO": "PUERTO MADERO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "20",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.365981,
+          -34.611056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "CARHUE",
+        "ALT PLANO": "1318",
+        "DIRECCION": "CARHUE 1318",
+        "coord_X": -58.520117,
+        "coord_Y": -34.652777,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "V",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.520117,
+          -34.652777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "JOSE LEON SUAREZ",
+        "ALT PLANO": "1377",
+        "DIRECCION": "1377 SUAREZ, JOSE LEON",
+        "coord_X": -58.524948,
+        "coord_Y": -34.654145,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.524948,
+          -34.654145
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "PATRON",
+        "ALT PLANO": "7210",
+        "DIRECCION": "7210 PATRON",
+        "coord_X": -58.52059,
+        "coord_Y": -34.652903,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": null,
+        "l2_sen": null,
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.52059,
+          -34.652903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "GRAL. PAZ AV.",
+        "ALT PLANO": "11118",
+        "DIRECCION": "PAZ, GRAL. AV. 11118",
+        "coord_X": -58.5286708,
+        "coord_Y": -34.6452375,
+        "COMUNA": 9,
+        "BARRIO": "LINIERS",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "185",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.5286708,
+          -34.6452375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "AV. ELVIRA RAWSON DE DELLEPIANE",
+        "ALT PLANO": "400",
+        "DIRECCION": "AV. ELVIRA RAWSON DE DELLEPIANE 400",
+        "coord_X": -58.3603894,
+        "coord_Y": -34.6223279,
+        "COMUNA": 1,
+        "BARRIO": "PUERTO MADERO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "62",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3603894,
+          -34.6223279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "AV. ELVIRA RAWSON DE DELLEPIANE",
+        "ALT PLANO": "551",
+        "DIRECCION": "AV. ELVIRA RAWSON DE DELLEPIANE 551",
+        "coord_X": -58.3591802,
+        "coord_Y": -34.6209644,
+        "COMUNA": 4,
+        "BARRIO": "LA BOCA",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "62",
+        "l2_sen": "I",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3591802,
+          -34.6209644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "CALLE": "ALICIA MOREAU DE JUSTO AV.",
+        "ALT PLANO": "460",
+        "DIRECCION": "MOREAU DE JUSTO, ALICIA AV. 460",
+        "coord_X": -58.367081,
+        "coord_Y": -34.6032555,
+        "COMUNA": 1,
+        "BARRIO": "PUERTO MADERO",
+        "L1": "4",
+        "l1_sen": "I",
+        "L2": "20",
+        "l2_sen": "V",
+        "L3": null,
+        "l3_sen": null,
+        "L4": null,
+        "l4_sen": null,
+        "L5": null,
+        "l5_sen": null,
+        "L6": null,
+        "l6_sen": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.367081,
+          -34.6032555
+        ]
+      }
+    }
+  ]
+}

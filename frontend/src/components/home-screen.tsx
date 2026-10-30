@@ -20,8 +20,9 @@ export function CatalogNotice() {
     <div className="demo-banner">
       <Info size={14} className="shrink-0" />
       <span>
-        Algunos recorridos incluyen paradas ilustrativas para probar tu
-        colección. Sus nombres indican que son de muestra.
+        Estamos incorporando paradas oficiales de BA Data. El registro se
+        habilita en recorridos con una secuencia disponible; los datos
+        ilustrativos se conservan únicamente en el historial.
       </span>
     </div>
   ) : null;

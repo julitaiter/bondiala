@@ -6,6 +6,7 @@ import { ArrowRight, Check, Search, MapPin, Trophy } from "lucide-react";
 import { useResource } from "@/lib/use-resource";
 import { mutate } from "@/lib/api";
 import type { Line, Page, Route, Trip } from "@/lib/types";
+import { canRegisterTrip, officialStops, routeDataMessage } from "@/lib/route-data";
 import { useApp } from "./providers";
 import {
   Gate,
@@ -71,9 +72,11 @@ function TripForm() {
     !lineOptions.some((l) => String(l.id) === lineId)
   )
     lineOptions.unshift(chosenLine.data);
-  const start = route?.paradas.find((p) => String(p.id) === startId);
-  const end = route?.paradas.find((p) => String(p.id) === endId);
-  const valid = Boolean(route && start && end && start.orden < end.orden);
+  const stops = officialStops(route);
+  const usable = canRegisterTrip(route);
+  const start = stops.find((p) => String(p.id) === startId);
+  const end = stops.find((p) => String(p.id) === endId);
+  const valid = Boolean(usable && start && end && start.orden < end.orden);
   function resetSegment() {
     setStartId("");
     setEndId("");
@@ -276,7 +279,7 @@ function TripForm() {
               <select
                 required
                 value={startId}
-                disabled={!route?.paradas.length || busy || confirm}
+                disabled={!usable || busy || confirm}
                 onChange={(e) => {
                   setStartId(e.target.value);
                   setEndId("");
@@ -285,7 +288,7 @@ function TripForm() {
                 }}
               >
                 <option value="">Seleccioná la parada de subida</option>
-                {route?.paradas.slice(0, -1).map((p) => (
+                {usable && stops.slice(0, -1).map((p) => (
                   <option value={p.id} key={p.id}>
                     {p.orden}. {p.parada.nombre || p.parada.direccion}
                   </option>
@@ -297,7 +300,7 @@ function TripForm() {
               <select
                 required
                 value={endId}
-                disabled={!start || busy || confirm}
+                disabled={!usable || !start || busy || confirm}
                 onChange={(e) => {
                   setEndId(e.target.value);
                   setConfirm(false);
@@ -305,7 +308,7 @@ function TripForm() {
                 }}
               >
                 <option value="">Seleccioná la parada de bajada</option>
-                {route?.paradas
+                {usable && stops
                   .filter((p) => start && p.orden > start.orden)
                   .map((p) => (
                     <option value={p.id} key={p.id}>
@@ -314,10 +317,9 @@ function TripForm() {
                   ))}
               </select>
             </label>
-            {route && !route.paradas.length && (
+            {route && !usable && (
               <p className="notice">
-                Este recorrido todavía no tiene una secuencia de paradas
-                disponible.
+                {routeDataMessage(route)}
               </p>
             )}
             {confirm && valid && (
@@ -376,7 +378,7 @@ function TripForm() {
                   <strong>
                     Ramal {route.ramal_nombre} · {route.sentido.toLowerCase()}
                   </strong>
-                  <p>{route.paradas.length} paradas en este recorrido</p>
+                  <p>{stops.length} paradas oficiales disponibles</p>
                 </div>
               </div>
             )}

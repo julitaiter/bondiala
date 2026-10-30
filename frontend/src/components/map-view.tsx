@@ -4,6 +4,7 @@ import * as maplibregl from "maplibre-gl";
 import type { StyleSpecification } from "maplibre-gl";
 import type { FeatureCollection, Feature, Geometry } from "geojson";
 import type { Route } from "@/lib/types";
+import { officialStops } from "@/lib/route-data";
 import { useApp } from "./providers";
 
 export function MapView({
@@ -135,7 +136,7 @@ export function MapView({
             },
           });
           const stops: Feature[] = routes.flatMap((route) =>
-            route.paradas.map((stop) => ({
+            officialStops(route).map((stop) => ({
               type: "Feature" as const,
               geometry: {
                 type: "Point" as const,
@@ -150,6 +151,9 @@ export function MapView({
           );
           map.addSource("stops", {
             type: "geojson",
+            attribution: stops.length
+              ? '<a href="https://data.buenosaires.gob.ar/dataset/colectivos-paradas" target="_blank" rel="noopener">BA Data · Paradas CABA</a> · <a href="https://creativecommons.org/licenses/by/2.5/ar/" target="_blank" rel="noopener">CC BY 2.5 AR</a>'
+              : "",
             data: {
               type: "FeatureCollection",
               features: stops,

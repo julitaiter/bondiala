@@ -40,6 +40,7 @@ export type StopOccurrence = {
     nombre: string;
     direccion: string;
     barrio: string;
+    is_official: boolean;
     coordenadas: [number, number];
   };
 };
@@ -59,6 +60,9 @@ export type Route = {
   colores: Palette | null;
   geometria: MultiLineString | null;
   paradas: StopOccurrence[];
+  paradas_oficiales_count: number;
+  puede_registrar_viaje: boolean;
+  estado_datos: "sin_geometria" | "sin_paradas" | "parcial" | "disponible";
 };
 export type Level = {
   numero: number;

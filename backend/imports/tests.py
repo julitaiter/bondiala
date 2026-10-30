@@ -188,9 +188,9 @@ class ImportTests(TestCase):
             Linea.objects.get(numero="60").colores_id,
         )
 
-    def test_unconfigured_stop_source_is_explicit(self):
+    def test_unconfigured_normalized_stop_source_is_explicit(self):
         with override_settings(BADATA_PARADAS_URL=""), self.assertRaises(CommandError):
-            call_command("import_badata_paradas")
+            call_command("import_badata_paradas", format="normalized")
 
     @override_settings(USIG_URL="https://example.test/enrich")
     @patch("imports.management.commands.enrich_usig.requests.Session")

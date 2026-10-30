@@ -148,6 +148,8 @@ class Parada(models.Model):
     metadata = models.JSONField(default=dict, blank=True)
     enrichment = models.JSONField(default=dict, blank=True)
     enriched_at = models.DateTimeField(null=True, blank=True)
+    es_oficial = models.BooleanField(default=False, db_index=True)
+    activa = models.BooleanField(default=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -160,6 +162,13 @@ class Parada(models.Model):
     def __str__(self):
         return self.nombre or self.external_id
 
+    @property
+    def es_ilustrativa(self):
+        return not self.es_oficial and (
+            self.source.slug == "muestra-paradas"
+            or self.metadata.get("illustrative", False)
+        )
+
 
 class RecorridoParada(models.Model):
     recorrido = models.ForeignKey(
@@ -169,11 +178,31 @@ class RecorridoParada(models.Model):
         Parada, on_delete=models.PROTECT, related_name="recorridos"
     )
     orden = models.PositiveIntegerField()
+    activa = models.BooleanField(default=True)
+    metodo = models.CharField(
+        max_length=12,
+        default="explicit",
+        choices=[
+            ("explicit", "Relación explícita"),
+            ("spatial", "Proyección espacial"),
+            ("legacy", "Histórica ilustrativa"),
+        ],
+    )
+    source = models.ForeignKey(
+        "imports.DataSource", null=True, blank=True, on_delete=models.PROTECT
+    )
+    distancia_metros = models.FloatField(null=True, blank=True)
+    posicion_metros = models.FloatField(null=True, blank=True)
 
     class Meta:
         ordering = ["orden"]
         constraints = [
             models.UniqueConstraint(
                 fields=["recorrido", "orden"], name="recorrido_orden_unique"
-            )
+            ),
+            models.UniqueConstraint(
+                fields=["recorrido", "parada"],
+                condition=models.Q(metodo="spatial"),
+                name="spatial_recorrido_parada_unique",
+            ),
         ]

@@ -3,7 +3,7 @@ from drf_spectacular.utils import extend_schema_field
 from config.schema import ProgressSchema
 from rest_framework import serializers
 from .models import Linea, LineaColor, Recorrido, Parada, RecorridoParada
-from .services import line_progress
+from .services import line_progress, route_availability
 
 
 class ColorSerializer(serializers.ModelSerializer):
@@ -36,6 +36,7 @@ class LineSerializer(serializers.ModelSerializer):
 
 class StopSerializer(serializers.ModelSerializer):
     coordenadas = serializers.SerializerMethodField()
+    is_official = serializers.BooleanField(source="es_oficial", read_only=True)
 
     class Meta:
         model = Parada
@@ -47,6 +48,7 @@ class StopSerializer(serializers.ModelSerializer):
             "barrio",
             "comuna",
             "coordenadas",
+            "is_official",
         ]
 
     def get_coordenadas(self, obj) -> list[float]:
@@ -82,6 +84,9 @@ class RouteSerializer(serializers.ModelSerializer):
     modalidad = serializers.SerializerMethodField()
     jurisdiccion = serializers.SerializerMethodField()
     camara = serializers.SerializerMethodField()
+    paradas_oficiales_count = serializers.SerializerMethodField()
+    puede_registrar_viaje = serializers.SerializerMethodField()
+    estado_datos = serializers.SerializerMethodField()
 
     class Meta:
         model = Recorrido
@@ -101,7 +106,19 @@ class RouteSerializer(serializers.ModelSerializer):
             "colores",
             "geometria",
             "paradas",
+            "paradas_oficiales_count",
+            "puede_registrar_viaje",
+            "estado_datos",
         ]
+
+    def get_paradas_oficiales_count(self, obj) -> int:
+        return route_availability(obj)["paradas_oficiales_count"]
+
+    def get_puede_registrar_viaje(self, obj) -> bool:
+        return route_availability(obj)["puede_registrar_viaje"]
+
+    def get_estado_datos(self, obj) -> str:
+        return route_availability(obj)["estado_datos"]
 
     @extend_schema_field(
         {

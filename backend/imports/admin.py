@@ -1,6 +1,6 @@
 from django.contrib import admin
 from config.admin import AuditReadOnlyAdmin
-from .models import DataSource, ImportRun, ImportError
+from .models import DataSource, ImportRun, ImportError, StopMatchIssue
 
 
 @admin.register(DataSource)
@@ -40,3 +40,11 @@ class RunAdmin(AuditReadOnlyAdmin):
 class ErrorAdmin(AuditReadOnlyAdmin):
     list_display = ["run", "external_id", "message"]
     search_fields = ["message", "external_id"]
+
+
+@admin.register(StopMatchIssue)
+class StopMatchIssueAdmin(AuditReadOnlyAdmin):
+    list_display = ["id", "run", "parada", "linea", "sentido", "reason", "status"]
+    list_filter = ["reason", "status", "sentido"]
+    search_fields = ["parada__direccion", "parada__external_id", "linea"]
+    list_select_related = ["run", "parada"]

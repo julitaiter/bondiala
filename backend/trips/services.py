@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
-from django.db import transaction
+from django.db import connection, transaction
 from rest_framework.exceptions import ValidationError
-from transport.models import Recorrido, RecorridoParada
-from transport.services import catalog, line_progress
+from transport.models import Recorrido
+from transport.services import catalog, line_progress, official_sequence
 from gamification.services import award, evaluate_achievements
 from gamification.models import EventoPuntos
 from .models import RegistroViaje, UsuarioLineaParada
@@ -10,6 +10,9 @@ from .models import RegistroViaje, UsuarioLineaParada
 
 @transaction.atomic
 def register_trip(user, recorrido, inicio, fin, idempotency_key):
+    # Se comparte entre viajes y excluye reconciliación/importación de secuencias.
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT pg_advisory_xact_lock_shared(6132041)")
     # Serializa viajes concurrentes del mismo usuario, incluso con claves distintas.
     get_user_model().objects.select_for_update().get(pk=user.pk)
     previous = RegistroViaje.objects.filter(
@@ -32,9 +35,14 @@ def register_trip(user, recorrido, inicio, fin, idempotency_key):
     )
     if route is None:
         raise ValidationError({"recorrido": "El recorrido no está disponible."})
+    sequence = official_sequence().filter(recorrido=route)
+    if route.geometria is None or sequence.count() < 2:
+        raise ValidationError(
+            {"recorrido": "Paradas oficiales aún no disponibles para registrar este viaje."}
+        )
     occurrences = {
         x.pk: x
-        for x in RecorridoParada.objects.filter(recorrido=route, pk__in=[inicio, fin])
+        for x in sequence.filter(pk__in=[inicio, fin])
     }
     if inicio not in occurrences or fin not in occurrences:
         raise ValidationError("Las paradas deben pertenecer al recorrido seleccionado.")
@@ -51,8 +59,8 @@ def register_trip(user, recorrido, inicio, fin, idempotency_key):
         idempotency_key=idempotency_key,
     )
     line = route.ramal.linea
-    stops = RecorridoParada.objects.filter(
-        recorrido=route, orden__gte=start.orden, orden__lte=end.orden
+    stops = sequence.filter(
+        orden__gte=start.orden, orden__lte=end.orden
     ).values_list("parada_id", flat=True)
     new_count = 0
     for stop in set(stops):
