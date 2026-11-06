@@ -19,6 +19,7 @@ class Command(BaseCommand):
             "import_badata_recorridos",
             file=str(data / "recorridos.sample.geojson"),
             source="badata",
+            only_missing=True,
         )
         call_command(
             "import_badata_paradas",

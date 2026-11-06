@@ -39,8 +39,8 @@ function TripForm() {
   const [branchId, setBranchId] = useState("");
   const [selectedRouteId, setRouteId] = useState<string | null>(null);
   const routeId = selectedRouteId ?? query.get("recorrido") ?? "";
-  const [startId, setStartId] = useState("");
-  const [endId, setEndId] = useState("");
+  const [startId, setStartId] = useState(query.get("inicio") || "");
+  const [endId, setEndId] = useState(query.get("fin") || "");
   const [confirm, setConfirm] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -317,7 +317,7 @@ function TripForm() {
                   ))}
               </select>
             </label>
-            {route && !usable && (
+            {route && (!usable || route.estado_datos === "parcial") && (
               <p className="notice">
                 {routeDataMessage(route)}
               </p>

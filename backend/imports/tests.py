@@ -8,7 +8,14 @@ from django.core.management.base import CommandError
 from django.test import TestCase, override_settings
 from django.contrib.gis.geos import Point
 from imports.models import DataSource, ImportRun, ImportError
-from transport.models import Linea, LineaColor, Recorrido, Parada, RecorridoParada
+from transport.models import (
+    Linea,
+    LineaColor,
+    Ramal,
+    Recorrido,
+    Parada,
+    RecorridoParada,
+)
 
 
 def feature():
@@ -44,6 +51,21 @@ class ImportTests(TestCase):
     def routes(self, features=None, **kwargs):
         if features is not None:
             self.write(features)
+            if features and not Recorrido.objects.exists():
+                source, _ = DataSource.objects.get_or_create(
+                    slug="badata", defaults={"nombre": "CSV"}
+                )
+                line = Linea.objects.create(numero="2", source=source)
+                branch = Ramal.objects.create(linea=line, nombre="B")
+                Recorrido.objects.create(
+                    ramal=branch,
+                    sentido="IDA",
+                    external_id="002BIDA",
+                    source=source,
+                    catalogue_format="csv",
+                    metadata=feature()["properties"],
+                    checksum="csv-unchanged",
+                )
         call_command(
             "import_badata_recorridos",
             file=str(self.path),
@@ -68,14 +90,14 @@ class ImportTests(TestCase):
         self.assertEqual(Recorrido.objects.count(), 1)
         self.assertEqual(ImportRun.objects.latest("pk").skipped, 1)
 
-    def test_changed_metadata_updates_existing_route(self):
+    def test_geojson_metadata_does_not_replace_csv_metadata(self):
         self.routes([feature()])
         changed = feature()
         changed["properties"]["hasta"] = "Nuevo destino"
         self.routes([changed])
         self.assertEqual(Recorrido.objects.count(), 1)
-        self.assertEqual(Recorrido.objects.get().metadata["hasta"], "Nuevo destino")
-        self.assertEqual(ImportRun.objects.latest("pk").updated, 1)
+        self.assertEqual(Recorrido.objects.get().metadata["hasta"], "Fin")
+        self.assertEqual(ImportRun.objects.latest("pk").updated, 0)
 
     def test_linestring_converted_safely(self):
         row = feature()
@@ -98,7 +120,8 @@ class ImportTests(TestCase):
         row["geometry"]["coordinates"][0][0] = [999, -34]
         with self.assertRaises(CommandError):
             self.routes([row])
-        self.assertEqual(Linea.objects.count(), 0)
+        self.assertEqual(Linea.objects.count(), 1)
+        self.assertIsNone(Recorrido.objects.get().geometria)
         self.assertEqual(ImportRun.objects.get().errors, 1)
         self.assertEqual(ImportError.objects.count(), 1)
 

@@ -11,6 +11,7 @@ test("registro, viaje, progreso, perfil, ranking y temas", async ({
   page,
 }, testInfo) => {
   const suffix = `${Date.now()}${testInfo.project.name}`;
+  await page.emulateMedia({ reducedMotion: "reduce" });
   const password = "Mi-viaje-seguro-2026!";
   await page.goto("/registro");
   await page
@@ -37,19 +38,29 @@ test("registro, viaje, progreso, perfil, ranking y temas", async ({
   await expect(
     page.getByRole("heading", { level: 1, name: /^Línea \d+$/ }),
   ).toBeVisible();
-  await page
-    .locator("main")
-    .getByRole("link", { name: "Registrar viaje", exact: true })
-    .last()
-    .click();
-  await page.getByRole("combobox", { name: "Ramal", exact: true }).selectOption(String(officialRoute.ramal));
-  await page.getByRole("combobox", { name: "Sentido", exact: true }).selectOption(String(officialRoute.id));
-  await page
-    .getByRole("combobox", { name: "¿Dónde subiste?", exact: true })
-    .selectOption({ index: 1 });
-  await page
-    .getByRole("combobox", { name: "¿Dónde bajaste?", exact: true })
-    .selectOption({ index: 2 });
+  await page.locator(`.route-choices a[href="/recorridos/${officialRoute.id}"]`).click();
+  const map = page.locator(".map-canvas");
+  await expect(map).toHaveAttribute("aria-busy", "false");
+  const stopButtons = page.locator(".stop-list .stop-select");
+  expect(await stopButtons.count()).toBe(officialRoute.paradas.length);
+  const labels = await stopButtons.evaluateAll((buttons) => buttons.map((button) => Number(button.getAttribute("aria-label")?.match(/parada (\d+):/)?.[1])));
+  expect(labels).toEqual(officialRoute.paradas.map((stop) => stop.orden));
+  await stopButtons.first().click();
+  await expect(map).toHaveAttribute("data-selected-occurrence", String(officialRoute.paradas[0].id));
+  await page.getByRole("button", { name: "Quitar selección", exact: true }).click();
+  const bounds = await map.boundingBox();
+  expect(bounds).not.toBeNull();
+  await map.click({ position: { x: bounds!.width / 2, y: bounds!.height / 2 } });
+  await expect(page.locator('.stop-select[aria-pressed="true"]')).toHaveCount(1);
+  await stopButtons.first().click();
+  await page.getByRole("button", { name: "Usar como subida", exact: true }).click();
+  await stopButtons.nth(2).click();
+  await page.getByRole("button", { name: "Usar como bajada", exact: true }).click();
+  await expect(page.getByText(/Tramo seleccionado: 3 paradas oficiales/)).toBeVisible();
+  await page.screenshot({ path: `test-results/selection/${testInfo.project.name}.png`, fullPage: true, animations: "disabled" });
+  await page.locator("main").getByRole("link", { name: "Registrar viaje", exact: true }).click();
+  await expect(page.getByRole("combobox", { name: "¿Dónde subiste?", exact: true })).toHaveValue(String(officialRoute.paradas[0].id));
+  await expect(page.getByRole("combobox", { name: "¿Dónde bajaste?", exact: true })).toHaveValue(String(officialRoute.paradas[2].id));
   await page.getByRole("button", { name: "Revisar viaje" }).click();
   await page.getByRole("button", { name: "Confirmar y guardar" }).click();
   await expect(
@@ -57,6 +68,8 @@ test("registro, viaje, progreso, perfil, ranking y temas", async ({
   ).toBeVisible();
   await expect(page.locator(".reward-grid")).toContainText("3");
   await noOverflow(page);
+  await page.goto(`/recorridos/${officialRoute.id}`);
+  await expect(page.locator(".stop-list li").filter({ hasText: "Transitada" })).toHaveCount(3);
   await page.goto("/perfil");
   await expect(
     page.getByRole("heading", { name: "Viajero de prueba", exact: true }),
@@ -107,7 +120,11 @@ test("el catálogo CSV permite explorar líneas sin trazado ni paradas", async (
     .get(`/api/v1/lineas/${line.id}/recorridos/`)
     .then((r) => r.json());
   expect(routes.length).toBeGreaterThan(0);
-  expect(routes[0].geometria).toBeNull();
+  // Estado simulado de cobertura ausente; la base conserva la fuente real.
+  const missing = { ...routes[0], geometria: null, paradas: [], paradas_oficiales_count: 0,
+    puede_registrar_viaje: false, estado_datos: "sin_geometria", requiere_rematch: false };
+  await page.route(`**/api/v1/lineas/${line.id}/recorridos/`, (request) => request.fulfill({ json: [missing] }));
+  await page.route(`**/api/v1/recorridos/${routes[0].id}/`, (request) => request.fulfill({ json: missing }));
   await page.goto(`/lineas/${line.id}`);
   await expect(
     page.getByRole("heading", { name: "Trazado todavía no disponible" }),

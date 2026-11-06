@@ -39,7 +39,8 @@ jobs:
         with:
           node-version: 22
       - run: docker compose up --build -d --wait
-      - run: docker compose exec -T backend python manage.py import_badata_paradas --file /data/paradas.official.sample.geojson --match-routes
+      - run: docker compose exec -T backend python manage.py import_badata_recorridos --geojson --file /data/recorridos.variants.sample.geojson
+      - run: docker compose exec -T backend python manage.py import_badata_paradas --file /data/paradas.catalogue.sample.geojson --match-routes
       - run: npm ci
         working-directory: frontend
       - run: npx playwright install --with-deps chromium

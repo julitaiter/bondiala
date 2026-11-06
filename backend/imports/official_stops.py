@@ -8,12 +8,13 @@ import json
 import math
 import re
 import unicodedata
+from bisect import bisect_right
 from collections import Counter, defaultdict
 
 from django.conf import settings
 from django.core.management.base import CommandError
 from django.db import connection, transaction
-from django.db.models import F
+from django.db.models import F, Q
 from django.utils import timezone
 
 from transport.models import Linea, Parada, Recorrido, RecorridoParada, normalize_line
@@ -174,7 +175,8 @@ def spatial_candidates(source_id, maximum):
         SELECT n.stop_id,n.route_id,n.numero,n.sentido,
                ST_Distance(e.part::geography,n.ubicacion::geography) distance,
                e.offset_meters + ST_LineLocatePoint(e.projected,n.projected_point)*e.length position,
-               e.component,e.edge
+               e.component,e.edge,
+               ST_LineLocatePoint(e.projected,n.projected_point) fraction
         FROM nearby n JOIN edges e ON e.route_id=n.route_id AND e.part && n.bounds
           AND ST_DWithin(e.part::geography,n.ubicacion::geography,%s)
         ORDER BY n.stop_id,n.route_id,distance,e.component,e.edge
@@ -183,7 +185,7 @@ def spatial_candidates(source_id, maximum):
         )
         rows = cursor.fetchall()
     by_route = defaultdict(list)
-    for stop, route, line, direction, distance, position, component, edge in rows:
+    for stop, route, line, direction, distance, position, component, edge, fraction in rows:
         by_route[(stop, route, line, direction)].append(
             {
                 "recorrido": route,
@@ -191,6 +193,7 @@ def spatial_candidates(source_id, maximum):
                 "posicion_metros": round(position, 4),
                 "componente": component,
                 "segmento": edge,
+                "fraccion_segmento": round(fraction, 10),
             }
         )
     candidates = defaultdict(list)
@@ -207,27 +210,148 @@ def spatial_candidates(source_id, maximum):
     return candidates
 
 
-def migrate_progress(old, new, line):
-    """Change progress identity only; immutable ledger and trip snapshots stay intact."""
-    from trips.models import UsuarioLineaParada
+class CorridorIndex:
+    """Cache oriented metric paths only for routes with competing candidates.
 
-    rows = UsuarioLineaParada.objects.filter(parada=old, linea=line).order_by("pk")
-    for row in rows:
-        target = UsuarioLineaParada.objects.filter(
-            usuario_id=row.usuario_id, linea=line, parada=new
-        ).first()
-        if target:
-            # Preserve earliest known passage when two identities already exist.
-            if row.primera_fecha < target.primera_fecha:
-                UsuarioLineaParada.objects.filter(pk=target.pk).update(
-                    primera_fecha=row.primera_fecha, primer_viaje_id=row.primer_viaje_id
-                )
-            row.delete()
-        else:
-            UsuarioLineaParada.objects.filter(pk=row.pk).update(parada=new)
+    The cache is for evidence windows, never the authoritative cumulative
+    geography position. Source component/coordinate order is preserved; gaps
+    larger than one metre split the evidence path instead of inventing a link.
+    """
+
+    def __init__(self, routes):
+        self.routes = routes
+        self.cache = {}
+
+    def location(self, candidate):
+        route_id = candidate["recorrido"]
+        if route_id not in self.cache:
+            projected = self.routes[route_id].geometria.clone()
+            projected.transform(32721)
+            chains, components = [], {}
+            for number, component in enumerate(projected, 1):
+                points = list(component.coords)
+                lengths = [0.0]
+                for first, second in zip(points, points[1:]):
+                    lengths.append(lengths[-1] + math.dist(first, second))
+                if chains and math.dist(chains[-1][0][-1], points[0]) <= 1:
+                    chain_points, chain_lengths = chains[-1]
+                    gap = math.dist(chain_points[-1], points[0])
+                    offset = chain_lengths[-1] + gap
+                    if gap:
+                        chain_points.append(points[0])
+                        chain_lengths.append(offset)
+                    for point, distance in zip(points[1:], lengths[1:]):
+                        chain_points.append(point)
+                        chain_lengths.append(offset + distance)
+                    chain_id = len(chains) - 1
+                else:
+                    offset, chain_id = 0.0, len(chains)
+                    chains.append((points, lengths.copy()))
+                components[number] = (chain_id, offset, lengths)
+            self.cache[route_id] = chains, components
+        chains, components = self.cache[route_id]
+        chain_id, offset, lengths = components[candidate["componente"]]
+        edge = candidate["segmento"] - 1
+        position = offset + lengths[edge] + candidate["fraccion_segmento"] * (
+            lengths[edge + 1] - lengths[edge]
+        )
+        return chains[chain_id], position
+
+    @staticmethod
+    def point(path, position):
+        points, lengths = path
+        index = min(bisect_right(lengths, position), len(points) - 1)
+        if index == 0:
+            return points[0]
+        length = lengths[index] - lengths[index - 1]
+        fraction = (position - lengths[index - 1]) / length if length else 0
+        return tuple(
+            first + fraction * (second - first)
+            for first, second in zip(points[index - 1], points[index])
+        )
+
+    def shared(self, first, second, policy):
+        path_a, position_a = self.location(first)
+        path_b, position_b = self.location(second)
+        before = min(policy["window_meters"], position_a, position_b)
+        after = min(
+            policy["window_meters"],
+            path_a[1][-1] - position_a,
+            path_b[1][-1] - position_b,
+        )
+        support = before + after
+        result = {
+            "recorridos": sorted([first["recorrido"], second["recorrido"]]),
+            "support_meters": round(support, 3),
+        }
+        if support < policy["minimum_support_meters"]:
+            return {**result, "accepted": False, "reason": "insufficient_window"}
+        intervals = max(2, math.ceil(support / policy["sample_step_meters"]))
+        offsets = sorted({0.0, *(-before + support * i / intervals for i in range(intervals + 1))})
+        samples_a = [self.point(path_a, position_a + offset) for offset in offsets]
+        samples_b = [self.point(path_b, position_b + offset) for offset in offsets]
+        separation = max(math.dist(a, b) for a, b in zip(samples_a, samples_b))
+        angles = []
+        for a, next_a, b, next_b in zip(
+            samples_a, samples_a[1:], samples_b, samples_b[1:]
+        ):
+            va, vb = (next_a[0] - a[0], next_a[1] - a[1]), (next_b[0] - b[0], next_b[1] - b[1])
+            denominator = math.hypot(*va) * math.hypot(*vb)
+            if denominator:
+                cosine = max(-1.0, min(1.0, sum(x * y for x, y in zip(va, vb)) / denominator))
+                angles.append(math.degrees(math.acos(cosine)))
+        heading = max(angles) if angles else 180.0
+        accepted = separation <= policy["tolerance_meters"] and heading <= policy["maximum_heading_degrees"]
+        return {
+            **result,
+            "accepted": accepted,
+            "reason": "shared_corridor" if accepted else "divergent_corridors",
+            "maximum_separation_meters": round(separation, 3),
+            "maximum_heading_degrees": round(heading, 3),
+        }
 
 
-def reconcile(route, selected, existing, run, metrics):
+def corridor_policy():
+    policy = {
+        "version": 2,
+        "window_meters": settings.PARADA_SHARED_CORRIDOR_WINDOW_METERS,
+        "tolerance_meters": settings.PARADA_SHARED_CORRIDOR_TOLERANCE_METERS,
+        "maximum_heading_degrees": settings.PARADA_SHARED_CORRIDOR_MAX_ANGLE_DEGREES,
+        "minimum_support_meters": settings.PARADA_SHARED_CORRIDOR_MIN_SUPPORT_METERS,
+        "sample_step_meters": settings.PARADA_SHARED_CORRIDOR_SAMPLE_STEP_METERS,
+    }
+    numeric = [value for key, value in policy.items() if key != "version"]
+    if not all(math.isfinite(value) and value > 0 for value in numeric) or not (
+        10 <= policy["window_meters"] <= 500
+        and policy["tolerance_meters"] <= 30
+        and policy["maximum_heading_degrees"] <= 45
+        and policy["minimum_support_meters"] <= 2 * policy["window_meters"]
+        and policy["sample_step_meters"] <= policy["window_meters"] / 2
+    ):
+        raise ValueError("Configuración de evidencia de corredor compartido inválida.")
+    return policy
+
+
+def historical_references():
+    """Read protected identities once while the exclusive catalogue lock is held."""
+    from gamification.models import EventoPuntos
+    from trips.models import RegistroViaje, UsuarioLineaParada
+
+    legacy = Parada.objects.filter(es_oficial=False).filter(
+        Q(source__slug="muestra-paradas") | Q(metadata__illustrative=True)
+    ).values("pk")
+    stops = set(UsuarioLineaParada.objects.filter(parada_id__in=legacy).values_list("parada_id", flat=True))
+    stops.update(EventoPuntos.objects.filter(parada_id__in=legacy).values_list("parada_id", flat=True))
+    occurrences = set()
+    trips = RegistroViaje.objects.filter(
+        Q(inicio__parada_id__in=legacy) | Q(fin__parada_id__in=legacy)
+    )
+    for start, end in trips.values_list("inicio_id", "fin_id"):
+        occurrences.update((start, end))
+    return stops, occurrences
+
+
+def reconcile(route, selected, existing, run, metrics, protected):
     legacy = [x for x in existing if x.parada.es_ilustrativa]
     if not legacy or not selected:
         return {}
@@ -286,14 +410,20 @@ def reconcile(route, selected, existing, run, metrics):
                 route.sentido,
             )
             continue
-        new = Parada.objects.get(pk=new_id)
-        migrate_progress(old, new, route.ramal.linea)
         old.metadata = {
             **old.metadata,
             "legacy": True,
             "official_equivalences": {**previous_map, route.ramal.linea.numero: new_id},
         }
         old.save(update_fields=["metadata", "updated_at"])
+        if old.pk in protected[0] or occurrence.pk in protected[1]:
+            # A transport alias preserves the exact ULP/trip/ledger rows. Consumers
+            # resolve it for current progress and suppress future duplicate points.
+            metrics["legacy_history_preserved"] += 1
+            issue(run, old, "legacy_history_preserved", route.ramal.linea.numero,
+                  route.sentido, [{"parada_oficial": new_id, "recorrido": route.pk}])
+            continue
+        new = Parada.objects.get(pk=new_id)
         occurrence.parada = new
         if new_id in existing_spatial and existing_spatial[new_id].pk != occurrence.pk:
             occurrence.activa = False
@@ -304,20 +434,61 @@ def reconcile(route, selected, existing, run, metrics):
     return equivalents
 
 
+def refresh_stored_services(source):
+    """Recover newly supported codes from preserved official properties.
+
+    A consolidated stop can contain services from several original features.
+    Union with the stored set, rather than replacing it with the first row's
+    `origen`, so duplicate consolidation never loses another line or direction.
+    """
+    changed = []
+    for stop in Parada.objects.filter(source=source, es_oficial=True, activa=True).iterator():
+        raw = stop.metadata.get("origen")
+        if not isinstance(raw, dict) or not raw:
+            continue
+        try:
+            identity, parsed, _ = parse_stop({
+                "type": "Feature", "properties": raw,
+                "geometry": {"type": "Point", "coordinates": list(stop.ubicacion.coords)},
+            })
+        except ValueError:
+            continue
+        if identity != stop.external_id:
+            continue  # A changed physical identity requires separate review.
+        existing = {
+            (service["numero"], service["sentido"])
+            for service in stop.metadata.get("lineas", [])
+        }
+        recovered = {
+            (service["numero"], service["sentido"])
+            for service in parsed["metadata"]["lineas"]
+        }
+        if recovered <= existing:
+            continue
+        services = [
+            {"numero": number, "sentido": direction}
+            for number, direction in sorted(existing | recovered)
+        ]
+        stop.metadata = {**stop.metadata, "lineas": services}
+        stop.updated_at = timezone.now()
+        changed.append(stop)
+    if changed:
+        Parada.objects.bulk_update(changed, ["metadata", "updated_at"], batch_size=500)
+    return len(changed)
+
+
 def match_routes(source, run, metrics):
     maximum = settings.PARADA_MATCH_MAX_DISTANCE_METERS
-    margin = settings.PARADA_MATCH_MIN_MARGIN_METERS
     if (
         not math.isfinite(maximum)
         or not 0 < maximum <= 500
-        or not math.isfinite(margin)
-        or not 0 <= margin <= maximum
     ):
-        raise ValueError(
-            "Umbral espacial inválido: distancia (0,500], margen [0,distancia]."
-        )
+        raise ValueError("Umbral espacial inválido: distancia (0,500].")
+    policy = corridor_policy()
+    metrics["matching_policy"] = policy
     with connection.cursor() as cursor:
         cursor.execute("SELECT pg_advisory_xact_lock(%s)", [CATALOGUE_LOCK])
+    metrics["paradas_servicios_actualizados"] = refresh_stored_services(source)
     routes = list(
         Recorrido.objects.select_for_update()
         .select_related("ramal__linea")
@@ -327,6 +498,8 @@ def match_routes(source, run, metrics):
     routes_by_id = {r.pk: r for r in routes}
     for route in routes:
         route_ids[(route.ramal.linea.numero, route.sentido)].append(route)
+    corridor_index = CorridorIndex(routes_by_id)
+    protected = historical_references()
     StopMatchIssue.objects.filter(parada__source=source, status="pending").update(
         status="resolved"
     )
@@ -369,20 +542,35 @@ def match_routes(source, run, metrics):
                 )
                 no_candidate_stops.add(stop.pk)
                 continue
-            if options[0]["position_ambiguous"]:
+            if any(option["position_ambiguous"] for option in options):
                 issue(run, stop, "ambiguous_position", line, direction, options)
                 metrics["asociaciones_ambiguas"] += 1
                 continue
-            if (
-                len(options) > 1
-                and options[1]["distancia_metros"] - options[0]["distancia_metros"]
-                < margin
-            ):
-                issue(run, stop, "ambiguous_branches", line, direction, options)
-                metrics["asociaciones_ambiguas"] += 1
-                continue
-            chosen = options[0]
-            selected[chosen["recorrido"]][stop.pk] = chosen
+            evidence = []
+            if len(options) > 1:
+                # All plausible candidates must agree. A shared subset plus a
+                # nearby divergent branch is still a genuine unresolved case.
+                evidence = [
+                    corridor_index.shared(first, second, policy)
+                    for index, first in enumerate(options)
+                    for second in options[index + 1:]
+                ]
+                if not all(pair["accepted"] for pair in evidence):
+                    issue(run, stop, "ambiguous_branches", line, direction,
+                          [{**option, "corridor_evidence": evidence} for option in options])
+                    metrics["asociaciones_ambiguas"] += 1
+                    continue
+                metrics["paradas_con_corredor_compartido"] += 1
+                metrics["asociaciones_corredor_compartido"] += len(options)
+            for chosen in options:
+                chosen["evidencia"] = {
+                    "policy": "shared_corridor" if evidence else "single_candidate",
+                    "confidence": "sufficient_geometric_evidence",
+                    "parameters": policy,
+                    "candidate_routes": sorted(option["recorrido"] for option in options),
+                    "comparisons": evidence,
+                }
+                selected[chosen["recorrido"]][stop.pk] = chosen
     metrics["paradas_sin_recorrido_candidato"] = len(no_candidate_stops)
     # Re-evaluate routes which previously had spatial links as well as new matches.
     affected = set(selected) | set(
@@ -398,7 +586,7 @@ def match_routes(source, run, metrics):
         existing = list(
             route.secuencia.select_related("parada__source").order_by("orden")
         )
-        replacements = reconcile(route, wanted, existing, run, metrics)
+        replacements = reconcile(route, wanted, existing, run, metrics, protected)
         by_stop = {x.parada_id: x for x in existing if x.metodo == "spatial"}
         active_official = []
         for stop_id, match in sorted(
@@ -414,12 +602,14 @@ def match_routes(source, run, metrics):
                     or occurrence.posicion_metros != match["posicion_metros"]
                     or occurrence.distancia_metros != match["distancia_metros"]
                     or occurrence.metodo != "spatial"
+                    or occurrence.evidencia != match["evidencia"]
                 )
             occurrence.activa = True
             occurrence.metodo = "spatial"
             occurrence.source = source
             occurrence.distancia_metros = match["distancia_metros"]
             occurrence.posicion_metros = match["posicion_metros"]
+            occurrence.evidencia = match["evidencia"]
             active_official.append(occurrence)
         active_pks = {x.pk for x in active_official if x.pk}
         remainder = [x for x in existing if x.pk not in active_pks]
@@ -454,6 +644,8 @@ def match_routes(source, run, metrics):
         for order, occurrence in enumerate(active_official + remainder, 1):
             occurrence.orden = order
             occurrence.save()
+    # All active geometries were evaluated, including routes with no valid match.
+    Recorrido.objects.filter(pk__in=[r.pk for r in routes if r.geometria is not None]).update(requiere_rematch=False)
     return metrics
 
 
@@ -463,7 +655,8 @@ def coverage(metrics):
     )
     total = routes.count()
     geometry_count = routes.exclude(geometria=None).count()
-    from django.db.models import Count
+    from django.db.models import Count, Q
+    from transport.services import routes_with_quality
 
     counts = list(
         RecorridoParada.objects.filter(
@@ -477,14 +670,12 @@ def coverage(metrics):
         .values_list("n", flat=True)
     )
     usable = (
-        RecorridoParada.objects.filter(
-            recorrido__in=routes.exclude(geometria=None),
-            activa=True,
-            parada__es_oficial=True,
-            parada__activa=True,
-        )
-        .values("recorrido_id")
-        .annotate(n=Count("pk"))
+        routes_with_quality(routes).filter(requiere_rematch=False, critical_association=False)
+        .exclude(geometria=None)
+        .annotate(n=Count("secuencia", filter=Q(
+            secuencia__activa=True, secuencia__parada__es_oficial=True,
+            secuencia__parada__activa=True,
+        )))
         .filter(n__gte=2)
         .count()
     )
@@ -528,6 +719,10 @@ def import_official_stops(
             "paradas_ilustrativas_reconciliadas",
             "paradas_legacy_conservadas",
             "advertencias_servicios",
+            "paradas_con_corredor_compartido",
+            "asociaciones_corredor_compartido",
+            "legacy_history_preserved",
+            "paradas_servicios_actualizados",
         ]
     }
     try:

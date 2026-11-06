@@ -41,6 +41,7 @@ export function LineBadge({
   return (
     <span
       className={`line-badge ${small ? "small" : ""}`}
+      data-code-length={numero.length}
       style={style}
       aria-label={`Línea ${numero}`}
     >

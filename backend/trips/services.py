@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import connection, transaction
 from rest_framework.exceptions import ValidationError
 from transport.models import Recorrido
-from transport.services import catalog, line_progress, official_sequence
+from transport.services import catalog, line_progress, official_sequence, routes_with_quality, route_availability, visited_by_line
 from gamification.services import award, evaluate_achievements
 from gamification.models import EventoPuntos
 from .models import RegistroViaje, UsuarioLineaParada
@@ -27,7 +27,7 @@ def register_trip(user, recorrido, inicio, fin, idempotency_key):
             raise ValidationError("Esta clave ya se usó para otro viaje.")
         return previous, False
     route = (
-        Recorrido.objects.select_related("ramal__linea")
+        routes_with_quality().select_related("ramal__linea").prefetch_related("secuencia__parada")
         .filter(
             pk=recorrido, activo=True, ramal__activo=True, ramal__linea__activa=True
         )
@@ -36,7 +36,7 @@ def register_trip(user, recorrido, inicio, fin, idempotency_key):
     if route is None:
         raise ValidationError({"recorrido": "El recorrido no está disponible."})
     sequence = official_sequence().filter(recorrido=route)
-    if route.geometria is None or sequence.count() < 2:
+    if not route_availability(route)["puede_registrar_viaje"]:
         raise ValidationError(
             {"recorrido": "Paradas oficiales aún no disponibles para registrar este viaje."}
         )
@@ -63,11 +63,15 @@ def register_trip(user, recorrido, inicio, fin, idempotency_key):
         orden__gte=start.orden, orden__lte=end.orden
     ).values_list("parada_id", flat=True)
     new_count = 0
+    visited = visited_by_line(user).get(line.pk, set())
     for stop in set(stops):
+        if stop in visited:
+            continue
         _, created = UsuarioLineaParada.objects.get_or_create(
             usuario=user, linea=line, parada_id=stop, defaults={"primer_viaje": trip}
         )
         if created:
+            visited.add(stop)
             new_count += 1
             award(
                 user,
@@ -77,11 +81,6 @@ def register_trip(user, recorrido, inicio, fin, idempotency_key):
                 linea=line,
                 parada_id=stop,
             )
-    visited = set(
-        UsuarioLineaParada.objects.filter(usuario=user, linea=line).values_list(
-            "parada_id", flat=True
-        )
-    )
     progress = line_progress(catalog().get(pk=line.pk), visited)
     for branch in progress["ramales"]:
         for direction in branch["recorridos"]:

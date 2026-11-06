@@ -85,9 +85,10 @@ class ProgressTests(TestCase):
 
     def test_normalization(self):
         self.assertEqual(self.line.numero, "60")
-        for value, expected in [("002", "2"), ("060", "60"), (152, "152")]:
+        for value, expected in [("002", "2"), ("060", "60"), (152, "152"),
+                                (" eBus ", "EBUS"), ("a60", "A60"), ("A0001", "A0001")]:
             self.assertEqual(normalize_line(value), expected)
-        for value in [None, "", "-1", "a60", "0", "1.5"]:
+        for value in [None, True, "", "-1", "0", "1.5", "E BUS", "EBUS12", "BÚS", "ß"]:
             with self.assertRaises(ValueError):
                 normalize_line(value)
 
@@ -433,6 +434,60 @@ class SecurityTests(TestCase):
 class OfficialSequenceTests(TestCase):
     setUp = ProgressTests.setUp
     trip = ProgressTests.trip
+
+    def test_legacy_equivalence_keeps_credit_without_awarding_again(self):
+        from transport.services import visited_by_line
+        route = self.routes[0]
+        items = list(route.secuencia.all())
+        old = Parada.objects.create(
+            source=route.source, external_id="legacy-credited", ubicacion=self.stops[0].ubicacion,
+            metadata={"official_equivalences": {"60": self.stops[0].pk}},
+        )
+        historical = RegistroViaje.objects.create(
+            usuario=self.user, recorrido=route, inicio=items[0], fin=items[1],
+        )
+        credit = UsuarioLineaParada.objects.create(
+            usuario=self.user, linea=self.line, parada=old, primer_viaje=historical,
+        )
+        event = EventoPuntos.objects.create(
+            usuario=self.user, tipo="PARADA_TRANSITADA", puntos=1, parada=old,
+            clave=f"parada:{self.line.pk}:{old.pk}", linea=self.line, viaje=historical,
+        )
+        before = list(UsuarioLineaParada.objects.filter(pk=credit.pk).values())
+        event_before = list(EventoPuntos.objects.filter(pk=event.pk).values())
+        self.assertIn(self.stops[0].pk, visited_by_line(self.user)[self.line.pk])
+        trip = self.trip(end=1)
+        self.assertEqual(trip.resultado["nuevas_paradas"], 1)
+        self.assertEqual(trip.resultado["puntos"], 1)
+        self.assertEqual(total_points(self.user), 2)
+        self.assertEqual(before, list(UsuarioLineaParada.objects.filter(pk=credit.pk).values()))
+        self.assertEqual(event_before, list(EventoPuntos.objects.filter(pk=event.pk).values()))
+        self.assertFalse(UsuarioLineaParada.objects.filter(usuario=self.user, parada=self.stops[0]).exists())
+
+    def test_geometry_change_requires_rematch_before_new_trip(self):
+        Recorrido.objects.filter(pk=self.routes[0].pk).update(requiere_rematch=True)
+        with self.assertRaises(ValidationError):
+            self.trip()
+        payload = APIClient().get(f"/api/v1/recorridos/{self.routes[0].pk}/").data
+        self.assertEqual(payload["estado_datos"], "parcial")
+        self.assertTrue(payload["requiere_rematch"])
+        self.assertFalse(payload["puede_registrar_viaje"])
+        stops = APIClient().get(f"/api/v1/paradas/?recorrido={self.routes[0].pk}").data
+        self.assertEqual(stops["count"], 0)
+
+    def test_critical_projection_ambiguity_blocks_only_candidate_route(self):
+        from imports.models import ImportRun, StopMatchIssue
+        run = ImportRun.objects.create(source=self.routes[0].source, kind="paradas", status="SUCCESS")
+        StopMatchIssue.objects.create(
+            run=run, parada=self.stops[0], linea="60", sentido="IDA", reason="ambiguous_position",
+            candidates=[{"recorrido": self.routes[0].pk, "position_ambiguous": True}],
+        )
+        with self.assertRaises(ValidationError):
+            self.trip()
+        payload = APIClient().get(f"/api/v1/recorridos/{self.routes[0].pk}/").data
+        self.assertEqual(payload["estado_datos"], "ambiguo")
+        self.assertFalse(payload["puede_registrar_viaje"])
+        self.trip(route_index=2)
 
     def test_illustrative_stops_cannot_create_trip_or_points(self):
         Parada.objects.all().update(es_oficial=False)

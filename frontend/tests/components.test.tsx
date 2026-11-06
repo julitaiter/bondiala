@@ -24,6 +24,20 @@ function session() {
   );
 }
 describe("componentes de la colección", () => {
+  it("muestra el código EBUS completo en ambos tamaños y temas", () => {
+    const { rerender } = render(<LineBadge numero="EBUS" />);
+    for (const theme of ["light", "dark"]) {
+      document.documentElement.dataset.theme = theme;
+      for (const small of [false, true]) {
+        rerender(<LineBadge numero="EBUS" small={small} />);
+        const badge = screen.getByLabelText("Línea EBUS");
+        expect(badge).toHaveTextContent("EBUS");
+        expect(badge).toHaveAttribute("data-code-length", "4");
+        expect(badge.classList.contains("small")).toBe(small);
+        expect(badge).not.toHaveAttribute("style");
+      }
+    }
+  });
   it("identifica la línea y conserva sus colores en ambos temas", () => {
     const { rerender } = render(<LineBadge numero="60" colores={palette} />);
     const badge = screen.getByLabelText("Línea 60");

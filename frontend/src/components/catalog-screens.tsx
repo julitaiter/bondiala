@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -52,7 +52,7 @@ export function LinesScreen() {
               setSearch(e.target.value);
               setPage(1);
             }}
-            placeholder="Buscá por número o nombre de línea"
+            placeholder="Buscá por número, código o nombre de línea"
           />
         </label>
         {user && (
@@ -88,7 +88,7 @@ export function LinesScreen() {
       ) : (
         <Empty
           title="No encontramos esa línea"
-          text="Probá con otro número o quitá el filtro para explorar el catálogo."
+          text="Probá con otro número, código o nombre, o quitá el filtro para explorar el catálogo."
         />
       )}
     </>
@@ -220,6 +220,10 @@ export function LineDetailScreen() {
 export function RouteDetailScreen() {
   const { id } = useParams<{ id: string }>();
   const route = useResource<Route>(`recorridos/${id}/`);
+  const mapRoutes = useMemo(() => route.data ? [route.data] : [], [route.data]);
+  const [selectedId, setSelectedId] = useState<number>();
+  const [startId, setStartId] = useState<number>();
+  const [endId, setEndId] = useState<number>();
   if (route.loading) return <Loading />;
   if (route.error || !route.data)
     return (
@@ -232,6 +236,17 @@ export function RouteDetailScreen() {
   const stops = officialStops(data);
   const done = stops.filter((p) => p.transitada).length;
   const usable = canRegisterTrip(data);
+  const selected = stops.find((stop) => stop.id === selectedId);
+  const start = stops.find((stop) => stop.id === startId);
+  const end = stops.find((stop) => stop.id === endId);
+  const segment = start && end && start.orden < end.orden
+    ? stops.filter((stop) => stop.orden >= start.orden && stop.orden <= end.orden) : [];
+  const tripHref = `/viajes/nuevo?linea=${data.linea}&recorrido=${data.id}` +
+    (segment.length ? `&inicio=${startId}&fin=${endId}` : "");
+  function selectFromMap(occurrence: number) {
+    setSelectedId(occurrence);
+    document.getElementById(`stop-${occurrence}`)?.scrollIntoView({ block: "nearest", behavior: "auto" });
+  }
   return (
     <>
       <Link className="back-link" href={`/lineas/${data.linea}`}>
@@ -244,17 +259,35 @@ export function RouteDetailScreen() {
         action={
           usable && <Link
             className="button"
-            href={`/viajes/nuevo?linea=${data.linea}&recorrido=${data.id}`}
+            href={tripHref}
           >
             Registrar viaje <ArrowRight size={16} />
           </Link>
         }
       />
       <CatalogNotice />
-      {!usable && <p className="notice">{routeDataMessage(data)}</p>}
+      {(!usable || data.estado_datos === "parcial") && <p className="notice">{routeDataMessage(data)}</p>}
       <div className="split-grid">
         <section>
-          <MapView routes={[data]} />
+          <MapView routes={mapRoutes} selectedOccurrenceId={selectedId}
+            startOccurrenceId={startId} endOccurrenceId={endId} onSelectStop={selectFromMap} />
+          {selected && <div className="panel mt-5 stop-selection">
+            <p role="status">Parada seleccionada: <b>{selected.parada.nombre || selected.parada.direccion}</b> · {selected.orden}</p>
+            <div className="actions">
+              <button className="button secondary" type="button"
+                disabled={!usable || selected.id === stops.at(-1)?.id}
+                onClick={() => { setStartId(selected.id); if (!end || end.orden <= selected.orden) setEndId(undefined); }}>
+                Usar como subida
+              </button>
+              <button className="button secondary" type="button"
+                disabled={!usable || !start || selected.orden <= start.orden}
+                onClick={() => setEndId(selected.id)}>Usar como bajada</button>
+              <button className="text-link" type="button" onClick={() => setSelectedId(undefined)}>Quitar selección</button>
+            </div>
+          </div>}
+          {segment.length > 0 && <p className="notice" role="status">
+            Tramo seleccionado: {segment.length} paradas oficiales, de {start?.parada.nombre} a {end?.parada.nombre}.
+          </p>}
           {stops.length > 0 && (
             <div className="panel mt-5">
               <ProgressBar
@@ -272,17 +305,20 @@ export function RouteDetailScreen() {
           {stops.length ? (
             <ol className="stop-list stop-scroll">
               {stops.map((stop) => (
-                <li key={stop.id}>
+                <li key={stop.id} id={`stop-${stop.id}`} className={selectedId === stop.id ? "selected-stop" : ""}>
                   <span
                     className={`stop-dot ${stop.transitada ? "visited" : ""}`}
                   />
-                  <b>
+                  <button type="button" className="stop-select" aria-pressed={selectedId === stop.id}
+                    aria-label={`Seleccionar parada ${stop.orden}: ${stop.parada.nombre || stop.parada.direccion}`}
+                    onClick={() => setSelectedId(stop.id)}><b>
                     {stop.parada.nombre ||
                       stop.parada.direccion ||
                       `Parada ${stop.orden}`}
-                  </b>
+                  </b></button>
                   <small>
                     {stop.transitada ? "Transitada" : "Pendiente"}
+                    {stop.id === startId ? " · Inicio" : stop.id === endId ? " · Fin" : ""}
                     {stop.parada.barrio ? ` · ${stop.parada.barrio}` : ""}
                   </small>
                   {stop.transitada && (

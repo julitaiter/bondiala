@@ -179,6 +179,9 @@ BADATA_RECORRIDOS_URL = os.environ.get(
     "BADATA_RECORRIDOS_URL",
     "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/colectivos-recorridos/recorrido-colectivos.geojson",
 )
+BA_DATA_RECORRIDOS_GEOJSON_URL = os.environ.get(
+    "BA_DATA_RECORRIDOS_GEOJSON_URL", BADATA_RECORRIDOS_URL
+)
 BADATA_PARADAS_URL = os.environ.get("BADATA_PARADAS_URL", "")
 BA_DATA_PARADAS_GEOJSON_URL = os.environ.get(
     "BA_DATA_PARADAS_GEOJSON_URL",
@@ -196,9 +199,32 @@ PARADA_RECONCILE_MAX_DISTANCE_METERS = float(
 USIG_URL = os.environ.get("USIG_URL", "")
 IMPORT_TIMEOUT = int(os.environ.get("IMPORT_TIMEOUT", "45"))
 IMPORT_MAX_BYTES = int(os.environ.get("IMPORT_MAX_BYTES", str(150 * 1024 * 1024)))
+IMPORT_MAX_FEATURES = int(os.environ.get("IMPORT_MAX_FEATURES", "100000"))
+IMPORT_ALLOWED_HOSTS = [
+    host.strip().lower() for host in os.environ.get(
+        "IMPORT_ALLOWED_HOSTS", "cdn.buenosaires.gob.ar"
+    ).split(",") if host.strip()
+]
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "handlers": {"console": {"class": "logging.StreamHandler"}},
     "root": {"handlers": ["console"], "level": "INFO"},
 }
+
+# Evidencia de corredor: nunca decide sólo por cercanía entre ramales.
+PARADA_SHARED_CORRIDOR_WINDOW_METERS = float(
+    os.environ.get("PARADA_SHARED_CORRIDOR_WINDOW_METERS", "60")
+)
+PARADA_SHARED_CORRIDOR_TOLERANCE_METERS = float(
+    os.environ.get("PARADA_SHARED_CORRIDOR_TOLERANCE_METERS", "12")
+)
+PARADA_SHARED_CORRIDOR_MAX_ANGLE_DEGREES = float(
+    os.environ.get("PARADA_SHARED_CORRIDOR_MAX_ANGLE_DEGREES", "20")
+)
+PARADA_SHARED_CORRIDOR_MIN_SUPPORT_METERS = float(
+    os.environ.get("PARADA_SHARED_CORRIDOR_MIN_SUPPORT_METERS", "90")
+)
+PARADA_SHARED_CORRIDOR_SAMPLE_STEP_METERS = float(
+    os.environ.get("PARADA_SHARED_CORRIDOR_SAMPLE_STEP_METERS", "15")
+)

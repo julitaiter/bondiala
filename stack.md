@@ -252,9 +252,21 @@ desde
 hasta
 ```
 
-El CSV no contiene geometrías ni paradas. Los GeoJSON son un complemento para incorporar trazados mediante `l_r_s`, sin reemplazar la metadata del catálogo CSV. Un recorrido puede existir con `geometria=null` hasta que se importe su trazado. Las paradas oficiales se importan del GeoJSON de BA Data, que declara líneas y sentidos pero no ramales ni orden. PostGIS filtra candidatos, calcula distancias en metros y proyecta las paradas sobre todos los componentes del trazado para ordenar las asociaciones confiables. Las ambigüedades quedan disponibles para revisión; no habilitan viajes.
+El CSV no contiene geometrías ni paradas. El GeoJSON oficial de recorridos complementa únicamente entidades existentes del CSV: match principal por `l_r_s` y fallback inequívoco por línea, ramal y sentido. `BA_DATA_RECORRIDOS_GEOJSON_URL` configura esa fuente; `BA_DATA_PARADAS_GEOJSON_URL` configura los Points oficiales. No se crea un catálogo paralelo desde GeoJSON ni se reemplaza metadata CSV. Un recorrido puede existir con `geometria=null` hasta que se importe su trazado.
 
-El identificador `l_r_s` puede utilizarse como identificador externo natural del recorrido.
+```text
+CSV recorridos      → catálogo maestro
+GeoJSON recorridos → geometrías complementarias
+GeoJSON paradas    → ubicaciones físicas oficiales
+PostGIS            → asociación inferida + proyección + orden
+MapLibre           → trazado, paradas y selección de tramo
+```
+
+PostGIS prefiltra por línea/sentido, utiliza geography para distancias y longitudes en metros, y acumula segmentos en el orden original. Los ramales pueden compartir una parada si hay evidencia de un corredor común con orientación y soporte longitudinal suficientes; la cercanía aislada deja una ambigüedad auditable. Las asociaciones son inferencias de Bondiala, no relaciones ramal/parada certificadas por BA Data. Si una geometría cambia, `requiere_rematch` bloquea viajes y oculta su secuencia anterior hasta un reprocesamiento explícito. Las importaciones y rematches admiten dry-run; el CSV y el historial permanecen preservados.
+
+`Linea.numero` conserva su contrato string y admite códigos ASCII alfanuméricos de 1 a 5 caracteres. Los números pierden ceros iniciales y deben ser positivos; los códigos con letras pasan a mayúsculas, conservando sus dígitos. `EBUS` identifica el servicio eBUS; no se renumeran PK ni URLs existentes.
+
+El identificador `l_r_s` puede utilizarse como identificador externo natural del recorrido. En el CSV, el prefijo numérico se completa a tres dígitos (`012CIDA`), y el alfanumérico se conserva (`EBUSAIDA`).
 
 Ejemplo:
 

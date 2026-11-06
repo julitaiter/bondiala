@@ -87,6 +87,7 @@ class RouteSerializer(serializers.ModelSerializer):
     paradas_oficiales_count = serializers.SerializerMethodField()
     puede_registrar_viaje = serializers.SerializerMethodField()
     estado_datos = serializers.SerializerMethodField()
+    requiere_rematch = serializers.BooleanField(read_only=True)
 
     class Meta:
         model = Recorrido
@@ -109,6 +110,7 @@ class RouteSerializer(serializers.ModelSerializer):
             "paradas_oficiales_count",
             "puede_registrar_viaje",
             "estado_datos",
+            "requiere_rematch",
         ]
 
     def get_paradas_oficiales_count(self, obj) -> int:

@@ -11,7 +11,8 @@ from django.test import TestCase
 from rest_framework.test import APIClient
 
 from accounts.models import User
-from imports.models import ImportRun, ImportError
+from imports.models import DataSource, ImportRun, ImportError
+from imports.services import import_catalogue_route
 from imports.tests import feature
 from transport.models import Linea, Ramal, Recorrido, RecorridoParada, Parada
 from trips.models import RegistroViaje, UsuarioLineaParada
@@ -51,6 +52,14 @@ class CsvCatalogueTests(TestCase):
     def geojson(self, source="badata", row=None):
         import json
 
+        row = row or feature()
+        if not Recorrido.objects.exists():
+            source_row, _ = DataSource.objects.get_or_create(
+                slug=source, defaults={"nombre": source}
+            )
+            import_catalogue_route(
+                {"type": "Feature", "properties": row["properties"]}, source_row
+            )
         path = Path(self.temp.name) / "routes.geojson"
         path.write_text(
             json.dumps({"type": "FeatureCollection", "features": [row or feature()]})
@@ -130,8 +139,12 @@ class CsvCatalogueTests(TestCase):
         self.assertEqual(route.checksum, before)
         self.assertEqual(route.catalogue_format, "csv")
         self.assertEqual(route.geometria_source, route.source)
-        with self.settings(BADATA_RECORRIDOS_URL=str(Path(self.temp.name) / "routes.geojson")):
-            call_command("import_badata_recorridos", format="geojson", stdout=self.output)
+        with self.settings(
+            BA_DATA_RECORRIDOS_GEOJSON_URL=str(Path(self.temp.name) / "routes.geojson")
+        ):
+            call_command(
+                "import_badata_recorridos", format="geojson", stdout=self.output
+            )
         self.assertEqual(ImportRun.objects.latest("pk").status, "UNCHANGED")
         self.run_csv()
         self.assertEqual(ImportRun.objects.latest("pk").status, "UNCHANGED")
@@ -154,17 +167,27 @@ class CsvCatalogueTests(TestCase):
         )
         # Historial anterior a la restricción de nuevas altas oficiales.
         trip = RegistroViaje.objects.create(
-            usuario=user, recorrido=route, inicio=sequence[0], fin=sequence[1],
+            usuario=user,
+            recorrido=route,
+            inicio=sequence[0],
+            fin=sequence[1],
             idempotency_key=uuid.uuid4(),
         )
         for item in sequence:
             UsuarioLineaParada.objects.create(
-                usuario=user, linea=route.ramal.linea, parada=item.parada, primer_viaje=trip
+                usuario=user,
+                linea=route.ramal.linea,
+                parada=item.parada,
+                primer_viaje=trip,
             )
             EventoPuntos.objects.create(
-                usuario=user, tipo="PARADA_TRANSITADA", puntos=1,
+                usuario=user,
+                tipo="PARADA_TRANSITADA",
+                puntos=1,
                 clave=f"parada:{route.ramal.linea_id}:{item.parada_id}",
-                linea=route.ramal.linea, parada=item.parada, viaje=trip,
+                linea=route.ramal.linea,
+                parada=item.parada,
+                viaje=trip,
             )
         points = total_points(user)
         self.write()
@@ -227,9 +250,9 @@ class CsvCatalogueTests(TestCase):
 
     def test_provided_csv_counts_and_color_coverage(self):
         call_command("import_badata_recorridos", stdout=self.output)
-        self.assertEqual(Linea.objects.count(), 134)
-        self.assertEqual(Ramal.objects.count(), 557)
-        self.assertEqual(Recorrido.objects.count(), 1104)
+        self.assertEqual(Linea.objects.count(), 135)
+        self.assertEqual(Ramal.objects.count(), 565)
+        self.assertEqual(Recorrido.objects.count(), 1120)
         self.assertEqual(Recorrido.objects.exclude(geometria=None).count(), 0)
         colors = (
             Path(settings.BADATA_RECORRIDOS_FILE).parent.parent

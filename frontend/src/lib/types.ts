@@ -62,7 +62,8 @@ export type Route = {
   paradas: StopOccurrence[];
   paradas_oficiales_count: number;
   puede_registrar_viaje: boolean;
-  estado_datos: "sin_geometria" | "sin_paradas" | "parcial" | "disponible";
+  estado_datos: "sin_geometria" | "sin_paradas" | "parcial" | "disponible" | "ambiguo";
+  requiere_rematch?: boolean;
 };
 export type Level = {
   numero: number;

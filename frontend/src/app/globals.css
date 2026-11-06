@@ -545,6 +545,20 @@ main {
   line-height: 1.2;
   letter-spacing: -1px;
 }
+.line-badge[data-code-length="4"] b {
+  font-size: 24px;
+  letter-spacing: -1px;
+}
+.line-badge[data-code-length="5"] b {
+  font-size: 18px;
+  letter-spacing: -1px;
+}
+.line-badge.small[data-code-length="4"] b {
+  font-size: 15px;
+}
+.line-badge.small[data-code-length="5"] b {
+  font-size: 12px;
+}
 .line-badge.small .badge-stripes {
   height: 5px;
   margin: 4px 5px 0;
@@ -1088,6 +1102,19 @@ main {
   overflow: auto;
   padding-right: 8px;
 }
+.stop-select {
+  text-align: left;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 4px 22px 4px 0;
+  min-height: 34px;
+  width: 100%;
+  cursor: pointer;
+}
+.selected-stop .stop-select { color: var(--interactive); }
+.selected-stop .stop-dot { outline: 3px solid var(--interactive); outline-offset: 3px; }
+.stop-selection .actions { justify-content: flex-start; margin-top: 14px; flex-wrap: wrap; }
 .trip-steps {
   display: flex;
   gap: 10px;

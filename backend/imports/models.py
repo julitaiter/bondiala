@@ -56,3 +56,12 @@ class StopMatchIssue(models.Model):
         choices=[("pending", "Pendiente"), ("resolved", "Resuelta")],
     )
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        indexes = [
+            models.Index(
+                fields=["linea", "sentido", "reason"],
+                condition=models.Q(status="pending"),
+                name="stop_issue_pending_lookup",
+            )
+        ]

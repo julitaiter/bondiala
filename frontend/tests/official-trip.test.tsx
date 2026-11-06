@@ -86,4 +86,11 @@ describe("registro con paradas oficiales", () => {
     expect(screen.getByRole("option", { name: "1. Parada 1" })).toBeVisible();
     expect(screen.getByRole("button", { name: "Revisar viaje" })).toBeDisabled();
   });
+
+  it("identifica la cobertura parcial sin bloquear una secuencia utilizable", () => {
+    state.route.estado_datos = "parcial";
+    render(<TripScreen />);
+    expect(screen.getByText("Recorrido parcial. Podés registrar el tramo entre las paradas oficiales disponibles.")).toBeVisible();
+    expect(screen.getByRole("combobox", { name: "¿Dónde subiste?" })).toBeEnabled();
+  });
 });

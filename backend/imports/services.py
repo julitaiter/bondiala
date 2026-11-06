@@ -1,10 +1,13 @@
 import hashlib
+import ipaddress
 import csv
 import io
 import json
 import math
+import socket
+import time
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 import requests
 from django.conf import settings
 from django.contrib.gis.geos import GEOSGeometry, MultiLineString
@@ -22,19 +25,113 @@ from transport.models import (
 from .models import DataSource, ImportRun, ImportError
 
 
+def validate_download_url(location):
+    parsed = urlparse(location)
+    if (
+        parsed.scheme not in {"http", "https"}
+        or not parsed.hostname
+        or parsed.username
+        or parsed.password
+        or parsed.fragment
+    ):
+        raise ValueError(
+            "URL de importación inválida; usá HTTP(S) sin credenciales ni fragmentos."
+        )
+    host = parsed.hostname.lower().rstrip(".")
+    if parsed.port not in {None, 80, 443}:
+        raise ValueError("El puerto de descarga no está permitido.")
+    if not settings.DEBUG and (
+        parsed.scheme != "https" or host not in settings.IMPORT_ALLOWED_HOSTS
+    ):
+        raise ValueError(
+            "En producción la descarga requiere HTTPS y un host de IMPORT_ALLOWED_HOSTS."
+        )
+    try:
+        addresses = socket.getaddrinfo(
+            host,
+            parsed.port or (443 if parsed.scheme == "https" else 80),
+            type=socket.SOCK_STREAM,
+        )
+    except socket.gaierror as exc:
+        raise ValueError("No se pudo resolver el host de descarga.") from exc
+    if not addresses or any(
+        not ipaddress.ip_address(address[4][0]).is_global for address in addresses
+    ):
+        raise ValueError(
+            "No se permiten destinos de red privados, locales o reservados."
+        )
+    return location
+
+
 def load_bytes(location):
-    if urlparse(location).scheme in {"http", "https"}:
-        with requests.get(
-            location, timeout=(10, settings.IMPORT_TIMEOUT), stream=True
-        ) as response:
-            response.raise_for_status()
-            chunks, size = [], 0
-            for chunk in response.iter_content(65536):
-                size += len(chunk)
-                if size > settings.IMPORT_MAX_BYTES:
-                    raise ValueError("La fuente supera el tamaño permitido.")
-                chunks.append(chunk)
-            raw = b"".join(chunks)
+    location = str(location)
+    parsed = urlparse(location)
+    if parsed.scheme in {"http", "https"}:
+        deadline = time.monotonic() + settings.IMPORT_TIMEOUT
+        with requests.Session() as session:
+            session.trust_env = False
+            for redirect in range(4):
+                validate_download_url(location)
+                with session.get(
+                    location,
+                    timeout=(
+                        min(10, settings.IMPORT_TIMEOUT),
+                        min(10, settings.IMPORT_TIMEOUT),
+                    ),
+                    stream=True,
+                    allow_redirects=False,
+                ) as response:
+                    if response.status_code in {301, 302, 303, 307, 308}:
+                        if redirect == 3 or not response.headers.get("Location"):
+                            raise ValueError(
+                                "La fuente excede el límite de redirecciones."
+                            )
+                        location = urljoin(location, response.headers["Location"])
+                        continue
+                    response.raise_for_status()
+                    mime = (
+                        response.headers.get("Content-Type", "")
+                        .split(";", 1)[0]
+                        .strip()
+                        .lower()
+                    )
+                    if mime and mime not in {
+                        "application/json",
+                        "application/geo+json",
+                        "application/vnd.geo+json",
+                        "application/octet-stream",
+                        "text/plain",
+                        "text/json",
+                        "text/csv",
+                        "application/csv",
+                    }:
+                        raise ValueError(
+                            "El MIME de la fuente no corresponde a JSON/CSV."
+                        )
+                    declared = response.headers.get("Content-Length")
+                    if declared and (
+                        not declared.isdigit()
+                        or int(declared) > settings.IMPORT_MAX_BYTES
+                    ):
+                        raise ValueError(
+                            "La fuente declara un tamaño inválido o excesivo."
+                        )
+                    chunks, size = [], 0
+                    for chunk in response.iter_content(65536):
+                        if time.monotonic() > deadline:
+                            raise ValueError(
+                                "La descarga excedió el tiempo máximo permitido."
+                            )
+                        size += len(chunk)
+                        if size > settings.IMPORT_MAX_BYTES:
+                            raise ValueError("La fuente supera el tamaño permitido.")
+                        chunks.append(chunk)
+                    raw = b"".join(chunks)
+                    break
+    elif parsed.scheme or parsed.netloc:
+        raise ValueError(
+            "Esquema de fuente no permitido; usá --file para archivos locales."
+        )
     else:
         path = Path(location)
         if path.stat().st_size > settings.IMPORT_MAX_BYTES:
@@ -75,7 +172,16 @@ def validate_geojson(document):
         or not isinstance(document.get("features"), list)
     ):
         raise ValueError("Se esperaba un GeoJSON FeatureCollection.")
-    crs = document.get("crs", {}).get("properties", {}).get("name", "")
+    if len(document["features"]) > settings.IMPORT_MAX_FEATURES:
+        raise ValueError("La fuente excede la cantidad máxima de features.")
+    crs_object = document.get("crs") or {}
+    if not isinstance(crs_object, dict) or not isinstance(
+        crs_object.get("properties", {}), dict
+    ):
+        raise ValueError("CRS inválido.")
+    crs = crs_object.get("properties", {}).get("name", "")
+    if not isinstance(crs, str):
+        raise ValueError("CRS inválido.")
     if crs and not any(x in crs.upper() for x in ["CRS84", "4326"]):
         raise ValueError("La fuente debe estar en WGS84 / SRID 4326.")
     if not document["features"]:
@@ -134,7 +240,8 @@ def route_properties(feature, csv_catalogue=False):
         or len(external) > 100
     ):
         raise ValueError("recorrido, sentido o l_r_s inválido.")
-    if csv_catalogue and external != f"{int(number):03d}{branch_name}{direction}":
+    prefix = number.zfill(3) if number.isdigit() else number
+    if csv_catalogue and external != f"{prefix}{branch_name}{direction}":
         raise ValueError("l_r_s no coincide con la línea, el ramal y el sentido.")
     return props, number, branch_name, direction, external
 
@@ -200,37 +307,6 @@ def import_catalogue_route(feature, source):
     route.checksum = checksum
     route.catalogue_format = "csv"
     # Importar metadata no reemplaza trazados ni ocurrencias históricas.
-    route.save()
-    return "created" if created else "updated"
-
-
-def import_route(feature, source):
-    props, number, name, direction, external = route_properties(feature)
-    geom = geometry(feature.get("geometry"), "MultiLineString")
-    branch, route = route_target(props, number, name, direction, external, source)
-    created = route is None
-    if created:
-        route = Recorrido(
-            ramal=branch, sentido=direction, external_id=external, source=source
-        )
-    changed = (
-        created
-        or route.source_id != source.pk
-        or route.geometria != geom
-        or route.geometria_source_id != source.pk
-    )
-    if route.catalogue_format != "csv":
-        checksum = hashlib.sha256(
-            json.dumps(feature, sort_keys=True).encode()
-        ).hexdigest()
-        changed = changed or route.checksum != checksum
-        route.metadata = {key: props.get(key) for key in ROUTE_METADATA}
-        route.checksum = checksum
-    if not changed:
-        return "skipped"
-    route.source = source
-    route.geometria = geom
-    route.geometria_source = source
     route.save()
     return "created" if created else "updated"
 

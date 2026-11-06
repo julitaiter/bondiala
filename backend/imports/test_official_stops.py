@@ -89,6 +89,35 @@ class OfficialStopsTests(TestCase):
             list(RecorridoParada.objects.values_list("pk", flat=True)), ids
         )
 
+    def test_rematch_recovers_ebus_without_losing_consolidated_services(self):
+        ebus = Linea.objects.create(numero=" eBus ", source=self.source)
+        route = self.route_for(line=ebus)
+        self.run_import([official(line="eBUS")])
+        stop = Parada.objects.get()
+        # This is the previous parser's state plus a service merged from another
+        # physical duplicate: origen contains EBUS, but lineas only retained 60.
+        stop.metadata["lineas"] = [{"numero":"60", "sentido":"IDA"}]
+        stop.save(update_fields=["metadata"])
+        before_identity = (stop.pk, stop.external_id, bytes(stop.ubicacion.wkb))
+        preview = self.run_import(rematch=True, dry_run=True)
+        self.assertEqual(preview.metrics["paradas_servicios_actualizados"], 1)
+        stop.refresh_from_db()
+        self.assertEqual(stop.metadata["lineas"], [{"numero":"60", "sentido":"IDA"}])
+        self.assertFalse(RecorridoParada.objects.exists())
+        run = self.run_import(rematch=True)
+        stop.refresh_from_db()
+        self.assertEqual(run.metrics["paradas_servicios_actualizados"], 1)
+        self.assertEqual(stop.metadata["lineas"], [
+            {"numero":"60", "sentido":"IDA"}, {"numero":"EBUS", "sentido":"IDA"},
+        ])
+        self.assertEqual((stop.pk, stop.external_id, bytes(stop.ubicacion.wkb)), before_identity)
+        self.assertEqual(set(RecorridoParada.objects.filter(activa=True).values_list("recorrido_id", flat=True)),
+                         {self.route.pk, route.pk})
+        before = list(RecorridoParada.objects.order_by("pk").values())
+        repeat = self.run_import(rematch=True)
+        self.assertEqual(repeat.metrics["paradas_servicios_actualizados"], 0)
+        self.assertEqual(list(RecorridoParada.objects.order_by("pk").values()), before)
+
     def test_duplicate_physical_rows_merge_line_memberships(self):
         line2 = Linea.objects.create(numero="24", source=self.source)
         self.route_for(line=line2)
@@ -127,20 +156,21 @@ class OfficialStopsTests(TestCase):
         self.run_import([official(sense="v")], match=True)
         self.assertEqual(RecorridoParada.objects.get().recorrido, vuelta)
 
-    def test_multiple_branches_choose_only_conclusive_distance(self):
+    def test_different_parallel_corridors_are_not_chosen_by_distance_gap(self):
         other = self.route_for(
             name="B", coordinates=[[[-58.405, -34.6004], [-58.395, -34.6004]]]
         )
         self.run_import([official()], match=True)
-        self.assertEqual(RecorridoParada.objects.get().recorrido, self.route)
+        self.assertFalse(RecorridoParada.objects.exists())
         self.assertFalse(other.secuencia.exists())
+        self.assertTrue(StopMatchIssue.objects.filter(reason="ambiguous_branches").exists())
 
-    def test_ambiguous_branches_not_associated(self):
+    def test_identical_oriented_corridor_can_serve_both_branches(self):
         self.route_for(name="B")
         run = self.run_import([official()], match=True)
-        self.assertFalse(RecorridoParada.objects.exists())
-        self.assertEqual(run.metrics["asociaciones_ambiguas"], 1)
-        self.assertEqual(len(StopMatchIssue.objects.get().candidates), 2)
+        self.assertEqual(RecorridoParada.objects.count(), 2)
+        self.assertEqual(run.metrics["asociaciones_ambiguas"], 0)
+        self.assertEqual(run.metrics["asociaciones_corredor_compartido"], 2)
 
     @override_settings(PARADA_MATCH_MAX_DISTANCE_METERS=20)
     def test_maximum_distance_uses_meters(self):
@@ -301,15 +331,18 @@ class OfficialStopsTests(TestCase):
         old, start, end, user, trip = self.historical()
         before = list(EventoPuntos.objects.values())
         beforetrip = list(RegistroViaje.objects.values())
+        beforeprogress = list(UsuarioLineaParada.objects.values())
         self.run_import([official(), official(x=-58.398, address="Second")], match=True)
         start.refresh_from_db()
-        self.assertNotEqual(start.parada_id, old.pk)
+        old.refresh_from_db()
+        self.assertEqual(start.parada_id, old.pk)
+        self.assertTrue(old.metadata["official_equivalences"].get("60"))
         self.assertEqual(list(EventoPuntos.objects.values()), before)
         self.assertEqual(list(RegistroViaje.objects.values()), beforetrip)
-        self.assertEqual(UsuarioLineaParada.objects.get().parada_id, start.parada_id)
+        self.assertEqual(list(UsuarioLineaParada.objects.values()), beforeprogress)
         self.assertEqual(EventoPuntos.objects.aggregate(n=Sum("puntos"))["n"], 1)
 
-    def test_reconcile_collision_merges_progress_without_new_points(self):
+    def test_reconcile_collision_preserves_both_historical_progress_rows(self):
         old, start, end, user, trip = self.historical()
         self.run_import([official(), official(x=-58.398, address="Second")])
         official_stop = Parada.objects.get(es_oficial=True, direccion="Av. Prueba 100")
@@ -317,7 +350,7 @@ class OfficialStopsTests(TestCase):
             usuario=user, linea=self.line, parada=official_stop, primer_viaje=trip
         )
         self.run_import(rematch=True)
-        self.assertEqual(UsuarioLineaParada.objects.count(), 1)
+        self.assertEqual(UsuarioLineaParada.objects.count(), 2)
         self.assertEqual(EventoPuntos.objects.count(), 1)
         self.assertEqual(RegistroViaje.objects.count(), 1)
 
@@ -434,6 +467,32 @@ class OfficialStopsTests(TestCase):
 
 class OfflineBootstrapIntegrationTests(TestCase):
     @override_settings(DEBUG=True)
+    def test_documented_variants_and_ebus_fixtures_work_offline(self):
+        from django.conf import settings
+        from transport.services import official_sequence, route_availability, routes_with_quality
+
+        output = io.StringIO()
+        data = Path(settings.BADATA_RECORRIDOS_FILE).parent
+        call_command("bootstrap", stdout=output)
+        call_command("import_badata_recorridos", geojson=True,
+                     file=str(data / "recorridos.variants.sample.geojson"), stdout=output)
+        call_command("import_badata_paradas", match_routes=True,
+                     file=str(data / "paradas.catalogue.sample.geojson"), stdout=output)
+        self.assertEqual(Recorrido.objects.exclude(geometria=None).count(), 40)
+        ebus = routes_with_quality().filter(ramal__linea__numero="EBUS").prefetch_related("secuencia__parada")
+        self.assertEqual(ebus.count(), 2)
+        for route in ebus:
+            self.assertTrue(route_availability(route)["puede_registrar_viaje"])
+            self.assertGreaterEqual(official_sequence().filter(recorrido=route).count(), 3)
+        before = list(official_sequence().order_by("pk").values())
+        call_command("bootstrap", stdout=output)
+        self.assertEqual(before, list(official_sequence().order_by("pk").values()))
+        self.assertEqual(Recorrido.objects.exclude(geometria=None).count(), 40)
+        self.assertFalse(get_user_model().objects.exists())
+        self.assertFalse(RegistroViaje.objects.exists())
+        self.assertFalse(EventoPuntos.objects.exists())
+
+    @override_settings(DEBUG=True)
     def test_official_fixture_and_bootstrap_restart_preserve_public_sequences(self):
         """Exercise the exact offline catalogue/import path used by the E2E CI job."""
         from django.conf import settings
@@ -444,8 +503,8 @@ class OfflineBootstrapIntegrationTests(TestCase):
             Path(settings.BASE_DIR).parent / "data" / "paradas.official.sample.geojson"
         )
         call_command("bootstrap", stdout=output)
-        self.assertEqual(Linea.objects.count(), 134)
-        self.assertEqual(Recorrido.objects.count(), 1104)
+        self.assertEqual(Linea.objects.count(), 135)
+        self.assertEqual(Recorrido.objects.count(), 1120)
         self.assertEqual(Recorrido.objects.exclude(geometria=None).count(), 24)
         self.assertEqual(
             Parada.objects.filter(source__slug="muestra-paradas").count(), 202

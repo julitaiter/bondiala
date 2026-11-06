@@ -5,10 +5,17 @@ from django.core.validators import RegexValidator
 
 
 def normalize_line(value):
+    if isinstance(value, bool) or not isinstance(value, (str, int)):
+        raise ValueError("Identificador de línea inválido")
     text = str(value).strip()
-    if not re.fullmatch(r"[0-9]{1,5}", text) or int(text) <= 0:
-        raise ValueError("Número de línea inválido")
-    return str(int(text))
+    if not re.fullmatch(r"[A-Za-z0-9]{1,5}", text):
+        raise ValueError("Identificador de línea inválido")
+    text = text.upper()
+    if text.isdigit():
+        if int(text) <= 0:
+            raise ValueError("Identificador de línea inválido")
+        return str(int(text))
+    return text
 
 
 hex_color = RegexValidator(
@@ -104,6 +111,7 @@ class Recorrido(models.Model):
     external_id = models.CharField(max_length=100, db_index=True)
     source = models.ForeignKey("imports.DataSource", on_delete=models.PROTECT)
     geometria = models.MultiLineStringField(srid=4326, null=True, blank=True)
+    requiere_rematch = models.BooleanField(default=False)
     geometria_source = models.ForeignKey(
         "imports.DataSource",
         null=True,
@@ -193,6 +201,7 @@ class RecorridoParada(models.Model):
     )
     distancia_metros = models.FloatField(null=True, blank=True)
     posicion_metros = models.FloatField(null=True, blank=True)
+    evidencia = models.JSONField(default=dict, blank=True)
 
     class Meta:
         ordering = ["orden"]

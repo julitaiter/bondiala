@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.gis.admin import GISModelAdmin
 from django.db.models import Count, Q
 from .models import Linea, LineaColor, Ramal, Recorrido, Parada, RecorridoParada
+from .services import routes_with_quality, route_availability
 
 
 @admin.register(Linea)
@@ -40,6 +41,7 @@ class SequenceInline(admin.TabularInline):
         "distancia_metros",
         "posicion_metros",
         "source",
+        "evidencia",
     ]
     readonly_fields = fields
     extra = 0
@@ -59,6 +61,7 @@ class RouteAdmin(GISModelAdmin):
         "tiene_geometria",
         "cantidad_paradas",
         "paradas_oficiales",
+        "estado_cobertura",
     ]
     list_filter = ["activo", "sentido", "source"]
     search_fields = ["external_id", "ramal__linea__numero"]
@@ -71,13 +74,14 @@ class RouteAdmin(GISModelAdmin):
         "catalogue_format",
         "geometria_source",
         "updated_at",
+        "requiere_rematch",
+        "estado_cobertura",
     ]
     inlines = [SequenceInline]
 
     def get_queryset(self, request):
         return (
-            super()
-            .get_queryset(request)
+            routes_with_quality(super().get_queryset(request))
             .select_related("ramal__linea")
             .annotate(
                 total_count=Count("secuencia", filter=Q(secuencia__activa=True)),
@@ -104,6 +108,10 @@ class RouteAdmin(GISModelAdmin):
     def cantidad_paradas(self, obj):
         return obj.total_count
 
+    @admin.display(description="Cobertura")
+    def estado_cobertura(self, obj):
+        return route_availability(obj)["estado_datos"]
+
 
 @admin.register(Parada)
 class StopAdmin(GISModelAdmin):
@@ -116,6 +124,7 @@ class StopAdmin(GISModelAdmin):
         "barrio",
         "comuna",
         "source",
+        "lineas_sentidos",
     ]
     search_fields = ["external_id", "nombre", "direccion"]
     list_filter = ["es_oficial", "activa", "source", "barrio"]
@@ -127,4 +136,27 @@ class StopAdmin(GISModelAdmin):
         "enrichment",
         "metadata",
         "es_oficial",
+        "lineas_sentidos",
     ]
+
+    @admin.display(description="Líneas y sentidos de origen")
+    def lineas_sentidos(self, obj):
+        return ", ".join(
+            f"{item.get('numero', '')} · {item.get('sentido', '')}"
+            for item in obj.metadata.get("lineas", [])
+        ) or "Sin servicios reconocidos"
+
+
+@admin.register(RecorridoParada)
+class SequenceAdmin(admin.ModelAdmin):
+    list_display = ["recorrido", "parada", "orden", "activa", "metodo", "distancia_metros", "posicion_metros", "source"]
+    list_filter = ["activa", "metodo", "source", "recorrido__sentido"]
+    search_fields = ["recorrido__external_id", "recorrido__ramal__linea__numero", "parada__direccion", "parada__external_id"]
+    list_select_related = ["recorrido__ramal__linea", "parada", "source"]
+    readonly_fields = ["recorrido", "parada", "orden", "activa", "metodo", "distancia_metros", "posicion_metros", "source", "evidencia"]
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False

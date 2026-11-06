@@ -1,11 +1,11 @@
 from django.db.models.functions import Cast
-from django.db.models import IntegerField, Prefetch
+from django.db.models import Case, F, IntegerField, Prefetch, When
 from rest_framework import viewsets, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema
 from .models import Recorrido, Parada
-from .services import catalog, visited_by_line, official_sequence
+from .services import catalog, visited_by_line, official_sequence, routes_with_quality
 from .serializers import LineSerializer, RouteSerializer, StopSerializer
 
 
@@ -17,8 +17,11 @@ class LineViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         query = (
             catalog()
-            .annotate(numero_entero=Cast("numero", IntegerField()))
-            .order_by("numero_entero")
+            .annotate(numero_entero=Case(
+                When(numero__regex=r"^[0-9]+$", then=Cast("numero", IntegerField())),
+                output_field=IntegerField(),
+            ))
+            .order_by(F("numero_entero").asc(nulls_last=True), "numero", "pk")
         )
         if (
             self.request.query_params.get("estado") == "recorridas"
@@ -52,7 +55,7 @@ class RouteViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         query = (
-            Recorrido.objects.filter(
+            routes_with_quality().filter(
                 activo=True, ramal__activo=True, ramal__linea__activa=True
             )
             .select_related("ramal__linea__colores")
@@ -85,7 +88,10 @@ class StopViewSet(viewsets.ReadOnlyModelViewSet):
         route = self.request.query_params.get("recorrido")
         if route:
             query = (
-                query.filter(recorridos__recorrido_id=route, recorridos__activa=True)
+                query.filter(
+                    recorridos__recorrido_id=route, recorridos__activa=True,
+                    recorridos__recorrido__requiere_rematch=False,
+                )
                 if route.isdigit()
                 else query.none()
             )

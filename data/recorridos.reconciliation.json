@@ -1,0 +1,1661 @@
+{
+  "schema_version": 2,
+  "reviewed_on": "2026-11-06",
+  "purpose": "Registro de evidencia y altas explícitas del catálogo. No es configuración de matching ni autoriza aliases.",
+  "source": {
+    "url": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/colectivos-recorridos/recorrido-colectivos.geojson",
+    "sha256": "405e3f1aebc4c3dbca56547fa8595a71cbc5c1906566b60d62aeeb056ec0054f",
+    "bytes": 655234,
+    "features": 112
+  },
+  "catalogue": {
+    "path": "data/recorrido-colectivos.csv",
+    "sha256": "c6e3d589dd06112e98f408ebb697b2d6190b427eeb66d3ce1de289fe33a52002",
+    "records": 1120,
+    "lines": 135,
+    "branches": 565,
+    "original_rows_preserved_byte_for_byte": true,
+    "new_fid_policy": "Vacío: la fuente GeoJSON no publica fid."
+  },
+  "summary": {
+    "exact_matches": 112,
+    "reviewed_unmatched": 16,
+    "added_features": 16,
+    "added_branches": 8,
+    "added_lines": 1,
+    "safe_aliases": 0,
+    "pending_features": 0
+  },
+  "approved_aliases": [],
+  "sources": {
+    "official_geojson": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/colectivos-recorridos/recorrido-colectivos.geojson",
+    "operating_changes": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/indicadores-colectivos/aclaraciones_parametros_colectivos.pdf",
+    "50_fusion": "https://buenosaires.gob.ar/gcaba_historico/infraestructura/fusion-de-las-lineas-50-y-6-de-colectivos-conoce-los-nuevos-recorridos",
+    "12_parameters": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MIGC-SECT-3-26-ANX.pdf",
+    "151_parameters": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MIGC-SECT-132-25-ANX.pdf",
+    "151_rename_proposal": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MIGC-SECT-118-25-ANX.pdf",
+    "102_routes": "https://buenosaires.gob.ar/gcaba_historico/linea-102",
+    "ebus_route": "https://buenosaires.gob.ar/gcaba_historico/recorrido-del-bus-electrico",
+    "42_parameters": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MIGC-SECT-4-26-ANX.pdf",
+    "102_2026_resolution": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/882357",
+    "102_2026_parameters": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MMIGC-SECT-221-26-ANX.pdf",
+    "42_2026_revision": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MMIGC-SECT-106-26-ANX.pdf",
+    "ebus_2026_extension": "https://buenosaires.gob.ar/gcaba_historico/noticias/el-bus-electrico-extiende-su-recorrido-y-ahora-llega-caminito"
+  },
+  "cases": [
+    {
+      "prefix": "050C",
+      "status": "added",
+      "classification": "fusion_with_changed_itinerary",
+      "cause": "Ramal separado Correo Central–Terminal Dellepiane tras la fusión 6/50, con cambios de calles y cabeceras. Se agrega C sin renombrar ni eliminar recorridos de la 6 o de 50 A/B.",
+      "evidence": [
+        "50_fusion",
+        "operating_changes"
+      ],
+      "normalization_equivalence_found": false,
+      "csv_rows_related_legacy_lines": [
+        {
+          "fid": "13",
+          "linea": "6",
+          "recorrido": "A",
+          "sentido": "IDA",
+          "l_r_s": "006AIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "RETIRO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "VILLA SOLDATI (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "14",
+          "linea": "6",
+          "recorrido": "A",
+          "sentido": "VUELTA",
+          "l_r_s": "006AVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "VILLA SOLDATI (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "RETIRO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "15",
+          "linea": "6",
+          "recorrido": "B",
+          "sentido": "IDA",
+          "l_r_s": "006BIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "RETIRO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "VILLA SOLDATI (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "16",
+          "linea": "6",
+          "recorrido": "B",
+          "sentido": "VUELTA",
+          "l_r_s": "006BVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "VILLA SOLDATI (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "RETIRO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "17",
+          "linea": "6",
+          "recorrido": "C",
+          "sentido": "IDA",
+          "l_r_s": "006CIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "RETIRO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "NUEVA POMPEYA (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "18",
+          "linea": "6",
+          "recorrido": "C",
+          "sentido": "VUELTA",
+          "l_r_s": "006CVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "NUEVA POMPEYA (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "RETIRO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "19",
+          "linea": "6",
+          "recorrido": "D",
+          "sentido": "IDA",
+          "l_r_s": "006DIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "RETIRO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "NUEVA POMPEYA (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "20",
+          "linea": "6",
+          "recorrido": "D",
+          "sentido": "VUELTA",
+          "l_r_s": "006DVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "NUEVA POMPEYA (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "RETIRO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        }
+      ],
+      "geojson_features": [
+        {
+          "properties": {
+            "linea": "050",
+            "recorrido": "C",
+            "sentido": "IDA",
+            "l_r_s": "050CIDA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": null,
+            "camara": "CETUBA",
+            "desde": "PLAYA DE REGULACIÓN SUBTERRÁNEA CORREO CENTRAL (CIUDAD AUTÓNOMA DE BUENOS AIRES)",
+            "hasta": "TERMINAL DELLEPIANE (CIUDAD AUTÓNOMA DE BUENOS AIRES)"
+          },
+          "normalized_identity": [
+            "50",
+            "C",
+            "IDA"
+          ],
+          "geometry_sha256_canonical_json": "3bd00fac87a4bd3ebdff210919765a15c8a3be579cdbc444a97fbe3c483ba890",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "050AIDA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 16954.84,
+              "length_candidate_m": 21228.87,
+              "start_distance_m": 0.0,
+              "end_distance_m": 4410.05
+            },
+            {
+              "candidate": "050BIDA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 16954.84,
+              "length_candidate_m": 17147.66,
+              "start_distance_m": 3907.87,
+              "end_distance_m": 4410.47
+            }
+          ]
+        },
+        {
+          "properties": {
+            "linea": "050",
+            "recorrido": "C",
+            "sentido": "VUELTA",
+            "l_r_s": "050CVUELTA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": null,
+            "camara": "CETUBA",
+            "desde": "TERMINAL DELLEPIANE (CIUDAD AUTÓNOMA DE BUENOS AIRES)",
+            "hasta": "PLAYA DE REGULACIÓN SUBTERRÁNEA CORREO CENTRAL (CIUDAD AUTÓNOMA DE BUENOS AIRES)"
+          },
+          "normalized_identity": [
+            "50",
+            "C",
+            "VUELTA"
+          ],
+          "geometry_sha256_canonical_json": "60576a65bf727148161729c5d478ec7fb12683b9a7ea8ee369af37025370f1d3",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "050AVUELTA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 16811.15,
+              "length_candidate_m": 21850.59,
+              "start_distance_m": 4409.93,
+              "end_distance_m": 0.0
+            },
+            {
+              "candidate": "050BVUELTA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 16811.15,
+              "length_candidate_m": 18172.64,
+              "start_distance_m": 4410.0,
+              "end_distance_m": 3906.1
+            }
+          ]
+        }
+      ],
+      "previous_status": "pending_catalogue_review",
+      "cause_before_extension": "Ramal C de la línea 50, Correo Central–Terminal Dellepiane, tras fusión con la 6. La fuente oficial documenta cambios de cabeceras y calles; no es un alias de 006A/B/C/D ni de 050A/B.",
+      "classification_before_extension": "fusion_with_changed_itinerary",
+      "csv_rows_same_line_before_extension": [
+        {
+          "fid": "229",
+          "linea": "50",
+          "recorrido": "A",
+          "sentido": "IDA",
+          "l_r_s": "050AIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "ESTACION TERMINAL DE OMNIBUS BUENOS AIRES (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "AVENIDA EVA PERON y colectora Este AVENIDA GENERAL PAZ (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "230",
+          "linea": "50",
+          "recorrido": "A",
+          "sentido": "VUELTA",
+          "l_r_s": "050AVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "AVENIDA EVA PERON y colectora Este AVENIDA GENERAL PAZ (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "ESTACION TERMINAL DE OMNIBUS BUENOS AIRES (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "231",
+          "linea": "50",
+          "recorrido": "B",
+          "sentido": "IDA",
+          "l_r_s": "050BIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "ESTACION TERMINAL DE OMNIBUS DE RETIRO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "HOSPITAL PIÑERO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "232",
+          "linea": "50",
+          "recorrido": "B",
+          "sentido": "VUELTA",
+          "l_r_s": "050BVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "HOSPITAL PIÑERO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "ESTACION TERMINAL DE OMNIBUS DE RETIRO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        }
+      ],
+      "alias_target": null,
+      "added_csv_rows": [
+        {
+          "fid": "",
+          "linea": "50",
+          "recorrido": "C",
+          "sentido": "IDA",
+          "l_r_s": "050CIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "CETUBA",
+          "desde": "PLAYA DE REGULACIÓN SUBTERRÁNEA CORREO CENTRAL (CIUDAD AUTÓNOMA DE BUENOS AIRES)",
+          "hasta": "TERMINAL DELLEPIANE (CIUDAD AUTÓNOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "",
+          "linea": "50",
+          "recorrido": "C",
+          "sentido": "VUELTA",
+          "l_r_s": "050CVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "CETUBA",
+          "desde": "TERMINAL DELLEPIANE (CIUDAD AUTÓNOMA DE BUENOS AIRES)",
+          "hasta": "PLAYA DE REGULACIÓN SUBTERRÁNEA CORREO CENTRAL (CIUDAD AUTÓNOMA DE BUENOS AIRES)"
+        }
+      ],
+      "catalogue_route_ids": [
+        "050CIDA",
+        "050CVUELTA"
+      ],
+      "verification_after_import": [
+        {
+          "external_id": "050CIDA",
+          "paradas_oficiales_count": 44,
+          "puede_registrar_viaje": true,
+          "estado_datos": "parcial"
+        },
+        {
+          "external_id": "050CVUELTA",
+          "paradas_oficiales_count": 43,
+          "puede_registrar_viaje": true,
+          "estado_datos": "parcial"
+        }
+      ],
+      "validity_verified_on": "2026-11-06"
+    },
+    {
+      "prefix": "012C",
+      "status": "added",
+      "classification": "distinct_variant_same_terminals",
+      "cause": "Variante por Centro Metropolitano de Diseño aprobada separadamente de A/B por 3-SECT/26; compartir cabeceras con A no determina identidad.",
+      "evidence": [
+        "12_parameters",
+        "operating_changes"
+      ],
+      "normalization_equivalence_found": false,
+      "csv_rows_related_legacy_lines": [],
+      "geojson_features": [
+        {
+          "properties": {
+            "linea": "012",
+            "recorrido": "C",
+            "sentido": "IDA",
+            "l_r_s": "012CIDA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": null,
+            "camara": "CETUBA",
+            "desde": "PUENTE PUEYRREDON (CIUDAD AUTONOMA DE BUENOS AIRES)",
+            "hasta": "PLAZA FALUCHO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+          },
+          "normalized_identity": [
+            "12",
+            "C",
+            "IDA"
+          ],
+          "geometry_sha256_canonical_json": "7e2d995a0ea0b4aac86c3daa1aa06440ceb3f307572b74d0af405e65d45343e3",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "012AIDA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 13879.17,
+              "length_candidate_m": 12590.33,
+              "start_distance_m": 0.0,
+              "end_distance_m": 0.0
+            },
+            {
+              "candidate": "012BIDA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 13879.17,
+              "length_candidate_m": 9170.14,
+              "start_distance_m": 3124.93,
+              "end_distance_m": 0.0
+            }
+          ]
+        },
+        {
+          "properties": {
+            "linea": "012",
+            "recorrido": "C",
+            "sentido": "VUELTA",
+            "l_r_s": "012CVUELTA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": null,
+            "camara": "CETUBA",
+            "desde": "PLAZA FALUCHO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+            "hasta": "PUENTE PUEYRREDON (CIUDAD AUTONOMA DE BUENOS AIRES)"
+          },
+          "normalized_identity": [
+            "12",
+            "C",
+            "VUELTA"
+          ],
+          "geometry_sha256_canonical_json": "b4a8ff55554021fe3094f3df535d1963c50e58cc84b9a8825299cd843fd8c1bc",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "012AVUELTA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 13393.17,
+              "length_candidate_m": 12677.53,
+              "start_distance_m": 0.0,
+              "end_distance_m": 38.49
+            },
+            {
+              "candidate": "012BVUELTA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 13393.17,
+              "length_candidate_m": 9150.65,
+              "start_distance_m": 0.0,
+              "end_distance_m": 3124.71
+            }
+          ]
+        }
+      ],
+      "previous_status": "pending_catalogue_review",
+      "cause_before_extension": "Variante por Centro Metropolitano de Diseño, ausente del CSV. Comparte cabeceras con 012A pero tiene distinto itinerario de ida y vuelta; no es normalización ni duplicado de A/B.",
+      "classification_before_extension": "distinct_variant_same_terminals",
+      "csv_rows_same_line_before_extension": [
+        {
+          "fid": "33",
+          "linea": "12",
+          "recorrido": "A",
+          "sentido": "IDA",
+          "l_r_s": "012AIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "PUENTE PUEYRREDON (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PLAZA FALUCHO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "34",
+          "linea": "12",
+          "recorrido": "A",
+          "sentido": "VUELTA",
+          "l_r_s": "012AVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "PLAZA FALUCHO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PUENTE PUEYRREDON (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "35",
+          "linea": "12",
+          "recorrido": "B",
+          "sentido": "IDA",
+          "l_r_s": "012BIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "PLAZA DE LA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PLAZA FALUCHO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "36",
+          "linea": "12",
+          "recorrido": "B",
+          "sentido": "VUELTA",
+          "l_r_s": "012BVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "PLAZA FALUCHO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PLAZA DE LA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        }
+      ],
+      "alias_target": null,
+      "added_csv_rows": [
+        {
+          "fid": "",
+          "linea": "12",
+          "recorrido": "C",
+          "sentido": "IDA",
+          "l_r_s": "012CIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "CETUBA",
+          "desde": "PUENTE PUEYRREDON (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PLAZA FALUCHO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "",
+          "linea": "12",
+          "recorrido": "C",
+          "sentido": "VUELTA",
+          "l_r_s": "012CVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "CETUBA",
+          "desde": "PLAZA FALUCHO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PUENTE PUEYRREDON (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        }
+      ],
+      "catalogue_route_ids": [
+        "012CIDA",
+        "012CVUELTA"
+      ],
+      "verification_after_import": [
+        {
+          "external_id": "012CIDA",
+          "paradas_oficiales_count": 37,
+          "puede_registrar_viaje": true,
+          "estado_datos": "parcial"
+        },
+        {
+          "external_id": "012CVUELTA",
+          "paradas_oficiales_count": 35,
+          "puede_registrar_viaje": true,
+          "estado_datos": "parcial"
+        }
+      ],
+      "validity_verified_on": "2026-11-06"
+    },
+    {
+      "prefix": "151B",
+      "status": "added",
+      "classification": "fusion_with_changed_itinerary",
+      "cause": "Barrio 21-24–Vicente López según 132-SECT/25; se incorpora como B distinto de 151 A y de los recorridos conservados de la 90.",
+      "evidence": [
+        "151_parameters",
+        "151_rename_proposal",
+        "operating_changes"
+      ],
+      "normalization_equivalence_found": false,
+      "csv_rows_related_legacy_lines": [
+        {
+          "fid": "473",
+          "linea": "90",
+          "recorrido": "A",
+          "sentido": "IDA",
+          "l_r_s": "090AIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "VILLA DEVOTO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "474",
+          "linea": "90",
+          "recorrido": "A",
+          "sentido": "VUELTA",
+          "l_r_s": "090AVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "VILLA DEVOTO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "475",
+          "linea": "90",
+          "recorrido": "B",
+          "sentido": "IDA",
+          "l_r_s": "090BIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "ESTACION FEDERICO LACROZE (LINEA URQUIZA - CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "476",
+          "linea": "90",
+          "recorrido": "B",
+          "sentido": "VUELTA",
+          "l_r_s": "090BVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "ESTACION FEDERICO LACROZE (LINEA URQUIZA - CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        }
+      ],
+      "geojson_features": [
+        {
+          "properties": {
+            "linea": "151",
+            "recorrido": "B",
+            "sentido": "IDA",
+            "l_r_s": "151BIDA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": "8_47_69",
+            "camara": "AAETA",
+            "desde": "BARRIO 21- 24",
+            "hasta": "ESTACIÓN DE TRANSFERENCIA DE TRANSPORTE PÚBLICO DE PASAJEROS DE CORTA Y MEDIA DISTANCIA DE VICENTE LÓPEZ (PARTIDO DE VICENTE LÓPEZ – PROVINCIA DE BUENOS AIRES)"
+          },
+          "normalized_identity": [
+            "151",
+            "B",
+            "IDA"
+          ],
+          "geometry_sha256_canonical_json": "7c967ca0256d4167ccdea9586ecadcc565209db26f7c4be8bb58ab0fd3efe6f6",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "151AIDA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 24078.0,
+              "length_candidate_m": 18281.45,
+              "start_distance_m": 3307.17,
+              "end_distance_m": 0.0
+            }
+          ]
+        },
+        {
+          "properties": {
+            "linea": "151",
+            "recorrido": "B",
+            "sentido": "VUELTA",
+            "l_r_s": "151BVUELTA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": "8_47_69",
+            "camara": "AAETA",
+            "desde": "ESTACIÓN DE TRANSFERENCIA DE TRANSPORTE PÚBLICO DE PASAJEROS DE CORTA Y MEDIA DISTANCIA DE VICENTE LÓPEZ (PARTIDO DE VICENTE LÓPEZ – PROVINCIA DE BUENOS AIRES)",
+            "hasta": "BARRIO 21- 24"
+          },
+          "normalized_identity": [
+            "151",
+            "B",
+            "VUELTA"
+          ],
+          "geometry_sha256_canonical_json": "7036f5cd931a501b90e59b73dc22122f35548bea415fd4841101faf9305d496c",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "151AVUELTA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 24345.42,
+              "length_candidate_m": 17264.88,
+              "start_distance_m": 0.0,
+              "end_distance_m": 3470.79
+            }
+          ]
+        }
+      ],
+      "previous_status": "pending_catalogue_review",
+      "cause_before_extension": "Barrio 21-24–Vicente López tras reorganización 90/151. CSV sólo tiene 151A, y 090A/B tienen otras cabeceras. La fusión modifica itinerarios y no demuestra identidad con esos recorridos históricos.",
+      "classification_before_extension": "fusion_with_changed_itinerary",
+      "csv_rows_same_line_before_extension": [
+        {
+          "fid": "822",
+          "linea": "151",
+          "recorrido": "A",
+          "sentido": "IDA",
+          "l_r_s": "151AIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "ESTACION DE TRANSFERENCIA DE TRANSPORTE PUBLICO DE PASAJEROS DE CORTA Y MEDIA DISTANCIA DE VICENTE LOPEZ (PARTIDO DE VICENTE LOPEZ - PROVINCIA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "823",
+          "linea": "151",
+          "recorrido": "A",
+          "sentido": "VUELTA",
+          "l_r_s": "151AVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "ESTACION DE TRANSFERENCIA DE TRANSPORTE PUBLICO DE PASAJEROS DE CORTA Y MEDIA DISTANCIA DE VICENTE LOPEZ (PARTIDO DE VICENTE LOPEZ - PROVINCIA DE BUENOS AIRES)",
+          "hasta": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        }
+      ],
+      "alias_target": null,
+      "added_csv_rows": [
+        {
+          "fid": "",
+          "linea": "151",
+          "recorrido": "B",
+          "sentido": "IDA",
+          "l_r_s": "151BIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "AAETA",
+          "desde": "BARRIO 21- 24",
+          "hasta": "ESTACIÓN DE TRANSFERENCIA DE TRANSPORTE PÚBLICO DE PASAJEROS DE CORTA Y MEDIA DISTANCIA DE VICENTE LÓPEZ (PARTIDO DE VICENTE LÓPEZ – PROVINCIA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "",
+          "linea": "151",
+          "recorrido": "B",
+          "sentido": "VUELTA",
+          "l_r_s": "151BVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "AAETA",
+          "desde": "ESTACIÓN DE TRANSFERENCIA DE TRANSPORTE PÚBLICO DE PASAJEROS DE CORTA Y MEDIA DISTANCIA DE VICENTE LÓPEZ (PARTIDO DE VICENTE LÓPEZ – PROVINCIA DE BUENOS AIRES)",
+          "hasta": "BARRIO 21- 24"
+        }
+      ],
+      "catalogue_route_ids": [
+        "151BIDA",
+        "151BVUELTA"
+      ],
+      "verification_after_import": [
+        {
+          "external_id": "151BIDA",
+          "paradas_oficiales_count": 75,
+          "puede_registrar_viaje": true,
+          "estado_datos": "disponible"
+        },
+        {
+          "external_id": "151BVUELTA",
+          "paradas_oficiales_count": 71,
+          "puede_registrar_viaje": true,
+          "estado_datos": "parcial"
+        }
+      ],
+      "validity_verified_on": "2026-11-06"
+    },
+    {
+      "prefix": "151C",
+      "status": "added",
+      "classification": "short_working",
+      "cause": "Constitución–Concepción Arenal y Álvarez Thomas según 132-SECT/25. El B de origen mencionado en el foro no tenía fila CSV; se agrega C como identidad propia.",
+      "evidence": [
+        "151_parameters",
+        "151_rename_proposal"
+      ],
+      "normalization_equivalence_found": false,
+      "csv_rows_related_legacy_lines": [
+        {
+          "fid": "473",
+          "linea": "90",
+          "recorrido": "A",
+          "sentido": "IDA",
+          "l_r_s": "090AIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "VILLA DEVOTO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "474",
+          "linea": "90",
+          "recorrido": "A",
+          "sentido": "VUELTA",
+          "l_r_s": "090AVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "VILLA DEVOTO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "475",
+          "linea": "90",
+          "recorrido": "B",
+          "sentido": "IDA",
+          "l_r_s": "090BIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "ESTACION FEDERICO LACROZE (LINEA URQUIZA - CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "476",
+          "linea": "90",
+          "recorrido": "B",
+          "sentido": "VUELTA",
+          "l_r_s": "090BVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "ESTACION FEDERICO LACROZE (LINEA URQUIZA - CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        }
+      ],
+      "geojson_features": [
+        {
+          "properties": {
+            "linea": "151",
+            "recorrido": "C",
+            "sentido": "IDA",
+            "l_r_s": "151CIDA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": "8_47",
+            "camara": "AAETA",
+            "desde": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION",
+            "hasta": "CONCEPCION ARENAL Y ALVAREZ THOMAS"
+          },
+          "normalized_identity": [
+            "151",
+            "C",
+            "IDA"
+          ],
+          "geometry_sha256_canonical_json": "a1ee88f723a71b93d5ca1eec86d19fe3997a2d9fcd09a4508c7012602637e62b",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "151AIDA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 11533.65,
+              "length_candidate_m": 18281.45,
+              "start_distance_m": 17.13,
+              "end_distance_m": 5747.18
+            }
+          ]
+        },
+        {
+          "properties": {
+            "linea": "151",
+            "recorrido": "C",
+            "sentido": "VUELTA",
+            "l_r_s": "151CVUELTA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": "8_47",
+            "camara": "AAETA",
+            "desde": "CONCEPCION ARENAL Y ALVAREZ THOMAS",
+            "hasta": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION"
+          },
+          "normalized_identity": [
+            "151",
+            "C",
+            "VUELTA"
+          ],
+          "geometry_sha256_canonical_json": "ae5e0784ff05089d3d0dc5a538c0107af0a72a03a67942fc7814e7484bac45d5",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "151AVUELTA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 10438.36,
+              "length_candidate_m": 17264.88,
+              "start_distance_m": 5748.28,
+              "end_distance_m": 45.54
+            }
+          ]
+        }
+      ],
+      "previous_status": "pending_catalogue_review",
+      "cause_before_extension": "Constitución–Concepción Arenal y Álvarez Thomas, distinto de 151A hasta Vicente López. El foro previo describe renombre de un antiguo 151B a C, pero ese B tampoco existe en el CSV; no hay destino válido para un alias.",
+      "classification_before_extension": "short_working_missing_from_catalogue",
+      "csv_rows_same_line_before_extension": [
+        {
+          "fid": "822",
+          "linea": "151",
+          "recorrido": "A",
+          "sentido": "IDA",
+          "l_r_s": "151AIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "ESTACION DE TRANSFERENCIA DE TRANSPORTE PUBLICO DE PASAJEROS DE CORTA Y MEDIA DISTANCIA DE VICENTE LOPEZ (PARTIDO DE VICENTE LOPEZ - PROVINCIA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "823",
+          "linea": "151",
+          "recorrido": "A",
+          "sentido": "VUELTA",
+          "l_r_s": "151AVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "ESTACION DE TRANSFERENCIA DE TRANSPORTE PUBLICO DE PASAJEROS DE CORTA Y MEDIA DISTANCIA DE VICENTE LOPEZ (PARTIDO DE VICENTE LOPEZ - PROVINCIA DE BUENOS AIRES)",
+          "hasta": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        }
+      ],
+      "alias_target": null,
+      "added_csv_rows": [
+        {
+          "fid": "",
+          "linea": "151",
+          "recorrido": "C",
+          "sentido": "IDA",
+          "l_r_s": "151CIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "AAETA",
+          "desde": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION",
+          "hasta": "CONCEPCION ARENAL Y ALVAREZ THOMAS"
+        },
+        {
+          "fid": "",
+          "linea": "151",
+          "recorrido": "C",
+          "sentido": "VUELTA",
+          "l_r_s": "151CVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "AAETA",
+          "desde": "CONCEPCION ARENAL Y ALVAREZ THOMAS",
+          "hasta": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION"
+        }
+      ],
+      "catalogue_route_ids": [
+        "151CIDA",
+        "151CVUELTA"
+      ],
+      "verification_after_import": [
+        {
+          "external_id": "151CIDA",
+          "paradas_oficiales_count": 33,
+          "puede_registrar_viaje": true,
+          "estado_datos": "disponible"
+        },
+        {
+          "external_id": "151CVUELTA",
+          "paradas_oficiales_count": 36,
+          "puede_registrar_viaje": true,
+          "estado_datos": "parcial"
+        }
+      ],
+      "validity_verified_on": "2026-11-06"
+    },
+    {
+      "prefix": "151D",
+      "status": "added",
+      "classification": "new_short_working",
+      "cause": "Nuevo fraccionamiento Constitución–Plaza Miserere previsto separadamente en 132-SECT/25; no reemplaza el recorrido completo A.",
+      "evidence": [
+        "151_parameters",
+        "151_rename_proposal"
+      ],
+      "normalization_equivalence_found": false,
+      "csv_rows_related_legacy_lines": [
+        {
+          "fid": "473",
+          "linea": "90",
+          "recorrido": "A",
+          "sentido": "IDA",
+          "l_r_s": "090AIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "VILLA DEVOTO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "474",
+          "linea": "90",
+          "recorrido": "A",
+          "sentido": "VUELTA",
+          "l_r_s": "090AVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "VILLA DEVOTO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "475",
+          "linea": "90",
+          "recorrido": "B",
+          "sentido": "IDA",
+          "l_r_s": "090BIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "ESTACION FEDERICO LACROZE (LINEA URQUIZA - CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "476",
+          "linea": "90",
+          "recorrido": "B",
+          "sentido": "VUELTA",
+          "l_r_s": "090BVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "ESTACION FEDERICO LACROZE (LINEA URQUIZA - CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        }
+      ],
+      "geojson_features": [
+        {
+          "properties": {
+            "linea": "151",
+            "recorrido": "D",
+            "sentido": "IDA",
+            "l_r_s": "151DIDA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": "8_47",
+            "camara": "AAETA",
+            "desde": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION",
+            "hasta": "PLAZA MISERERE"
+          },
+          "normalized_identity": [
+            "151",
+            "D",
+            "IDA"
+          ],
+          "geometry_sha256_canonical_json": "1e5825678b20bd3c39a9dd7d183aa43d41605593be9cc4f1ec0ab1009a09d156",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "151AIDA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 5025.92,
+              "length_candidate_m": 18281.45,
+              "start_distance_m": 0.0,
+              "end_distance_m": 10256.88
+            }
+          ]
+        },
+        {
+          "properties": {
+            "linea": "151",
+            "recorrido": "D",
+            "sentido": "VUELTA",
+            "l_r_s": "151DVUELTA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": "8_47",
+            "camara": "AAETA",
+            "desde": "PLAZA MISERERE",
+            "hasta": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION"
+          },
+          "normalized_identity": [
+            "151",
+            "D",
+            "VUELTA"
+          ],
+          "geometry_sha256_canonical_json": "ddb5e3c56b459f5c3de314f239032e7ed6588a87ad06c299bf62206e3f0743c9",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "151AVUELTA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 5035.12,
+              "length_candidate_m": 17264.88,
+              "start_distance_m": 10260.08,
+              "end_distance_m": 45.54
+            }
+          ]
+        }
+      ],
+      "previous_status": "pending_catalogue_review",
+      "cause_before_extension": "Fraccionamiento Constitución–Plaza Miserere, previsto como nuevo D en la reforma. CSV sólo contiene 151A hasta Vicente López; un tramo de A no es el mismo recorrido.",
+      "classification_before_extension": "new_short_working",
+      "csv_rows_same_line_before_extension": [
+        {
+          "fid": "822",
+          "linea": "151",
+          "recorrido": "A",
+          "sentido": "IDA",
+          "l_r_s": "151AIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "ESTACION DE TRANSFERENCIA DE TRANSPORTE PUBLICO DE PASAJEROS DE CORTA Y MEDIA DISTANCIA DE VICENTE LOPEZ (PARTIDO DE VICENTE LOPEZ - PROVINCIA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "823",
+          "linea": "151",
+          "recorrido": "A",
+          "sentido": "VUELTA",
+          "l_r_s": "151AVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "AAETA",
+          "desde": "ESTACION DE TRANSFERENCIA DE TRANSPORTE PUBLICO DE PASAJEROS DE CORTA Y MEDIA DISTANCIA DE VICENTE LOPEZ (PARTIDO DE VICENTE LOPEZ - PROVINCIA DE BUENOS AIRES)",
+          "hasta": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        }
+      ],
+      "alias_target": null,
+      "added_csv_rows": [
+        {
+          "fid": "",
+          "linea": "151",
+          "recorrido": "D",
+          "sentido": "IDA",
+          "l_r_s": "151DIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "AAETA",
+          "desde": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION",
+          "hasta": "PLAZA MISERERE"
+        },
+        {
+          "fid": "",
+          "linea": "151",
+          "recorrido": "D",
+          "sentido": "VUELTA",
+          "l_r_s": "151DVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "AAETA",
+          "desde": "PLAZA MISERERE",
+          "hasta": "PREDIO DE REGULACION AREA PLAZA CONSTITUCION"
+        }
+      ],
+      "catalogue_route_ids": [
+        "151DIDA",
+        "151DVUELTA"
+      ],
+      "verification_after_import": [
+        {
+          "external_id": "151DIDA",
+          "paradas_oficiales_count": 13,
+          "puede_registrar_viaje": true,
+          "estado_datos": "disponible"
+        },
+        {
+          "external_id": "151DVUELTA",
+          "paradas_oficiales_count": 16,
+          "puede_registrar_viaje": true,
+          "estado_datos": "parcial"
+        }
+      ],
+      "validity_verified_on": "2026-11-06"
+    },
+    {
+      "prefix": "102B",
+      "status": "added",
+      "classification": "short_working",
+      "cause": "Servicio corto Lisandro de la Torre–Constitución, confirmado por 221-SECT/26 vigente desde el 13/10/2026. Opera lunes a viernes de 6 a 20 y sábados de 6 a 14; no opera domingos.",
+      "evidence": [
+        "102_2026_resolution",
+        "102_2026_parameters",
+        "102_routes"
+      ],
+      "normalization_equivalence_found": false,
+      "csv_rows_related_legacy_lines": [],
+      "geojson_features": [
+        {
+          "properties": {
+            "linea": "102",
+            "recorrido": "B",
+            "sentido": "IDA",
+            "l_r_s": "102BIDA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": "2_156_8902",
+            "camara": "CEAP",
+            "desde": "ESTACION LISANDRO DE LA TORRE",
+            "hasta": "CONSTITUCION"
+          },
+          "normalized_identity": [
+            "102",
+            "B",
+            "IDA"
+          ],
+          "geometry_sha256_canonical_json": "58f39125baa1bf186d0bf52f25727f8ebf6c886f593a6e538eafe05b51bf3601",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "102AIDA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 10573.95,
+              "length_candidate_m": 12924.9,
+              "start_distance_m": 0.0,
+              "end_distance_m": 1854.06
+            }
+          ]
+        },
+        {
+          "properties": {
+            "linea": "102",
+            "recorrido": "B",
+            "sentido": "VUELTA",
+            "l_r_s": "102BVUELTA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": "2_156_8902",
+            "camara": "CEAP",
+            "desde": "CONSTITUCION",
+            "hasta": "ESTACION LISANDRO DE LA TORRE"
+          },
+          "normalized_identity": [
+            "102",
+            "B",
+            "VUELTA"
+          ],
+          "geometry_sha256_canonical_json": "37132c53cdd4519436cb57761fcce19edd9e7e0f42c20e834176dfbac5823c1a",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "102AVUELTA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 11746.16,
+              "length_candidate_m": 13862.72,
+              "start_distance_m": 1854.06,
+              "end_distance_m": 0.0
+            }
+          ]
+        }
+      ],
+      "previous_status": "pending_catalogue_review",
+      "cause_before_extension": "Servicio Lisandro de la Torre–Constitución documentado por GCBA, distinto de 102A hasta Barracas. Comparte elr_sube con A en el GeoJSON, por lo que ese campo tampoco identifica ramal. No se determinó aquí la fecha de alta.",
+      "classification_before_extension": "short_working_missing_from_catalogue",
+      "csv_rows_same_line_before_extension": [
+        {
+          "fid": "609",
+          "linea": "102",
+          "recorrido": "A",
+          "sentido": "IDA",
+          "l_r_s": "102AIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CEAP",
+          "desde": "PALERMO CHICO (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "BARRACAS (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "610",
+          "linea": "102",
+          "recorrido": "A",
+          "sentido": "VUELTA",
+          "l_r_s": "102AVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CEAP",
+          "desde": "BARRACAS (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "PALERMO CHICO (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        }
+      ],
+      "alias_target": null,
+      "added_csv_rows": [
+        {
+          "fid": "",
+          "linea": "102",
+          "recorrido": "B",
+          "sentido": "IDA",
+          "l_r_s": "102BIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "CEAP",
+          "desde": "ESTACION LISANDRO DE LA TORRE",
+          "hasta": "CONSTITUCION"
+        },
+        {
+          "fid": "",
+          "linea": "102",
+          "recorrido": "B",
+          "sentido": "VUELTA",
+          "l_r_s": "102BVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "CEAP",
+          "desde": "CONSTITUCION",
+          "hasta": "ESTACION LISANDRO DE LA TORRE"
+        }
+      ],
+      "catalogue_route_ids": [
+        "102BIDA",
+        "102BVUELTA"
+      ],
+      "verification_after_import": [
+        {
+          "external_id": "102BIDA",
+          "paradas_oficiales_count": 30,
+          "puede_registrar_viaje": true,
+          "estado_datos": "disponible"
+        },
+        {
+          "external_id": "102BVUELTA",
+          "paradas_oficiales_count": 30,
+          "puede_registrar_viaje": true,
+          "estado_datos": "disponible"
+        }
+      ],
+      "validity_verified_on": "2026-11-06"
+    },
+    {
+      "prefix": "EBUSA",
+      "status": "added",
+      "classification": "alphanumeric_service",
+      "cause": "Servicio eBUS respaldado por GCBA y BA Data. Se incorpora EBUS como código alfanumérico canónico y A como base Lezama–Terminal de Cruceros; las extensiones especiales no tienen identidades/geometrías adicionales en este recurso.",
+      "evidence": [
+        "ebus_route",
+        "ebus_2026_extension",
+        "operating_changes"
+      ],
+      "normalization_equivalence_found": false,
+      "csv_rows_related_legacy_lines": [],
+      "geojson_features": [
+        {
+          "properties": {
+            "linea": "EBUS",
+            "recorrido": "A",
+            "sentido": "IDA",
+            "l_r_s": "EBUSAIDA",
+            "modalidad": "NORMAL",
+            "jurisdicci": "CABA",
+            "elr_sube": null,
+            "camara": "CETUBA",
+            "desde": "PREDIO LEZAMA",
+            "hasta": "TERMINAL DE CRUCEROS"
+          },
+          "normalized_identity": [
+            "EBUS",
+            "A",
+            "IDA"
+          ],
+          "geometry_sha256_canonical_json": "c169c0d3380d664f73370f26ee56af6276787b082cfc92d8070f9fb60f9a2bf3",
+          "geometry_comparisons_utm_32721": []
+        },
+        {
+          "properties": {
+            "linea": "EBUS",
+            "recorrido": "A",
+            "sentido": "VUELTA",
+            "l_r_s": "EBUSAVUELTA",
+            "modalidad": "NORMAL",
+            "jurisdicci": "CABA",
+            "elr_sube": null,
+            "camara": "CETUBA",
+            "desde": "TERMINAL DE CRUCEROS",
+            "hasta": "PREDIO LEZAMA"
+          },
+          "normalized_identity": [
+            "EBUS",
+            "A",
+            "VUELTA"
+          ],
+          "geometry_sha256_canonical_json": "13929e5cce30205b35276586287361cb146fc58777d96a34d202cf9694602cf2",
+          "geometry_comparisons_utm_32721": []
+        }
+      ],
+      "previous_status": "pending_catalogue_review",
+      "cause_before_extension": "Servicio eBUS Lezama–Terminal de Cruceros; no existe línea EBUS en el CSV. El modelo actual exige líneas numéricas positivas. EBUS no equivale a 0 ni a otra línea; su incorporación requiere decidir una identidad de servicio compatible.",
+      "classification_before_extension": "non_numeric_service_missing_from_catalogue",
+      "csv_rows_same_line_before_extension": [],
+      "alias_target": null,
+      "added_csv_rows": [
+        {
+          "fid": "",
+          "linea": "EBUS",
+          "recorrido": "A",
+          "sentido": "IDA",
+          "l_r_s": "EBUSAIDA",
+          "modalidad": "NORMAL",
+          "jurisdicci": "CABA",
+          "camara": "CETUBA",
+          "desde": "PREDIO LEZAMA",
+          "hasta": "TERMINAL DE CRUCEROS"
+        },
+        {
+          "fid": "",
+          "linea": "EBUS",
+          "recorrido": "A",
+          "sentido": "VUELTA",
+          "l_r_s": "EBUSAVUELTA",
+          "modalidad": "NORMAL",
+          "jurisdicci": "CABA",
+          "camara": "CETUBA",
+          "desde": "TERMINAL DE CRUCEROS",
+          "hasta": "PREDIO LEZAMA"
+        }
+      ],
+      "catalogue_route_ids": [
+        "EBUSAIDA",
+        "EBUSAVUELTA"
+      ],
+      "verification_after_import": [
+        {
+          "external_id": "EBUSAIDA",
+          "paradas_oficiales_count": 22,
+          "puede_registrar_viaje": true,
+          "estado_datos": "disponible"
+        },
+        {
+          "external_id": "EBUSAVUELTA",
+          "paradas_oficiales_count": 20,
+          "puede_registrar_viaje": true,
+          "estado_datos": "disponible"
+        }
+      ],
+      "validity_verified_on": "2026-11-06",
+      "remaining_scope_limit": "Usina/Caminito y otros refuerzos requieren cartografía e identidad explícitas; no se fabrican geometrías."
+    },
+    {
+      "prefix": "042C",
+      "status": "added",
+      "classification": "distinct_extension",
+      "cause": "Nueva Pompeya–Parque de los Niños por Barrio Espora, aprobado en 4-SECT/26 y mantenido en la revisión 106-SECT/26; distinto de A/B hasta Ciudad Universitaria.",
+      "evidence": [
+        "42_parameters",
+        "42_2026_revision",
+        "operating_changes"
+      ],
+      "normalization_equivalence_found": false,
+      "csv_rows_related_legacy_lines": [],
+      "geojson_features": [
+        {
+          "properties": {
+            "linea": "042",
+            "recorrido": "C",
+            "sentido": "IDA",
+            "l_r_s": "042CIDA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": null,
+            "camara": "CETUBA",
+            "desde": "NUEVA POMPEYA",
+            "hasta": "PARQUE DE LOS NIÑOS"
+          },
+          "normalized_identity": [
+            "42",
+            "C",
+            "IDA"
+          ],
+          "geometry_sha256_canonical_json": "eea331b62ff42fd97d5beb7b3e255154f7b71254bb599b4b828043cef37cb182",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "042AIDA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 22629.73,
+              "length_candidate_m": 22239.29,
+              "start_distance_m": 2.57,
+              "end_distance_m": 1514.03
+            },
+            {
+              "candidate": "042BIDA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 22629.73,
+              "length_candidate_m": 20331.2,
+              "start_distance_m": 0.0,
+              "end_distance_m": 1514.03
+            }
+          ]
+        },
+        {
+          "properties": {
+            "linea": "042",
+            "recorrido": "C",
+            "sentido": "VUELTA",
+            "l_r_s": "042CVUELTA",
+            "modalidad": "COMUN",
+            "jurisdicci": "CABA",
+            "elr_sube": null,
+            "camara": "CETUBA",
+            "desde": "PARQUE DE LOS NIÑOS",
+            "hasta": "NUEVA POMPEYA"
+          },
+          "normalized_identity": [
+            "42",
+            "C",
+            "VUELTA"
+          ],
+          "geometry_sha256_canonical_json": "af53433d06bf5002dffddf7d7119b769f255951d6327e7ccb636a88996e9be81",
+          "geometry_comparisons_utm_32721": [
+            {
+              "candidate": "042AVUELTA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 24410.7,
+              "length_candidate_m": 22782.84,
+              "start_distance_m": 1508.44,
+              "end_distance_m": 31.98
+            },
+            {
+              "candidate": "042BVUELTA",
+              "same_wkb": false,
+              "topologically_equal": false,
+              "length_source_m": 24410.7,
+              "length_candidate_m": 24116.81,
+              "start_distance_m": 1508.44,
+              "end_distance_m": 0.0
+            }
+          ]
+        }
+      ],
+      "previous_status": "pending_catalogue_review",
+      "cause_before_extension": "Nueva Pompeya–Parque de los Niños por Barrio Espora. El CSV sólo contiene 042A/B hasta Ciudad Universitaria. La resolución distingue A, B y C; compartir gran parte del corredor no prueba identidad.",
+      "classification_before_extension": "distinct_extension",
+      "csv_rows_same_line_before_extension": [
+        {
+          "fid": "201",
+          "linea": "42",
+          "recorrido": "A",
+          "sentido": "IDA",
+          "l_r_s": "042AIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "NUEVA POMPEYA (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "CIUDAD UNIVERSITARIA (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "202",
+          "linea": "42",
+          "recorrido": "A",
+          "sentido": "VUELTA",
+          "l_r_s": "042AVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "CIUDAD UNIVERSITARIA (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "NUEVA POMPEYA (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "203",
+          "linea": "42",
+          "recorrido": "B",
+          "sentido": "IDA",
+          "l_r_s": "042BIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "NUEVA POMPEYA (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "CIUDAD UNIVERSITARIA (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        },
+        {
+          "fid": "204",
+          "linea": "42",
+          "recorrido": "B",
+          "sentido": "VUELTA",
+          "l_r_s": "042BVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "NACIONAL",
+          "camara": "CETUBA",
+          "desde": "CIUDAD UNIVERSITARIA (CIUDAD AUTONOMA DE BUENOS AIRES)",
+          "hasta": "NUEVA POMPEYA (CIUDAD AUTONOMA DE BUENOS AIRES)"
+        }
+      ],
+      "alias_target": null,
+      "added_csv_rows": [
+        {
+          "fid": "",
+          "linea": "42",
+          "recorrido": "C",
+          "sentido": "IDA",
+          "l_r_s": "042CIDA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "CETUBA",
+          "desde": "NUEVA POMPEYA",
+          "hasta": "PARQUE DE LOS NIÑOS"
+        },
+        {
+          "fid": "",
+          "linea": "42",
+          "recorrido": "C",
+          "sentido": "VUELTA",
+          "l_r_s": "042CVUELTA",
+          "modalidad": "COMUN",
+          "jurisdicci": "CABA",
+          "camara": "CETUBA",
+          "desde": "PARQUE DE LOS NIÑOS",
+          "hasta": "NUEVA POMPEYA"
+        }
+      ],
+      "catalogue_route_ids": [
+        "042CIDA",
+        "042CVUELTA"
+      ],
+      "verification_after_import": [
+        {
+          "external_id": "042CIDA",
+          "paradas_oficiales_count": 55,
+          "puede_registrar_viaje": true,
+          "estado_datos": "parcial"
+        },
+        {
+          "external_id": "042CVUELTA",
+          "paradas_oficiales_count": 58,
+          "puede_registrar_viaje": true,
+          "estado_datos": "parcial"
+        }
+      ],
+      "validity_verified_on": "2026-11-06"
+    }
+  ],
+  "revalidated_on": "2026-11-06",
+  "catalogue_before_extension": {
+    "path": "data/recorrido-colectivos.csv",
+    "sha256": "1f5fef5fe11f05723957883986057cb824d6a9048213ef7227d3e3ac33514c03",
+    "records": 1104
+  },
+  "summary_before_extension": {
+    "exact_matches": 96,
+    "reviewed_unmatched": 16,
+    "safe_aliases": 0,
+    "pending_features": 16
+  },
+  "review_history": [
+    {
+      "reviewed_on": "2026-11-06",
+      "scope": "Sólo equivalencias, antes de la solicitud posterior de ampliar el catálogo.",
+      "summary": {
+        "exact_matches": 96,
+        "reviewed_unmatched": 16,
+        "safe_aliases": 0,
+        "pending_features": 16
+      },
+      "decision": "CSV intacto y 16 features pendientes; no se encontraron aliases seguros."
+    }
+  ],
+  "verified_document_checksums": {
+    "102_2026_parameters": "bda0ab3f5c92993d801d3506574cff99cd5a9178b7d6abce5802c2119e6815dd"
+  },
+  "local_verification": {
+    "catalogue_import_run": 83,
+    "geometry_import_run": 85,
+    "rematch_import_run": 87,
+    "coverage": {
+      "ambiguedades": 56,
+      "asociaciones": 4966,
+      "compartidas": 3718,
+      "geometrias": 112,
+      "lineas": 135,
+      "paradas_oficiales": 6989,
+      "ramales": 565,
+      "recorridos": 1120,
+      "recorridos_con_paradas": 112,
+      "requiere_rematch": 0,
+      "utilizables": 108
+    },
+    "historical_rows_unchanged_before_e2e": {
+      "accounts.User": 44,
+      "gamification.EventoPuntos": 144,
+      "gamification.UsuarioLogro": 40,
+      "puntos": 188,
+      "social.Follow": 1,
+      "trips.RegistroViaje": 41,
+      "trips.UsuarioLineaParada": 138
+    },
+    "legacy_lines_retained": [
+      "6",
+      "90"
+    ],
+    "physical_stops_created": 0,
+    "recovered_ebus_stop_services": 42,
+    "matching_policy_changed": false,
+    "physical_points_relocated": 0,
+    "all_preexisting_historical_rows_verified_after_e2e": true,
+    "backend_complete_suite_tests": 140,
+    "additional_offline_integration_tests": 1,
+    "frontend_tests": 20,
+    "e2e_final_tests": 12,
+    "e2e_test_data_created": {
+      "users": 12,
+      "trips": 12,
+      "advances": 36,
+      "events": 36,
+      "points": 36,
+      "awarded_achievements": 12
+    }
+  }
+}
